@@ -8,4 +8,12 @@ const API_URL = `${environment.apiUrl}`;
 export class AccountService {
 
   constructor() { }
+
+  setToken(token : string){
+    localStorage.setItem("token", token);
+  }
+
+  getToken(){
+    return localStorage.getItem("token");
+  }
 }
