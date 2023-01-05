@@ -39,47 +39,11 @@
                 <h4><em>Top</em> Hires</h4>
               </div>
               <ul>
-                <li>
-                  <span>01</span>
-                  <img src="assets/images/avatar-01.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-check"></i> LahutaM</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>02</span>
-                  <img src="assets/images/avatar-02.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-check"></i> Kengan</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>03</span>
-                  <img src="assets/images/avatar-03.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-check"></i> Areluwa</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>04</span>
-                  <img src="assets/images/avatar-04.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-check"></i> Omeg</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>05</span>
-                  <img src="assets/images/avatar-01.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-check"></i> GangTeam</h6>
+                <li *ngFor="let t of hires, index as i">
+                  <span>{{i+1}}</span>
+                  <img src="{{t.detailAccountSart.img}}" alt=""
+                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
+                  <h6 ><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6 id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
                   </div>
@@ -93,47 +57,11 @@
                 <h4><em>Top</em> Star</h4>
               </div>
               <ul>
-                <li>
-                  <span>01</span>
-                  <img src="assets/images/avatar-01.jpg" alt=""
+                <li *ngFor="let t of star, index as i">
+                  <span>{{i+1}}</span>
+                  <img src="{{t.detailAccountSart.img}}" alt=""
                        style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-star"></i> 4.8</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>02</span>
-                  <img src="assets/images/avatar-02.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-star"></i> 4.8</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>03</span>
-                  <img src="assets/images/avatar-03.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-star"></i> 4.8</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>04</span>
-                  <img src="assets/images/avatar-04.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-star"></i> 4.8</h6>
-                  <div class="main-button">
-                    <a href="#">Follow</a>
-                  </div>
-                </li>
-                <li>
-                  <span>05</span>
-                  <img src="assets/images/avatar-01.jpg" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                  <h6><i class="fa fa-star"></i> 4.8</h6>
+                  <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6> <i class="fa fa-star"></i>{{t.star}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
                   </div>
@@ -145,92 +73,15 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Most Popular</em> Right Now</h4>
+                  <h4><em>New</em>bie</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
                     <div class="item">
-                      <img src="assets/images/popular-01.jpg" alt="">
-                      <h4>Fortnite<br><span>Sandbox</span></h4>
+                      <img src="{{t.img}}" alt="" >
+                      <h4>{{t.fullName}}<br><p id="{{t.id + 'newbie'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-02.jpg" alt="">
-                      <h4>PubG<br><span>Battle S</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-03.jpg" alt="">
-                      <h4>Dota2<br><span>Steam-X</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-04.jpg" alt="">
-                      <h4>CS-GO<br><span>Legendary</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-lg-6 col-sm-6">
-                          <div class="item inner-item">
-                            <img src="assets/images/popular-05.jpg" alt="">
-                            <h4>Mini Craft<br><span>Legendary</span></h4>
-                            <ul>
-                              <li><i class="fa fa-star"></i> 4.8</li>
-                              <li><i class="fa fa-download"></i> 2.3M</li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                          <div class="item">
-                            <img src="assets/images/popular-06.jpg" alt="">
-                            <h4>Eagles Fly<br><span>Matrix Games</span></h4>
-                            <ul>
-                              <li><i class="fa fa-star"></i> 4.8</li>
-                              <li><i class="fa fa-download"></i> 2.3M</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-07.jpg" alt="">
-                      <h4>Warface<br><span>Max 3D</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-08.jpg" alt="">
-                      <h4>Warcraft<br><span>Legend</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
                       </ul>
                     </div>
                   </div>
@@ -243,6 +94,65 @@
               </div>
             </div>
           </div>
+
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>Gen</em>der</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender, index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
+                    <div class="item">
+                      <img src="{{t.img}}" alt="" >
+                      <h4>{{t.fullName}}<br><p id="{{t.id + 'gender'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="browse.html">Discover Popular</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>V</em>ip</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Vip, index as i" (mouseenter)="check(t.id + 'vip')" (mouseleave)="check1(t.id + 'vip')">
+                    <div class="item">
+                      <img src="{{t.img}}" alt="" >
+                      <h4>{{t.fullName}}<br><p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="browse.html">Discover Popular</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
       </div>
     </div>
   </div>
@@ -258,3 +168,4 @@
     </div>
   </div>
 </footer>
+
