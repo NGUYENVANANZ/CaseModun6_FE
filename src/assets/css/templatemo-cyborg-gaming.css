@@ -377,7 +377,7 @@ Header Style
 }
 
 .header-area .main-nav #search {
-  position: relative;
+  position: static;
 }
 
 .header-area .main-nav #search input {
