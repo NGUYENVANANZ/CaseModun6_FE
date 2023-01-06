@@ -9,6 +9,7 @@ export class AccountService {
 
   constructor() { }
 
+
   setToken(token : string){
     localStorage.setItem("token", token);
   }
