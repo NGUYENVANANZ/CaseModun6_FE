@@ -17,4 +17,9 @@ export class SearchService {
     console.log(this.http.get<DetailAccount>(`${API_URL}/search/${name}`))
     return this.http.get<DetailAccount[]>(`${API_URL}/search/${name}`);
   }
+
+  showAll(): Observable<DetailAccount[]> {
+    console.log(this.http.get<DetailAccount>(`${API_URL}/showAll`))
+    return this.http.get<DetailAccount[]>(`${API_URL}/showAll`);
+  }
 }

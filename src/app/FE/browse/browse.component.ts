@@ -9,9 +9,8 @@ import {DetailAccount} from "../model/DetailAccount";
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit, OnChanges {
-fullName: DetailAccount[] = [];
-
-
+ fullName!: DetailAccount[];
+nameSearch !: string;
 
 
   constructor(private searchService: SearchService, private accountService: AccountService) {
@@ -21,12 +20,18 @@ fullName: DetailAccount[] = [];
   }
 
   ngOnInit(): void {
-  }
-
-  search(name : string){
-    this.searchService.showSearch(name).subscribe((data) => {
-      this.fullName = data;
+    this.searchService.showAll().subscribe((data) => {
+      this.fullName = data
     })
   }
+
+  search(){
+    this.searchService.showSearch(this.nameSearch).subscribe((data) => {
+      this.fullName = data;
+    })
+    console.log(this.fullName)
+  }
+
+
 
 }
