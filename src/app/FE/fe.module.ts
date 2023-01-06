@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { StreamComponent } from './stream/stream.component';
 import { BrowseComponent } from './browse/browse.component';
 import {AdminComponent} from "./admin/admin.component";
-import {NgxPaginationModule} from "ngx-pagination";
+// import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     FormsModule,
     FeRoutingModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    // NgxPaginationModule
   ]
 })
 export class FEModule { }
