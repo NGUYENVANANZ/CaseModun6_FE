@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
       // @ts-ignore
       this.loginService.setToken(data.token);
-      alert(data.token);
       this.router.navigate(["/home"])
     })
   }
