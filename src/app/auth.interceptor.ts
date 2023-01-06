@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import {AccountService} from "./service/account/account.service";
 import {HttpEvent, HttpHandler, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
-
+import {Injectable} from "@angular/core";
 @Injectable()
 export class AuthInterceptor {
+
 
   constructor(private accountSerice:AccountService) {}
 
@@ -17,4 +17,5 @@ export class AuthInterceptor {
     return next.handle(request);
 
   }
+
 }
