@@ -1,16 +1,12 @@
-/* Made with love by Mutiullah Samim*/
-
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 
 .container1{
   background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-
-  height: 745px;
   width: 100%;
-  font-family: 'Numans', sans-serif;
+  height: 800px;
+  align-content: center;
 }
-
 
 .card{
   height: 370px;

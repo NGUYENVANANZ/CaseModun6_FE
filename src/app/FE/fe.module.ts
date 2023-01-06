@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import {LoginComponent} from "./login/login.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FeRoutingModule} from "./fe-routing.module";
@@ -9,12 +8,15 @@ import { DetailComponent } from './detail/detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StreamComponent } from './stream/stream.component';
 import { BrowseComponent } from './browse/browse.component';
+import {AdminComponent} from "./admin/admin.component";
+// import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
+    AdminComponent,
     DetailComponent,
     ProfileComponent,
     StreamComponent,
@@ -24,7 +26,8 @@ import { BrowseComponent } from './browse/browse.component';
     CommonModule,
     FormsModule,
     FeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // NgxPaginationModule
   ]
 })
 export class FEModule { }

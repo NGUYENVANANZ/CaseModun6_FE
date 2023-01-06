@@ -5,6 +5,7 @@ import {environment} from "../../../environments/environment";
 
 const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
+import {UserToken} from "../../FE/model/DTO/UserToken";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class LoginService {
 
   }
 
-  login(account: Account): Observable<Account> {
-    return this.http.post<Account>(API_URL + '/login', account)
+  login(account: Account): Observable<UserToken> {
+    return this.http.post<UserToken>(API_URL + '/login', account)
   }
 
   setToken(token: string) {
