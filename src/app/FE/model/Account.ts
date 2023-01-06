@@ -4,6 +4,7 @@ import {Roles} from "./Roles";
 export class Account {
   id!: number
   username!: string
+  password!: string
   string!: string
   email!: string
   phoneNumber!: string
@@ -14,7 +15,7 @@ export class Account {
   status!: boolean
 
 
-  constructor(id: number, username: string, string: string, email: string, phoneNumber: string, money: number, joinDate: Date, detailAccount: DetailAccount, role: Roles[], status: boolean) {
+  constructor(id: number, username: string, string: string, email: string, phoneNumber: string, money: number, password:string,joinDate: Date, detailAccount: DetailAccount, role: Roles[], status: boolean) {
     this.id = id;
     this.username = username;
     this.string = string;
@@ -25,5 +26,6 @@ export class Account {
     this.detailAccount = detailAccount;
     this.role = role;
     this.status = status;
+    this.password = password;
   }
 }

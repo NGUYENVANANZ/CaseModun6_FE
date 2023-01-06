@@ -11,7 +11,7 @@ import {NotificationComponent} from "../notification/notification.component";
 
 const routes: Routes = [
   {
-    path: 'login', component: LoginComponent
+    path: '', component: LoginComponent
   },
   {
     path: 'admin', component: AdminComponent

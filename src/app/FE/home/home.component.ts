@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.accountService.setToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbiIsImlhdCI6MTY3MjkyODQzMywiZXhwIjo4ODA3MjkyODQzM30.bt5s0eTZLtvKYTbcqs2wsYTIZJzBXdat-PnDqv856NagTTSMxSF9yRWwc-OgcrcPN1fIuCVEgSK0N_NVtg8Pcg")
     this.home.showNewbie().subscribe((data) => {
       this.newBie = data;
     })
