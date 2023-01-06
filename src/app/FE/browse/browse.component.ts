@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AccountService} from "../../service/account/account.service";
-import {SearchService} from "../../service/search/search.service";
 import {DetailAccount} from "../model/DetailAccount";
+import {SearchService} from "../../service/search/search.service";
 
 @Component({
   selector: 'app-browse',
