@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class BrowseComponent {
 
+
+  onEnter(event : any){
+    alert(1)
+  }
 }
