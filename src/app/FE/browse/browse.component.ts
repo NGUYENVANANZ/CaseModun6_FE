@@ -13,18 +13,18 @@ fullName: DetailAccount[] = [];
 
 
 
-  constructor(public search: SearchService, private accountService: AccountService) {
+
+  constructor(private searchService: SearchService, private accountService: AccountService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.search.showSearch().subscribe((data) => {
-      this.fullName = data;
-    })
   }
 
   ngOnInit(): void {
-    this.accountService.setToken("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbiIsImlhdCI6MTY3MjkyODQzMywiZXhwIjo4ODA3MjkyODQzM30.bt5s0eTZLtvKYTbcqs2wsYTIZJzBXdat-PnDqv856NagTTSMxSF9yRWwc-OgcrcPN1fIuCVEgSK0N_NVtg8Pcg")
-    this.search.showSearch().subscribe((data) => {
+  }
+
+  search(name : string){
+    this.searchService.showSearch(name).subscribe((data) => {
       this.fullName = data;
     })
   }
