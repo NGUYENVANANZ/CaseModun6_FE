@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {LoginComponent} from "./login/login.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FeRoutingModule} from "./fe-routing.module";
@@ -22,12 +22,13 @@ import {AdminComponent} from "./admin/admin.component";
     StreamComponent,
     BrowseComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    FeRoutingModule,
-    ReactiveFormsModule,
-    // NgxPaginationModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        FeRoutingModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        // NgxPaginationModule
+    ]
 })
 export class FEModule { }

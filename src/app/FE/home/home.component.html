@@ -16,8 +16,11 @@
             <li><a routerLink="/browse" >Browse</a></li>
             <li><a routerLink="/detail">Details</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/profile">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>

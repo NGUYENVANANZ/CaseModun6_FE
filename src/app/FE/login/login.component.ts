@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginService.setToken("");
+    this.loginService.setUserName("");
+    this.loginService.setImg("assets/images/profile-header.jpg")
   }
 
   loginForm = new FormGroup({
@@ -40,6 +43,8 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loginService.setToken(account.token);
+    this.loginService.setUserName(account.userName);
+    this.loginService.setImg(account.img)
     for (let i = 0; i < account.roles.length; i++) {
       if (account.roles[i].id == 1) {
         this.router.navigate(["/admin"]);
