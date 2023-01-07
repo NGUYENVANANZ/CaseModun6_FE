@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     // @ts-ignore
     this.loginService.login(this.loginForm.value).subscribe((data) => {
       this.account = data;
-      alert(this.account.status)
       this.checkLogin(this.account)
     })
   }

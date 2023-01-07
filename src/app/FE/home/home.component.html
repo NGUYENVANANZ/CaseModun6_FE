@@ -40,7 +40,7 @@
                 <li *ngFor="let t of hires, index as i">
                   <span>{{i+1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
+                       style="width: 46px; border-radius: 50%; right: 15px;height: 46px" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
                   <h6 ><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6 id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
@@ -58,7 +58,7 @@
                 <li *ngFor="let t of star, index as i">
                   <span>{{i+1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                       style="width: 46px; border-radius: 50%; margin-right: 15px; height: 46px">
                   <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6> <i class="fa fa-star"></i>{{t.star}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
