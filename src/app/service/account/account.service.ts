@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs";
+import {DetailAccount} from "../../FE/model/DetailAccount";
 
 @Injectable({
   providedIn: 'root'
@@ -12,4 +14,5 @@ export class AccountService {
   getToken(){
     return localStorage.getItem("token");
   }
+
 }
