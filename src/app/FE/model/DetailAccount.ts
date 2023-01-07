@@ -1,5 +1,6 @@
 import {Img} from "./Img";
 import {Provided} from "./Provided";
+import {Roles} from "./Roles";
 
 export class DetailAccount {
   id!: number
@@ -16,11 +17,14 @@ export class DetailAccount {
   img!: string
   imgs!: Img[]
   provided!: Provided[]
-  pricePerDay!: string
+  pricePerDay!: number
+  money!: number
   faceLink!: string
   status!: boolean
+  roles !:Roles[]
 
-  constructor(id: number, city: string, nation: string, height: number, weight: number, soThich: string, moTa: string, yeucau: string, fullName: string, birthday: Date, gender: string, img: string, imgs: Img[], provided: Provided[], pricePerDay: string, faceLink: string, status: boolean) {
+
+  constructor(id: number, city: string, nation: string, height: number, weight: number, soThich: string, moTa: string, yeucau: string, fullName: string, birthday: Date, gender: string, img: string, imgs: Img[], provided: Provided[], pricePerDay: number, money: number, faceLink: string, status: boolean, roles: Roles[]) {
     this.id = id;
     this.city = city;
     this.nation = nation;
@@ -36,7 +40,9 @@ export class DetailAccount {
     this.imgs = imgs;
     this.provided = provided;
     this.pricePerDay = pricePerDay;
+    this.money = money;
     this.faceLink = faceLink;
     this.status = status;
+    this.roles = roles;
   }
 }
