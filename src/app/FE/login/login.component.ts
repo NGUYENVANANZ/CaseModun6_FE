@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < account.roles.length; i++) {
       if (account.roles[i].id == 1) {
         this.router.navigate(["/admin"]);
+        return;
       }
     }
     this.router.navigate(["/home"]);
