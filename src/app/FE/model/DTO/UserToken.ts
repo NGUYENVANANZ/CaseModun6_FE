@@ -8,10 +8,13 @@ export class UserToken {
   name!: string;
   token!: string;
   roles!: Roles[]
+  status!:number
 
-  constructor(name: string, token: string, roles: Roles[]) {
+
+  constructor(name: string, token: string, roles: Roles[], status: number) {
     this.name = name;
     this.token = token;
     this.roles = roles;
+    this.status = status;
   }
 }

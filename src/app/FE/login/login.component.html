@@ -42,7 +42,7 @@
             <input type="password" class="form-control" placeholder="password" formControlName="password">
           </div>
           <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Không được để trống</p>
-
+          <p id="status" hidden style="color: red">Tài khoản của bạn đã bị khóa</p>
           <div class="row align-items-center remember">
             <input type="checkbox">Remember Me
           </div>
