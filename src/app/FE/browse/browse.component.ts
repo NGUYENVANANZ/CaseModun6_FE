@@ -34,6 +34,12 @@ export class BrowseComponent implements OnInit, OnChanges {
   }
 
   search() {
+    if (this.nameSearch == ""){
+      this.searchService.showAll().subscribe((data) => {
+        this.fullName = data;
+      })
+      return;
+    }
     this.searchService.showSearch(this.nameSearch).subscribe((data) => {
       this.fullName = data;
     })

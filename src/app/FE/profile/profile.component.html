@@ -52,20 +52,14 @@
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
-                    <div class="main-border-button">
-                      <div id="status" hidden>
-                        <a id="status1">Online</a>
-                      </div>
-                      <div class="modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                        </div>
-                      </div>
+                    <h4 [innerText]="'UserName: '+ userName"></h4>
+                    <div class="main-border-button" id="requestAdmin" hidden>
+                      <a id="requestAdmin1" hidden style="color: white" (click)="requsetAdmin1()">Đăng ký CCDV</a>
+                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
                     </div>
-                    <br>
-                    <h4 [innerText]="userName"></h4>
-                    <p [innerText]="userProfile.moTa"></p>
-                    <div class="main-border-button">
-                      <a href="#" id="requestAdmin" hidden>Request to admin</a>
+                    <div class="main-border-button" id="status" hidden>
+                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt đầu CCDV</a>
+                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm dừng CCDV</a>
                     </div>
                   </div>
                 </div>
@@ -102,36 +96,15 @@
       <div class="gaming-library profile-library">
         <div class="col-lg-12">
           <div class="heading-section">
-            <h4>Order history</h4>
+            <h4>Lịch sử thuê</h4>
           </div>
-          <div class="item">
-            <ul>
-              <li><img src="https://cdn.diemnhangroup.com/seoulcenter/2022/11/gai-xinh-1.jpg" alt=""
+          <div class="item" *ngFor="let x of history">
+            <ul >
+              <li><img src="{{x.img}}" alt=""
                        class="templatemo-item"></li>
-              <li><h4>2 Day</h4><span>linh nhi</span></li>
-              <li><h4>Date </h4><span>24/08/2036</span></li>
-              <li><h4>Price</h4><span>140$</span></li>
-              <li><h4>NCCDV</h4><span>Cho thuê người yêu</span></li>
-            </ul>
-          </div>
-          <div class="item">
-            <ul>
-              <li><img src="https://gaixinhsexy.site/wp-content/uploads/2022/09/52322376573_2b9b56de06_o.jpg" alt=""
-                       class="templatemo-item"></li>
-              <li><h4>Fortnite</h4><span>Sandbox</span></li>
-              <li><h4>Date Added</h4><span>22/06/2036</span></li>
-              <li><h4>Hours Played</h4><span>745 H 22 Mins</span></li>
-              <li><h4>Currently</h4><span>Downloaded</span></li>
-            </ul>
-          </div>
-          <div class="item last-item">
-            <ul>
-              <li><img src="https://ttol.vietnamnetjsc.vn/images/2019/05/20/06/55/Nu-sinh-xinh-dep-noi-tieng-MXH-3.jpg"
-                       alt="" class="templatemo-item"></li>
-              <li><h4>CS-GO</h4><span>Sandbox</span></li>
-              <li><h4>Date Added</h4><span>21/04/2022</span></li>
-              <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
-              <li><h4>Currently</h4><span>Downloaded</span></li>
+              <li><h4>Tên</h4><span>{{x.userName}}</span></li>
+              <li><h4>Ngày </h4><span>{{x.date}}</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span >{{x.price}}$</span></li>
             </ul>
           </div>
         </div>
