@@ -27,22 +27,11 @@ import {AccountUserComponent} from "./accountuser/account-user.component";
     StreamComponent,
     BrowseComponent,
   ],
-<<<<<<< HEAD
   imports: [
     CommonModule,
     FormsModule,
     FeRoutingModule,
     ReactiveFormsModule,
   ]
-=======
-    imports: [
-        CommonModule,
-        FormsModule,
-        FeRoutingModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        // NgxPaginationModule
-    ]
->>>>>>> 03fd24ddede354c7648236c7ceda53ac26ec420b
 })
 export class FEModule { }
