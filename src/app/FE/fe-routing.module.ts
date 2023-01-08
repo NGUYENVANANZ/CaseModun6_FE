@@ -7,7 +7,9 @@ import {StreamComponent} from "./stream/stream.component";
 import {DetailComponent} from "./detail/detail.component";
 import {BrowseComponent} from "./browse/browse.component";
 import {AdminComponent} from "./admin/admin.component";
-import {NotificationComponent} from "../notification/notification.component";
+import {NotificationComponent} from "./notification/notification.component";
+import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
+import {AccountUserComponent} from "./accountuser/account-user.component";
 
 const routes: Routes = [
   {
@@ -18,6 +20,12 @@ const routes: Routes = [
   },
   {
     path: 'Notification', component: NotificationComponent
+  },
+  {
+    path: 'accountuser', component: AccountUserComponent
+  },
+  {
+    path: 'profileAdmin', component: ProfileAdminComponent
   },
   {
     path: 'home', component: HomeComponent

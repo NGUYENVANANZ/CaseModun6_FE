@@ -1,0 +1,74 @@
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <a href="/accountuser" class="logo">
+            <img src="../../../assets/images/logo.png" alt="">
+          </a>
+          <ul class="nav">
+            <li><a routerLink="/Admin" class="active">Admin</a></li>
+            <li><a routerLink="/Notification" class="active">Notification</a></li>
+            <li><a routerLink="/profileAdmin">Profile <img src="../../../assets/images/profile-header.jpg" alt=""></a></li>
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="col-lg-12">
+    <div class="page-content">
+      <div class="heading-section">
+        <button type="button" class="btn btn-outline-danger" routerLink="/admin">List Account service provider</button>
+        <br>
+        <br>
+        <h4>List Account User</h4>
+        <div class="most-popular">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
+                  <div class="item">
+                    <button type="button" class="btn btn-dark">🔒</button>
+                    <ul>
+                    </ul>
+                    <img src="{{t.img}}" alt="" style="width: 150px; height: 150px;border-radius:50%; margin-right: 50px;" >
+                    <br>
+                    <h4>{{t.fullName}}<br><p id="{{t.id + 'newbie'}}" hidden>
+                      <span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
+                    <br>
+                    <h4><li>{{t.price}}$/Day</li></h4>
+
+                    <br>
+                  </div>
+                </div>
+                <div class="text-center">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+                <div class="col-lg-12">
+                  <div class="main-button">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+        </div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Copyright © 2023 <a>Cyborg Gaming</a> Company. All rights reserved.
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
