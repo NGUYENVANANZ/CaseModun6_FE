@@ -5,6 +5,7 @@ import {Hires} from "../model/DTO/Hires";
 import {HomeService} from "../../service/home/home.service";
 import {AccountService} from "../../service/account/account.service";
 import {DetailAccount} from "../model/DetailAccount";
+import {LoginService} from "../../service/login/login.service";
 
 @Component({
   selector: 'app-admin',
@@ -20,10 +21,12 @@ export class AdminComponent implements OnInit,OnChanges{
 
 
 
-  constructor(private home: HomeService, private accountService : AccountService) {
+  constructor(private home: HomeService, private loginService : LoginService) {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+img = this.loginService.getImg();
+
+    ngOnChanges(changes: SimpleChanges): void {
   this.home.showNewbie().subscribe((data) => {
     this.newBie = data
   })
