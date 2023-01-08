@@ -95,7 +95,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of fullName">
                     <div class="item">
-                      <img src="{{t.img}}" alt="">
+                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br>
                         <p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span></p>
                       </h4>
