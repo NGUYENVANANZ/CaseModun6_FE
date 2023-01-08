@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,15 @@ import {UserToken} from "../../FE/model/DTO/UserToken";
 export class LoginService {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router :Router) {
 
+  }
+
+  logOut(){
+    this.setToken("");
+    this.setUserName("");
+    this.setImg("assets/images/profile-header.jpg")
+    this.router.navigate([""]);
   }
 
   login(account: Account): Observable<UserToken> {
@@ -25,8 +33,24 @@ export class LoginService {
     localStorage.setItem("token", token)
   }
 
-  getToken(token: string) {
+  getToken() {
     return localStorage.getItem("token")
+  }
+
+  setUserName(userName: string) {
+    localStorage.setItem("userName", userName)
+  }
+
+  getUserName() {
+    return localStorage.getItem("userName")
+  }
+
+  setImg(img: string) {
+    localStorage.setItem("img", img)
+  }
+
+  getImg() {
+    return localStorage.getItem("img")
   }
 
 

@@ -11,18 +11,21 @@
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Home</a></li>
+            <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/browse">Browse</a></li>
             <li><a routerLink="/detail">Details</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile" class="active">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/profile" class="active">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
@@ -43,34 +46,43 @@
             <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="https://danviet.mediacdn.vn/upload/2-2015/images/2015-06-20/1436823233-oubi01_weth.jpg" alt="" style="border-radius: 23px;">
+                  <img src="{{userProfile.img}}"
+                       alt="" style="border-radius: 23px;">
+                    <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122">
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
                     <div class="main-border-button">
+<<<<<<< HEAD
                     <a href="#">logout</a>
+=======
+                      <div id="status" hidden>
+                        <a id="status1">Online</a>
+                      </div>
+>>>>>>> 03fd24ddede354c7648236c7ceda53ac26ec420b
                       <div class="modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                         </div>
                       </div>
                     </div>
                     <br>
-                    <h4>Lộc Sắc Màu</h4>
-                    <p>
-                      Máy đâm đình thôn
-                    </p>
+                    <h4 [innerText]="userName"></h4>
+                    <p [innerText]="userProfile.moTa"></p>
                     <div class="main-border-button">
-                      <a href="#">Request to admin</a>
+                      <a href="#" id="requestAdmin" hidden>Request to admin</a>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <ul>
-                    <li>UserName <span>Đào bá lộc</span></li>
-                    <li>Date <span>22/08/1995</span></li>
-                    <li>Gender <span>Boy</span></li>
-                    <li>price<span>100.000$</span></li>
+                    <li>Name <span [innerText]="userProfile.fullName"></span></li>
+                    <li>Date <span [innerText]="userProfile.birthday"></span></li>
+                    <li>Gender <span [innerText]="userProfile.gender"></span></li>
+                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
+                  <div class="main-border-button">
+                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -80,7 +92,6 @@
                       <div class="col-lg-12">
                         <div class="heading-section">
                         </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -89,52 +100,56 @@
             </div>
           </div>
         </div>
-        <!-- ***** Banner End ***** -->
-        <!-- ***** Gaming Library Start ***** -->
-        <div class="gaming-library profile-library">
-          <div class="col-lg-12">
-            <div class="heading-section">
-              <h4>Order history</h4>
-            </div>
-            <div class="item">
-              <ul>
-                <li><img src="https://cdn.diemnhangroup.com/seoulcenter/2022/11/gai-xinh-1.jpg" alt="" class="templatemo-item"></li>
-                <li><h4>2 Day</h4><span>linh nhi</span></li>
-                <li><h4>Date </h4><span>24/08/2036</span></li>
-                <li><h4>Price</h4><span>140$</span></li>
-                <li><h4>NCCDV</h4><span>Cho thuê người yêu</span></li>
-              </ul>
-            </div>
-            <div class="item">
-              <ul>
-                <li><img src="https://gaixinhsexy.site/wp-content/uploads/2022/09/52322376573_2b9b56de06_o.jpg" alt="" class="templatemo-item"></li>
-                <li><h4>Fortnite</h4><span>Sandbox</span></li>
-                <li><h4>Date Added</h4><span>22/06/2036</span></li>
-                <li><h4>Hours Played</h4><span>745 H 22 Mins</span></li>
-                <li><h4>Currently</h4><span>Downloaded</span></li>
-              </ul>
-            </div>
-            <div class="item last-item">
-              <ul>
-                <li><img src="https://ttol.vietnamnetjsc.vn/images/2019/05/20/06/55/Nu-sinh-xinh-dep-noi-tieng-MXH-3.jpg" alt="" class="templatemo-item"></li>
-                <li><h4>CS-GO</h4><span>Sandbox</span></li>
-                <li><h4>Date Added</h4><span>21/04/2022</span></li>
-                <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
-                <li><h4>Currently</h4><span>Downloaded</span></li>
-              </ul>
-            </div>
+      </div>
+      <!-- ***** Banner End ***** -->
+      <!-- ***** Gaming Library Start ***** -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <div class="heading-section">
+            <h4>Order history</h4>
+          </div>
+          <div class="item">
+            <ul>
+              <li><img src="https://cdn.diemnhangroup.com/seoulcenter/2022/11/gai-xinh-1.jpg" alt=""
+                       class="templatemo-item"></li>
+              <li><h4>2 Day</h4><span>linh nhi</span></li>
+              <li><h4>Date </h4><span>24/08/2036</span></li>
+              <li><h4>Price</h4><span>140$</span></li>
+              <li><h4>NCCDV</h4><span>Cho thuê người yêu</span></li>
+            </ul>
+          </div>
+          <div class="item">
+            <ul>
+              <li><img src="https://gaixinhsexy.site/wp-content/uploads/2022/09/52322376573_2b9b56de06_o.jpg" alt=""
+                       class="templatemo-item"></li>
+              <li><h4>Fortnite</h4><span>Sandbox</span></li>
+              <li><h4>Date Added</h4><span>22/06/2036</span></li>
+              <li><h4>Hours Played</h4><span>745 H 22 Mins</span></li>
+              <li><h4>Currently</h4><span>Downloaded</span></li>
+            </ul>
+          </div>
+          <div class="item last-item">
+            <ul>
+              <li><img src="https://ttol.vietnamnetjsc.vn/images/2019/05/20/06/55/Nu-sinh-xinh-dep-noi-tieng-MXH-3.jpg"
+                       alt="" class="templatemo-item"></li>
+              <li><h4>CS-GO</h4><span>Sandbox</span></li>
+              <li><h4>Date Added</h4><span>21/04/2022</span></li>
+              <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
+              <li><h4>Currently</h4><span>Downloaded</span></li>
+            </ul>
           </div>
         </div>
-        <!-- ***** Gaming Library End ***** -->
       </div>
+      <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
+</div>
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-<!--        <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.-->
-<!--          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>-->
+        <!--        <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.-->
+        <!--          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>-->
       </div>
     </div>
   </div>
