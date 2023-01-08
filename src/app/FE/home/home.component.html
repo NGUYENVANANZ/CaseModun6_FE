@@ -9,17 +9,18 @@
           <div class="search-input">
             <form id="search" action="#">
               <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-              <i class="fa fa-search"></i>
             </form>
           </div>
           <ul class="nav">
-            <li><a routerLink="/admin" >Admin</a></li>
             <li><a routerLink="/home" class="active">Home</a></li>
             <li><a routerLink="/browse" >Browse</a></li>
             <li><a routerLink="/detail">Details</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/profile">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
@@ -42,7 +43,7 @@
                 <li *ngFor="let t of hires, index as i">
                   <span>{{i+1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
+                       style="width: 46px; border-radius: 50%; right: 15px;height: 46px" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
                   <h6 ><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6 id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
@@ -60,7 +61,7 @@
                 <li *ngFor="let t of star, index as i">
                   <span>{{i+1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
-                       style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                       style="width: 46px; border-radius: 50%; margin-right: 15px; height: 46px">
                   <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6> <i class="fa fa-star"></i>{{t.star}}</h6>
                   <div class="main-button">
                     <a href="#">Follow</a>
@@ -78,7 +79,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" >
+                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'newbie'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
@@ -107,7 +108,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender, index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" >
+                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'gender'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
@@ -135,7 +136,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of Vip, index as i" (mouseenter)="check(t.id + 'vip')" (mouseleave)="check1(t.id + 'vip')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" >
+                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
                         <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>

@@ -12,7 +12,6 @@
           <div class="search-input">
             <form id="search" action="#">
               <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-              <i class="fa fa-search"></i>
             </form>
           </div>
           <!-- ***** Search End ***** -->
@@ -25,6 +24,9 @@
             <li><a routerLink="/stream" class="active">Streams</a></li>
             <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" hidden>Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>

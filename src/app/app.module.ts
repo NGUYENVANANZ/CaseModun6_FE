@@ -8,7 +8,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './FE/register/register.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +17,6 @@ import { RegisterComponent } from './FE/register/register.component';
   ],
   imports: [
     FormsModule,
-    // NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

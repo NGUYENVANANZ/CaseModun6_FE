@@ -10,21 +10,27 @@
           <!-- ***** Logo End ***** -->
           <!-- ***** Search End ***** -->
           <div class="search-input">
+
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" (keyup.enter)="onEnter($event)"/>
+              <input type="text" placeholder="Type Something" [(ngModel)]="nameSearch" id='searchText'
+                     name="searchKeyword" (input)="search()"/>
+
               <i class="fa fa-search"></i>
             </form>
+
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/admin" >Admin</a></li>
-            <li><a routerLink="/home" >Home</a></li>
+            <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/browse" class="active">Browse</a></li>
             <li><a routerLink="/detail">Details</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/profile">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
@@ -35,311 +41,86 @@
   </div>
 </header>
 <!-- ***** Header Area End ***** -->
+<div class="search-filter">
+  <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" class="shopee-svg-icon">
+    <g>
+      <polyline fill="none" points="5.5 13.2 5.5 5.8 1.5 1.2 13.5 1.2 9.5 5.8 9.5 10.2" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10"></polyline>
+      <polyline id="filter__ticked" points="9.2 11.3 10.3 12.1 11.8 10.4"
+                style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; stroke-width: 0.5;"></polyline>
+      <circle cx="10.5" cy="11.2" r="2.5" stroke="none"></circle>
+      <use xlink:href="#filter__ticked"></use>
+    </g>
+  </svg>
+  <div class="shopee-search-filter-status__text" style="color: white">Search Filter</div>
+</div>
+
+<div class="ageField">
+  <div class="age field-wrapper loading">
+    <div class="text-wrapper ages"><a url="/texts/forms/search-form/search-form#ages">Ages</a></div>
+    <span class="field data-wrapper">
+
+<div class="customized-select">
+  <select name="maxage" class="data higher trackable" tabindex="2">
+<option value="20" selected="selected">20+</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="55">55</option>
+<option value="60">60</option>
+<option value="65">65</option>
+<option value="70">70</option>
+<option value="75">75</option>
+<option value="80">80</option> </select>
+</div>
+</span>
+  </div>
+</div>
+
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="page-content">
-
-        <!-- ***** Featured Games Start ***** -->
         <div class="row">
-          <div class="col-lg-8">
-            <div class="featured-games header-text">
-              <div class="heading-section">
-                <h4><em>Featured</em> Games</h4>
-              </div>
-              <div class="owl-features owl-carousel">
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-01.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>CS-GO<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-02.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>Gamezer<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-03.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>Island Rusty<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-01.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>CS-GO<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-02.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>Gamezer<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <div class="thumb">
-                    <img src="assets/images/featured-03.jpg" alt="">
-                    <div class="hover-effect">
-                      <h6>2.4K Streaming</h6>
-                    </div>
-                  </div>
-                  <h4>Island Rusty<br><span>249K Downloads</span></h4>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="top-downloaded">
-              <div class="heading-section">
-                <h4><em>Top</em> Downloaded</h4>
-              </div>
-              <ul>
-                <li>
-                  <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h4>Fortnite</h4>
-                  <h6>Sandbox</h6>
-                  <span><i class="fa fa-star" style="color: yellow;"></i> 4.9</span>
-                  <span><i class="fa fa-download" style="color: #ec6090;"></i> 2.2M</span>
-                  <div class="download">
-                    <a href="#"><i class="fa fa-download"></i></a>
-                  </div>
-                </li>
-                <li>
-                  <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
-                  <h4>CS-GO</h4>
-                  <h6>Legendary</h6>
-                  <span><i class="fa fa-star" style="color: yellow;"></i> 4.9</span>
-                  <span><i class="fa fa-download" style="color: #ec6090;"></i> 2.2M</span>
-                  <div class="download">
-                    <a href="#"><i class="fa fa-download"></i></a>
-                  </div>
-                </li>
-                <li>
-                  <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
-                  <h4>PugG</h4>
-                  <h6>Battle Royale</h6>
-                  <span><i class="fa fa-star" style="color: yellow;"></i> 4.9</span>
-                  <span><i class="fa fa-download" style="color: #ec6090;"></i> 2.2M</span>
-                  <div class="download">
-                    <a href="#"><i class="fa fa-download"></i></a>
-                  </div>
-                </li>
-              </ul>
-              <div class="text-button">
-                <a href="profile.html">View All Games</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- ***** Featured Games End ***** -->
-
-        <!-- ***** Start Stream Start ***** -->
-        <div class="start-stream">
-          <div class="col-lg-12">
-            <div class="heading-section">
-              <h4><em>How To Start Your</em> Live Stream</h4>
-            </div>
+          <div class="most-popular">
             <div class="row">
-              <div class="col-lg-4">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/service-01.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                  </div>
-                  <h4>Go To Your Profile</h4>
-                  <p>Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout.</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/service-02.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                  </div>
-                  <h4>Live Stream Button</h4>
-                  <p>If you wish to support us, you can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/service-03.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                  </div>
-                  <h4>You Are Live</h4>
-                  <p>You are not allowed to redistribute this template's downloadable ZIP file on any other template collection website.</p>
-                </div>
-              </div>
               <div class="col-lg-12">
-                <div class="main-button">
-                  <a href="profile.html">Go To Profile</a>
+                <div class="heading-section">
+                  <h4><em>L</em>ist</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of fullName">
+                    <div class="item">
+                      <img src="{{t.img}}" alt="">
+                      <h4>{{t.fullName}}<br>
+                        <p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span></p>
+                      </h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> {{t.pricePerDay}}$/Day</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="browse.html">Discover Popular</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- ***** Start Stream End ***** -->
+          <!-- ***** Most Popular End ***** -->
 
-        <!-- ***** Live Stream Start ***** -->
-        <div class="live-stream">
-          <div class="col-lg-12">
-            <div class="heading-section">
-              <h4><em>Most Popular</em> Live Stream</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3 col-sm-6">
-              <div class="item">
-                <div class="thumb">
-                  <img src="assets/images/stream-01.jpg" alt="">
-                  <div class="hover-effect">
-                    <div class="content">
-                      <div class="live">
-                        <a href="#">Live</a>
-                      </div>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-eye"></i> 1.2K</a></li>
-                        <li><a href="#"><i class="fa fa-gamepad"></i> CS-GO</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="down-content">
-                  <div class="avatar">
-                    <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
-                  </div>
-                  <span><i class="fa fa-check"></i> KenganC</span>
-                  <h4>Just Talking With Fans</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="item">
-                <div class="thumb">
-                  <img src="assets/images/stream-02.jpg" alt="">
-                  <div class="hover-effect">
-                    <div class="content">
-                      <div class="live">
-                        <a href="#">Live</a>
-                      </div>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-eye"></i> 1.2K</a></li>
-                        <li><a href="#"><i class="fa fa-gamepad"></i> CS-GO</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="down-content">
-                  <div class="avatar">
-                    <img src="assets/images/avatar-02.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
-                  </div>
-                  <span><i class="fa fa-check"></i> LunaMa</span>
-                  <h4>CS-GO 36 Hours Live Stream</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="item">
-                <div class="thumb">
-                  <img src="assets/images/stream-03.jpg" alt="">
-                  <div class="hover-effect">
-                    <div class="content">
-                      <div class="live">
-                        <a href="#">Live</a>
-                      </div>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-eye"></i> 1.2K</a></li>
-                        <li><a href="#"><i class="fa fa-gamepad"></i> CS-GO</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="down-content">
-                  <div class="avatar">
-                    <img src="assets/images/avatar-03.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
-                  </div>
-                  <span><i class="fa fa-check"></i> Areluwa</span>
-                  <h4>Maybe Nathej Allnight Chillin'</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="item">
-                <div class="thumb">
-                  <img src="assets/images/stream-04.jpg" alt="">
-                  <div class="hover-effect">
-                    <div class="content">
-                      <div class="live">
-                        <a href="#">Live</a>
-                      </div>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-eye"></i> 1.2K</a></li>
-                        <li><a href="#"><i class="fa fa-gamepad"></i> CS-GO</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="down-content">
-                  <div class="avatar">
-                    <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
-                  </div>
-                  <span><i class="fa fa-check"></i> GangTm</span>
-                  <h4>Live Streaming Till Morning</h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="main-button">
-                <a href="streams.html">Discover All Streams</a>
-              </div>
-            </div>
-          </div>
         </div>
-        <!-- ***** Live Stream End ***** -->
-
       </div>
     </div>
   </div>
 </div>
+
 
 <footer>
   <div class="container">
@@ -347,8 +128,11 @@
       <div class="col-lg-12">
         <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
 
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
       </div>
     </div>
   </div>
 </footer>
+
+

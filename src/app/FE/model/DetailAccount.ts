@@ -1,42 +1,54 @@
 import {Img} from "./Img";
 import {Provided} from "./Provided";
+import {Roles} from "./Roles";
 
 export class DetailAccount {
-  id!: number
+  id !: number
   city!: string
   nation!: string
+  gender!: string
   height!: number
   weight!: number
   soThich!: string
   moTa!: string
-  yeucau!: string
+  yeuCau!: string
   fullName!: string
   birthday!: Date
-  gender !: string
+  joinDate!: Date
+  money!: number
   img!: string
   imgs!: Img[]
-  provided!: Provided[]
-  pricePerDay!: string
-  faceLink!: string
-  status!: boolean
+  provideds!: Provided[]
+  comments!: Comment[]
+  pricePerDay!: number
+  faceLink !: string
+  status!: number
+  vip!: number
+  roles!: Roles[];
 
-  constructor(id: number, city: string, nation: string, height: number, weight: number, soThich: string, moTa: string, yeucau: string, fullName: string, birthday: Date, gender: string, img: string, imgs: Img[], provided: Provided[], pricePerDay: string, faceLink: string, status: boolean) {
+
+  constructor(id: number, city: string, nation: string, gender: string, height: number, weight: number, soThich: string, moTa: string, yeuCau: string, fullName: string, birthday: Date, joinDate: Date, money: number, img: string, imgs: Img[], provideds: Provided[], comments: Comment[], pricePerDay: number, faceLink: string, status: number, vip: number, roles: Roles[]) {
     this.id = id;
     this.city = city;
     this.nation = nation;
+    this.gender = gender;
     this.height = height;
     this.weight = weight;
     this.soThich = soThich;
     this.moTa = moTa;
-    this.yeucau = yeucau;
+    this.yeuCau = yeuCau;
     this.fullName = fullName;
     this.birthday = birthday;
-    this.gender = gender;
+    this.joinDate = joinDate;
+    this.money = money;
     this.img = img;
     this.imgs = imgs;
-    this.provided = provided;
+    this.provideds = provideds;
+    this.comments = comments;
     this.pricePerDay = pricePerDay;
     this.faceLink = faceLink;
     this.status = status;
+    this.vip = vip;
+    this.roles = roles;
   }
 }

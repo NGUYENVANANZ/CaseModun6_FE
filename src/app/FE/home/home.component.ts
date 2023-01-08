@@ -5,6 +5,7 @@ import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
 import {Star} from "../model/DTO/Star";
 import {Hires} from "../model/DTO/Hires";
 import {AccountService} from "../../service/account/account.service";
+import {LoginService} from "../../service/login/login.service";
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,12 @@ export class HomeComponent implements OnInit, OnChanges {
   hires: Hires[] = []
 
 
-  constructor(private home: HomeService, private accountService : AccountService) {
+
+  constructor(private home: HomeService, private loginService : LoginService) {
   }
 
+  img = this.loginService.getImg();
+  token = this.loginService.getToken()
 
   ngOnChanges(changes: SimpleChanges): void {
     this.home.showNewbie().subscribe((data) => {
@@ -43,6 +47,10 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    if (this.token != ""){
+      // @ts-ignore
+      document.getElementById("logout").hidden = false;
+    }
     this.home.showNewbie().subscribe((data) => {
       this.newBie = data;
     })
@@ -69,7 +77,9 @@ export class HomeComponent implements OnInit, OnChanges {
   check1(n : string){
       // @ts-ignore
       document.getElementById(n).hidden = true;
+  }
 
-
+  logOut(){
+    this.loginService.logOut();
   }
 }
