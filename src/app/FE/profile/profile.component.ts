@@ -98,10 +98,28 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   uploadFileImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
-      this.arrfiles.push(argument)
+      if (this.fileValidation(argument)){
+        this.arrfiles.push(argument)
+      }
     }
     this.submit();
+  }
 
+  // @ts-ignore
+  function // @ts-ignore
+  fileValidation(argument : any) {
+    var fileInput = argument;
+    // @ts-ignore
+    var filePath = fileInput.name;
+    // Allowing file type
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(filePath)) {
+      alert('Chọn file ảnh');
+      // @ts-ignore
+      fileInput.value = '';
+      return false;
+    }
+    return true;
   }
 
   save(img : string){
@@ -190,4 +208,5 @@ export class ProfileComponent implements OnInit, OnChanges {
       this.check(this.userProfile);
     })
   }
+
 }

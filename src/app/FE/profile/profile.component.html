@@ -47,8 +47,8 @@
               <div class="row">
                 <div class="col-lg-4">
                   <img src="{{img}}"
-                       alt="" style="border-radius: 23px;">
-                    <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+                       alt="" style="border-radius: 23px; width: 290px; height: 400px">
+                    <input type="file" id="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
                   <div class="main-border-button">
                     <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
                   </div>
@@ -61,7 +61,7 @@
                       </div>
                     <h4 [innerText]="'UserName: '+ userName"></h4>
                     <div class="main-border-button" id="requestAdmin" hidden>
-                      <a id="requestAdmin1" hidden style="color: white" (click)="requsetAdmin1()">Đăng ký CCDV</a>
+                      <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
                       <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
                     </div>
                     <div class="main-border-button" id="status" hidden>
