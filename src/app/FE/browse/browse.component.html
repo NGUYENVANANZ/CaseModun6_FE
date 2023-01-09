@@ -4,7 +4,7 @@
       <div class="col-12">
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
-          <a href="/" class="logo">
+          <a href="/home" class="logo">
             <img src="assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
@@ -12,26 +12,21 @@
           <div class="search-input">
 
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" [(ngModel)]="nameSearch" id='searchText'
+              <input type="text" placeholder="Viết gì đó" [(ngModel)]="nameSearch" id='searchText'
                      name="searchKeyword" (input)="search()"/>
-
-              <i class="fa fa-search"></i>
             </form>
 
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home">Home</a></li>
-            <li><a routerLink="/browse" class="active">Browse</a></li>
-            <li><a routerLink="/detail">Details</a></li>
-            <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="{{img}}" alt=""
-                                                      style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
-            </li>
+            <li><a routerLink="/home" >Trang chủ</a></li>
+            <li><a routerLink="/browse" class="active">Tìm kiếm</a></li>
+            <li><a routerLink="/stream">Thông Báo</a></li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -54,7 +49,7 @@
       <use xlink:href="#filter__ticked"></use>
     </g>
   </svg>
-  <div class="shopee-search-filter-status__text" style="color: white">Search Filter</div>
+  <div class="shopee-search-filter-status__text" style="color: white">Lọc tìm kiếm</div>
 </div>
 
 <div class="ageField">
@@ -92,7 +87,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>L</em>ist</h4>
+                  <h4><em>Danh</em>Sách</h4>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of fullName,let i = index" (mouseenter)="check(t.id + 'all')" (mouseleave)="check1(t.id + 'all')">
@@ -102,7 +97,7 @@
                         <p id="{{t.id + 'all'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span></p>
                       </h4>
                       <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
                       </ul>
                     </div>
                   </div>

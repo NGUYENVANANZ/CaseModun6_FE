@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {ProfileService} from "../../service/profileUser/profile.service";
 import {LoginService} from "../../service/login/login.service";
@@ -16,5 +17,9 @@ export class DetailComponent {
   userName = this.loginService.getUserName();
   token = this.loginService.getToken();
   img = this.loginService.getImg();
+
+  logOut(){
+    this.loginService.logOut();
+  }
 
 }

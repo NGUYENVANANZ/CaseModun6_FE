@@ -14,11 +14,20 @@ export class NotificationGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token = this.loginService.getToken();
-    if (token != ""){
-      return true;
+    if (token == "") {
+      this.router.navigate([""]);
+      return false;
     }
-    this.router.navigate([""]);
-    return false;
+    let promit = new Promise((resolve, reject) => {
+      this.loginService.checkRoles().subscribe((data) => {
+        resolve(true);
+      }, (error) => {
+        this.router.navigate(["/home"]);
+        reject(false)
+      })
+    })
+    // @ts-ignore
+    return promit;
   }
 
 }

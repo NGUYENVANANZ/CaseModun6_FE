@@ -8,18 +8,17 @@
           </a>
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" />
             </form>
           </div>
           <ul class="nav">
-            <li><a routerLink="/home" class="active">Home</a></li>
-            <li><a routerLink="/browse" >Browse</a></li>
-            <li><a routerLink="/detail">Details</a></li>
-            <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/home" class="active">Trang chủ</a></li>
+            <li><a routerLink="/browse" >Tìm kiếm</a></li>
+            <li><a routerLink="/stream" >Thông Báo</a></li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -37,7 +36,7 @@
           <div style="margin-left: 50px" class="col-lg-4">
             <div class="top-streamers">
               <div class="heading-section">
-                <h4><em>Top</em> Hires</h4>
+                <h4><em>Top</em> Lượt thuê</h4>
               </div>
               <ul>
                 <li *ngFor="let t of hires, index as i">
@@ -46,7 +45,7 @@
                        style="width: 46px; border-radius: 50%; right: 15px;height: 46px" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
                   <h6 ><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6 id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
                   <div class="main-button">
-                    <a href="#">Follow</a>
+                    <a href="#">Theo dõi</a>
                   </div>
                 </li>
               </ul>
@@ -55,7 +54,7 @@
           <div style="margin-left: 250px" class="col-lg-4">
             <div class="top-streamers">
               <div class="heading-section">
-                <h4><em>Top</em> Star</h4>
+                <h4><em>Top</em> Đánh giá</h4>
               </div>
               <ul>
                 <li *ngFor="let t of star, index as i">
@@ -64,7 +63,7 @@
                        style="width: 46px; border-radius: 50%; margin-right: 15px; height: 46px">
                   <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6> <i class="fa fa-star"></i>{{t.star}}</h6>
                   <div class="main-button">
-                    <a href="#">Follow</a>
+                    <a href="#">Theo dõi</a>
                   </div>
                 </li>
               </ul>
@@ -74,7 +73,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>New</em>bie</h4>
+                  <h4><em>Người</em>mới</h4>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
@@ -82,13 +81,13 @@
                       <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'newbie'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">Discover Popular</a>
+                      <a routerLink="/browse">Xem thêm</a>
                     </div>
                   </div>
                 </div>
@@ -103,7 +102,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Gen</em>der</h4>
+                  <h4><em>Phù hợp</em> Giới Tính</h4>
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender, index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
@@ -111,13 +110,13 @@
                       <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'gender'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">Discover Popular</a>
+                      <a routerLink="/browse">Xem thêm</a>
                     </div>
                   </div>
                 </div>
@@ -139,13 +138,13 @@
                       <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
                       <h4>{{t.fullName}}<br><p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
                       <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Day</li>
+                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">Discover Popular</a>
+                      <a routerLink="/browse">Xem thêm</a>
                     </div>
                   </div>
                 </div>
