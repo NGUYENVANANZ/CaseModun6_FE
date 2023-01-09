@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'Notification', component: NotificationComponent
   },
   {
-    path: 'accountuser', component: AccountUserComponent
+    path: 'AccountUser', component: AccountUserComponent
   },
   {
     path: 'profileAdmin', component: ProfileAdminComponent

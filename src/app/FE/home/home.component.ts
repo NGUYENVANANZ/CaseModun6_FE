@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnChanges {
   star: Star[] = []
   hires: Hires[] = []
 
-
+S: number = 1;
 
   constructor(private home: HomeService, private loginService : LoginService) {
   }

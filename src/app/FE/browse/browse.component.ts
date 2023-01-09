@@ -13,7 +13,7 @@ import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
 export class BrowseComponent implements OnInit, OnChanges {
   fullName!: DetailAccountSart[];
   nameSearch !: string;
-
+  S: number = 1
 
   constructor(private searchService: SearchService, private loginService: LoginService) {
   }
