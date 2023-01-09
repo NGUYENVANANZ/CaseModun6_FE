@@ -4,7 +4,7 @@
       <div class="col-12">
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
-          <a href="/" class="logo">
+          <a href="/home" class="logo">
             <img src="assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
@@ -17,14 +17,13 @@
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home">Home</a></li>
-            <li><a routerLink="/browse">Browse</a></li>
-            <li><a routerLink="/detail">Details</a></li>
-            <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile" class="active">Profile <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/home" >Trang chủ</a></li>
+            <li><a routerLink="/browse" >Tìm kiếm</a></li>
+            <li><a routerLink="/stream">Thông Báo</a></li>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden (click)="logOut()">Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -47,8 +46,8 @@
               <div class="row">
                 <div class="col-lg-4">
                   <img src="{{img}}"
-                       alt="" style="border-radius: 23px;">
-                    <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+                       alt="" style="border-radius: 23px; width: 290px; height: 400px">
+                    <input type="file" id="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
                   <div class="main-border-button">
                     <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
                   </div>
@@ -59,9 +58,9 @@
                         <div class="modal-dialog" role="document">
                         </div>
                       </div>
-                    <h4 [innerText]="'UserName: '+ userName"></h4>
+                    <h4 [innerText]="'Tên: '+ userName"></h4>
                     <div class="main-border-button" id="requestAdmin" hidden>
-                      <a id="requestAdmin1" hidden style="color: white" (click)="requsetAdmin1()">Đăng ký CCDV</a>
+                      <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
                       <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
                     </div>
                     <div class="main-border-button" id="status" hidden>
@@ -72,13 +71,13 @@
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <ul>
-                    <li>Name <span [innerText]="userProfile.fullName"></span></li>
-                    <li>Date <span [innerText]="userProfile.birthday"></span></li>
-                    <li>Gender <span [innerText]="userProfile.gender"></span></li>
-                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>
+                    <li>Tên: <span [innerText]="userProfile.fullName"></span></li>
+                    <li>Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
+                    <li>Giới tính: <span [innerText]="userProfile.gender"></span></li>
+                    <li>Giá:<span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>
+                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>
                   </div>
                 </div>
               </div>

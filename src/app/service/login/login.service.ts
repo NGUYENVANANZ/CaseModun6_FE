@@ -7,6 +7,7 @@ const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
+import {Roles} from "../../FE/model/Roles";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,14 @@ export class LoginService {
 
   login(account: Account): Observable<UserToken> {
     return this.http.post<UserToken>(API_URL + '/login', account)
+  }
+
+  checkRoles(): Observable<boolean> {
+    return this.http.get<boolean>(API_URL + '/roles')
+  }
+
+  checkRoles1(): Observable<boolean> {
+    return this.http.get<boolean>(API_URL + '/roles1')
   }
 
   setToken(token: string) {

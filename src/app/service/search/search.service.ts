@@ -22,4 +22,5 @@ export class SearchService {
     console.log(this.http.get<DetailAccountSart>(`${API_URL}/showAll`))
     return this.http.get<DetailAccountSart[]>(`${API_URL}/showAll`);
   }
+
 }
