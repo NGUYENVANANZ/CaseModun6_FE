@@ -11,20 +11,22 @@
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Home</a></li>
+            <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/browse">Browse</a></li>
             <li><a routerLink="/detail" class="active">Details</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/profile">Profile <img src="{{img}}" alt=""
+                                                      style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden>Logout</a>
+            <a style="color: hotpink" id="logout">Logout</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -46,59 +48,90 @@
             <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-
                   <img src="{{img}}"
-                       alt="" style="border-radius: 23px;">
-<!--                  <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">-->
-<!--                  <div class="main-border-button">-->
-<!--                    <a style="color: plum" (click)="uploadFileImg()">Lưu</a>-->
-<!--                  </div>-->
-
+                       alt="" style="border-radius: 23px; width: 290px; height: 400px">
                 </div>
-                <div class="col-lg-4 align-self-center">
-                  <div class="main-info header-text">
+                <div class="col-lg-4 align-self-center" style="margin-top: -50px">
+                  <div class="main-info header-text" style="margin-left: 60px">
                     <div class="modal" tabindex="-1" role="dialog">
                       <div class="modal-dialog" role="document">
                       </div>
                     </div>
-
-
-                    <div class="main-border-button1" style="margin: 60px 0px 0px 28px;" id="requestAdmin1" >
-                      <h2 style="color: darkviolet" [innerText]="'Provider: '+ userName"></h2>
-                      <br>
-                      <h4 id="requestAdmin2"  style="color: darkviolet" >Stars:</h4>
-                      <br><br>
-                      <h4 id="requestAdmin3"  style="color: darkviolet" >Hires Number:</h4>
-                    </div>
-
-                    <div class="main-border-button" style="margin: 100px 0px 0px 28px;" id="requestAdmin4" >
-                      <a id="requestAdmin5" style="color: darkviolet" >Hire</a>
-                    </div>
-
+                    <h2 style="color: darkviolet" [innerText]="'Name: '+ userName"></h2>
+                    <br>
+                    <h4 style="color: darkviolet">Stars:</h4>
+                    <br><br>
+                    <h4 style="color: darkviolet">Hires Number:</h4>
                   </div>
-                </div>
-                <div style="margin-top: -140px" class="col-lg-4 align-self-center">
-                  <ul>
-                    <li>Name <span [innerText]="userProfile.fullName"></span></li>
-                    <li>Date <span [innerText]="userProfile.birthday"></span></li>
-                    <li>Gender <span [innerText]="userProfile.gender"></span></li>
-                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>
-                  </ul>
-<!--                  <div class="main-border-button">-->
-<!--                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>-->
-<!--                  </div>-->
 
+                  <div class="main-border-button"  style="margin-top: 80px;margin-left: 100px">
+                    <a style="color: darkviolet">Hire</a>
+                  </div>
+
+                  <!--                    <div class="main-border-button" id="requestAdmin" hidden>-->
+                  <!--                      <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>-->
+                  <!--                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>-->
+                  <!--                    </div>-->
+                  <!--                    <div class="main-border-button" id="status" hidden>-->
+                  <!--                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt đầu CCDV</a>-->
+                  <!--                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm dừng CCDV</a>-->
+                  <!--                    </div>-->
+                </div>
+
+                <div style="margin-top: -30px" class="col-lg-4 fa-align-center">
+                  <ul>
+                    <li>Nation: <span></span></li>
+                    <li>City: <span></span></li>
+                    <li>Date of birth: <span></span></li>
+                    <li>Gender: <span></span></li>
+                    <li>Height: <span></span></li>
+                    <li>Weight: <span></span></li>
+
+                  </ul>
                 </div>
               </div>
+              <!--              <div class="col-lg-4 fa-align-center">-->
+              <!--                <ul>-->
+              <!--                    <li>Name <span [innerText]="userProfile.fullName"></span></li>-->
+              <!--                    <li>Date <span [innerText]="userProfile.birthday"></span></li>-->
+              <!--                    <li>Gender <span [innerText]="userProfile.gender"></span></li>-->
+              <!--                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>-->
+              <!--                </ul>-->
+              <!--                  <div class="main-border-button">-->
+              <!--                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
               <div class="row">
                 <div class="col-lg-12">
                   <div class="clips">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="heading-section">
-                          <div>
-                            <h2>Mô tả:</h2>
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Mô tả:</h2>-->
+                          <!--                          </div>-->
+                          <!--                          <br>-->
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Sở thích:</h2>-->
+                          <!--                          </div>-->
+                          <!--                          <br>-->
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Yêu cầu:</h2>-->
+                          <!--                          </div>-->
+
+                          <div style="margin-top: -30px" class="col-lg-12 fa-align-center">
+                            <ul>
+                              <li><h2 style="color: darkviolet">Description: </h2>lololololol</li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Hobby: </h2>lolololol</li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Request: </h2>lolololol</li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Comment: </h2>lolololol</li>
+                            </ul>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -110,10 +143,7 @@
         </div>
       </div>
       <!-- ***** Banner End ***** -->
-
       <!-- ***** Gaming Library Start ***** -->
-
-
       <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
@@ -122,8 +152,9 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-                <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
-                  <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
       </div>
     </div>
   </div>
