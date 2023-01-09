@@ -10,37 +10,46 @@ import {AdminComponent} from "./admin/admin.component";
 import {NotificationComponent} from "./notification/notification.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
 import {AccountUserComponent} from "./accountuser/account-user.component";
+import {HomeGuard} from "./home/home.guard";
+import {AdminGuard} from "./admin/admin.guard";
+import {NotificationGuard} from "./notification/notification.guard";
+import {AccountuserGuard} from "./accountuser/accountuser.guard";
+import {ProfileAdminGuard} from "./profile-admin/profile-admin.guard";
+import {ProfileGuard} from "./profile/profile.guard";
+import {StreamGuard} from "./stream/stream.guard";
+import {DetailGuard} from "./detail/detail.guard";
+import {BrowseGuard} from "./browse/browse.guard";
 
 const routes: Routes = [
   {
     path: '', component: LoginComponent
   },
   {
-    path: 'admin', component: AdminComponent
+    path: 'admin', component: AdminComponent, canActivate : [AdminGuard]
   },
   {
-    path: 'Notification', component: NotificationComponent
+    path: 'Notification', component: NotificationComponent, canActivate : [NotificationGuard]
   },
   {
-    path: 'accountuser', component: AccountUserComponent
+    path: 'accountuser', component: AccountUserComponent, canActivate : [AccountuserGuard]
   },
   {
-    path: 'profileAdmin', component: ProfileAdminComponent
+    path: 'profileAdmin', component: ProfileAdminComponent, canActivate : [ProfileAdminGuard]
   },
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, canActivate : [HomeGuard]
   },
   {
-    path: 'profile', component: ProfileComponent
+    path: 'profile', component: ProfileComponent, canActivate : [ProfileGuard]
   },
   {
-    path: 'stream', component: StreamComponent
+    path: 'stream', component: StreamComponent, canActivate : [StreamGuard]
   },
   {
-    path: 'detail', component: DetailComponent
+    path: 'detail', component: DetailComponent, canActivate : [DetailGuard]
   },
   {
-    path: 'browse', component: BrowseComponent
+    path: 'browse', component: BrowseComponent, canActivate : [BrowseGuard]
   },
 ];
 
