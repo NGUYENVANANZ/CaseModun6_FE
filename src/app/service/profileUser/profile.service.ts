@@ -37,4 +37,8 @@ export class ProfileService {
   requsetAdmin2(): Observable<DetailAccount> {
     return this.http.get<DetailAccount>(API_URL + '/requsetAdmin2');
   }
+
+  save(img : string): Observable<DetailAccount> {
+    return this.http.post<DetailAccount>(API_URL + '/saveDetailAccount', img);
+  }
 }

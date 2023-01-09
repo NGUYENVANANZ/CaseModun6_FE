@@ -1,9 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {DetailAccount} from "../model/DetailAccount";
 import {ProfileService} from "../../service/profileUser/profile.service";
 import {Roles} from "../model/Roles";
 import {LoginService} from "../../service/login/login.service";
 import {EmployDTO} from "../model/DTO/EmployDTO";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {finalize} from "rxjs";
 
 
 @Component({
@@ -23,8 +25,8 @@ export class ProfileComponent implements OnInit, OnChanges {
     moTa: "",
     yeuCau: "",
     fullName: "",
-    birthday: new Date(1-1-1111),
-    joinDate: new Date(1-1-1111),
+    birthday: new Date(1 - 1 - 1111),
+    joinDate: new Date(1 - 1 - 1111),
     money: 0,
     img: "",
     imgs: [],
@@ -37,10 +39,14 @@ export class ProfileComponent implements OnInit, OnChanges {
     roles: []
   }
 
-  history : EmployDTO[] = []
+  history: EmployDTO[] = []
 
+  @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
 
-  constructor(private profile: ProfileService, private loginService: LoginService) {
+  arrfiles: any = [];
+  arrayPicture: string[] = [];
+
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage) {
   }
 
   userName = this.loginService.getUserName();
@@ -70,6 +76,38 @@ export class ProfileComponent implements OnInit, OnChanges {
     this.profile.showHistory().subscribe((data) => {
       // @ts-ignore
       this.history = data;
+    })
+  }
+
+  submit() {
+    for (let file of this.arrfiles) {
+      if (file != null) {
+        const filePath = file.name;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, file).snapshotChanges().pipe(
+          finalize(() => (fileRef.getDownloadURL().subscribe(
+            url => {
+              this.img = url;
+              this.loginService.setImg(url);
+              this.save(url);
+            })))
+        ).subscribe();
+      }
+    }
+  }
+
+  uploadFileImg() {
+    for (const argument of this.avatarDom1?.nativeElement.files) {
+      this.arrfiles.push(argument)
+    }
+    this.submit();
+
+  }
+
+  save(img : string){
+    this.profile.save(img).subscribe((data) => {
+      // @ts-ignore
+      this.userProfile = data;
     })
   }
 
@@ -121,7 +159,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     }
   }
 
-  logOut(){
+  logOut() {
     this.loginService.logOut();
   }
 

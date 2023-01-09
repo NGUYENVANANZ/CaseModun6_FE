@@ -12,6 +12,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
 import {NotificationComponent} from "./notification/notification.component";
 import {AccountUserComponent} from "./accountuser/account-user.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -27,11 +28,12 @@ import {AccountUserComponent} from "./accountuser/account-user.component";
     StreamComponent,
     BrowseComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    FeRoutingModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        FeRoutingModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+    ]
 })
 export class FEModule { }

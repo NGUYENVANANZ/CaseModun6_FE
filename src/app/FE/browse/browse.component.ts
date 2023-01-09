@@ -3,6 +3,7 @@ import {AccountService} from "../../service/account/account.service";
 import {DetailAccount} from "../model/DetailAccount";
 import {SearchService} from "../../service/search/search.service";
 import {LoginService} from "../../service/login/login.service";
+import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
 
 @Component({
   selector: 'app-browse',
@@ -10,7 +11,7 @@ import {LoginService} from "../../service/login/login.service";
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit, OnChanges {
-  fullName!: DetailAccount[];
+  fullName!: DetailAccountSart[];
   nameSearch !: string;
 
 
@@ -50,5 +51,15 @@ export class BrowseComponent implements OnInit, OnChanges {
     this.loginService.logOut();
   }
 
+  check(n : string){
+    // @ts-ignore
+    document.getElementById(n).hidden = false;
+
+  }
+
+  check1(n : string){
+    // @ts-ignore
+    document.getElementById(n).hidden = true;
+  }
 
 }

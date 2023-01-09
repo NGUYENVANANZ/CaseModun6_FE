@@ -46,9 +46,12 @@
             <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="{{userProfile.img}}"
+                  <img src="{{img}}"
                        alt="" style="border-radius: 23px;">
-                    <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122">
+                    <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+                  <div class="main-border-button">
+                    <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
+                  </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
