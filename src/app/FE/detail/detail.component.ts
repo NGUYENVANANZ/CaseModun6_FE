@@ -18,4 +18,7 @@ export class DetailComponent {
   token = this.loginService.getToken();
   img = this.loginService.getImg();
 
+  logOut(){
+    this.loginService.logOut();
+  }
 }

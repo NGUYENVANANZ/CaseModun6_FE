@@ -3,40 +3,32 @@
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
-          <!-- ***** Logo Start ***** -->
-          <a href="/" class="logo">
+          <a href="/home" class="logo">
             <img src="assets/images/logo.png" alt="">
           </a>
-          <!-- ***** Logo End ***** -->
-          <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" />
             </form>
           </div>
-          <!-- ***** Search End ***** -->
-          <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home">Home</a></li>
-            <li><a routerLink="/browse">Browse</a></li>
-            <li><a routerLink="/detail" class="active">Details</a></li>
+            <li><a routerLink="/home" >Trang chủ</a></li>
+            <li><a routerLink="/browse" >Tìm kiếm</a></li>
             <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="{{img}}" alt=""
-                                                      style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
-            </li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout">Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
-          <!-- ***** Menu End ***** -->
         </nav>
       </div>
     </div>
   </div>
 </header>
+
 <!-- ***** Header Area End ***** -->
 <div class="container">
   <div class="row">
@@ -57,11 +49,11 @@
                       <div class="modal-dialog" role="document">
                       </div>
                     </div>
-                    <h2 style="color: darkviolet" [innerText]="'Name: '+ userName"></h2>
+                    <h2 style="color: darkviolet" [innerText]="'Tên: '+ userName"></h2>
                     <br>
-                    <h4 style="color: darkviolet">Stars:</h4>
+                    <h4 style="color: darkviolet">Đánh giá:</h4>
                     <br><br>
-                    <h4 style="color: darkviolet">Hires Number:</h4>
+                    <h4 style="color: darkviolet">Lượt thuê:</h4>
                   </div>
 
                   <div class="main-border-button"  style="margin-top: 80px;margin-left: 100px">
@@ -80,12 +72,12 @@
 
                 <div style="margin-top: -30px" class="col-lg-4 fa-align-center">
                   <ul>
-                    <li>Nation: <span></span></li>
-                    <li>City: <span></span></li>
-                    <li>Date of birth: <span></span></li>
-                    <li>Gender: <span></span></li>
-                    <li>Height: <span></span></li>
-                    <li>Weight: <span></span></li>
+                    <li>Quốc gia: <span></span></li>
+                    <li>Thành phố: <span></span></li>
+                    <li>Ngày sinh: <span></span></li>
+                    <li>Giới tính: <span></span></li>
+                    <li>Chiều cao: <span></span></li>
+                    <li>Cân nặng: <span></span></li>
 
                   </ul>
                 </div>
@@ -122,13 +114,13 @@
 
                           <div style="margin-top: -30px" class="col-lg-12 fa-align-center">
                             <ul>
-                              <li><h2 style="color: darkviolet">Description: </h2>lololololol</li>
+                              <li><h2 style="color: darkviolet">Mô tả: </h2>lololololol</li>
                               <br>
-                              <li><h2 style="color: darkviolet">Hobby: </h2>lolololol</li>
+                              <li><h2 style="color: darkviolet">Sở thích: </h2>lolololol</li>
                               <br>
-                              <li><h2 style="color: darkviolet">Request: </h2>lolololol</li>
+                              <li><h2 style="color: darkviolet">Yêu cầu: </h2>lolololol</li>
                               <br>
-                              <li><h2 style="color: darkviolet">Comment: </h2>lolololol</li>
+                              <li><h2 style="color: darkviolet">Bình luận: </h2>lolololol</li>
                             </ul>
                           </div>
 
