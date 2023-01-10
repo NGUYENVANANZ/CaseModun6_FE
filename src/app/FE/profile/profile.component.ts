@@ -6,6 +6,7 @@ import {LoginService} from "../../service/login/login.service";
 import {EmployDTO} from "../model/DTO/EmployDTO";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -46,7 +47,7 @@ export class ProfileComponent implements OnInit, OnChanges {
   arrfiles: any = [];
   arrayPicture: string[] = [];
 
-  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private  router :Router) {
   }
 
   userName = this.loginService.getUserName();
@@ -207,6 +208,12 @@ export class ProfileComponent implements OnInit, OnChanges {
       this.userProfile = data;
       this.check(this.userProfile);
     })
+  }
+
+  // @ts-ignore
+  onInput(event) {
+    localStorage.setItem("search", event.target.value)
+    this.router.navigate(["/browse"]);
   }
 
 }

@@ -13,13 +13,14 @@ import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
 export class BrowseComponent implements OnInit, OnChanges {
   fullName!: DetailAccountSart[];
   nameSearch !: string;
-
+  S: number = 1
 
   constructor(private searchService: SearchService, private loginService: LoginService) {
   }
 
   token = this.loginService.getToken();
   img = this.loginService.getImg();
+  searchx = localStorage.getItem("search")
 
   ngOnChanges(changes: SimpleChanges): void {
   }
@@ -29,13 +30,23 @@ export class BrowseComponent implements OnInit, OnChanges {
       // @ts-ignore
       document.getElementById("logout").hidden = false;
     }
-    this.searchService.showAll().subscribe((data) => {
-      this.fullName = data;
-    })
+    if (this.searchx == "") {
+      this.searchService.showAll().subscribe((data) => {
+        this.fullName = data;
+      })
+    } else {
+      // @ts-ignore
+      this.searchService.showSearch(this.searchx).subscribe((data) => {
+        this.fullName = data;
+      })
+    }
+    // @ts-ignore
+    this.nameSearch = this.searchx;
+    localStorage.setItem("search", "")
   }
 
   search() {
-    if (this.nameSearch == ""){
+    if (this.nameSearch == "") {
       this.searchService.showAll().subscribe((data) => {
         this.fullName = data;
       })
@@ -47,17 +58,17 @@ export class BrowseComponent implements OnInit, OnChanges {
     console.log(this.fullName)
   }
 
-  logOut(){
+  logOut() {
     this.loginService.logOut();
   }
 
-  check(n : string){
+  check(n: string) {
     // @ts-ignore
     document.getElementById(n).hidden = false;
 
   }
 
-  check1(n : string){
+  check1(n: string) {
     // @ts-ignore
     document.getElementById(n).hidden = true;
   }

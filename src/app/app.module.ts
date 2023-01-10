@@ -1,11 +1,11 @@
-
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { AuthInterceptor } from './auth.interceptor';
+import {AuthInterceptor} from './auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RegisterComponent} from './Login-Register/register/register.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
@@ -16,6 +16,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 @NgModule({
   declarations: [
     AppComponent,
+    RegisterComponent,
   ],
   imports: [
     FormsModule,
