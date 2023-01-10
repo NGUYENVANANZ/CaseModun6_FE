@@ -3,7 +3,7 @@ import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
-import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
+// import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
