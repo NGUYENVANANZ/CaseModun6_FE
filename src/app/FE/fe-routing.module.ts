@@ -1,12 +1,4 @@
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-// import { RouterModule, Routes } from '@angular/router';
-// import { RouterModule, Routes, ParamMap } from '@angular/router';
-// import {LoginComponent} from "./login/login.component";
-=======
-
-import { RouterModule, Routes, ParamMap } from '@angular/router';
->>>>>>> c693e0e7458f07b60810a5c692232f45d7d5ca52
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {StreamComponent} from "./stream/stream.component";
@@ -27,10 +19,8 @@ import {NotificationGuard} from "./notification/notification.guard";
 import {ProfileAdminGuard} from "./profile-admin/profile-admin.guard";
 import {DetailGuard} from "./detail/detail.guard";
 import {LoginComponent} from "../Login-Register/login/login.component";
-<<<<<<< HEAD
 import {RouterModule, Routes} from "@angular/router";
-=======
->>>>>>> c693e0e7458f07b60810a5c692232f45d7d5ca52
+
 
 const routes: Routes = [
   {
