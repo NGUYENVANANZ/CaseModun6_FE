@@ -11,7 +11,7 @@
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
@@ -74,7 +74,7 @@
                     <li>Tên: <span [innerText]="userProfile.fullName"></span></li>
                     <li>Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
                     <li>Giới tính: <span [innerText]="userProfile.gender"></span></li>
-                    <li>Giá:<span [innerText]="userProfile.money + '$'"></span></li>
+                    <li>Số dư: <span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
                     <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>

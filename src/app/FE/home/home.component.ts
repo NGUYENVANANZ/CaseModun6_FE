@@ -5,6 +5,7 @@ import {Star} from "../model/DTO/Star";
 import {Hires} from "../model/DTO/Hires";
 import {AccountService} from "../../service/account/account.service";
 import {LoginService} from "../../service/login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -20,8 +21,7 @@ export class HomeComponent implements OnInit, OnChanges {
   hires: Hires[] = []
 
 
-
-  constructor(private home: HomeService, private loginService : LoginService) {
+  constructor(private home: HomeService, private loginService: LoginService, private router: Router) {
   }
 
   img = this.loginService.getImg();
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    if (this.token != ""){
+    if (this.token != "") {
       // @ts-ignore
       document.getElementById("logout").hidden = false;
     }
@@ -68,18 +68,25 @@ export class HomeComponent implements OnInit, OnChanges {
     })
   }
 
-  check(n : string){
-      // @ts-ignore
-      document.getElementById(n).hidden = false;
+  check(n: string) {
+    // @ts-ignore
+    document.getElementById(n).hidden = false;
 
   }
 
-  check1(n : string){
-      // @ts-ignore
-      document.getElementById(n).hidden = true;
+  check1(n: string) {
+    // @ts-ignore
+    document.getElementById(n).hidden = true;
   }
 
-  logOut(){
+  logOut() {
     this.loginService.logOut();
+  }
+
+
+  // @ts-ignore
+  onInput(event) {
+    localStorage.setItem("search", event.target.value)
+    this.router.navigate(["/browse"]);
   }
 }
