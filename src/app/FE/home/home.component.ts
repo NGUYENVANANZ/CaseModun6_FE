@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, OnChanges {
   constructor(private home: HomeService, private loginService: LoginService, private router: Router) {
   }
 
+  S: number = 1;
   img = this.loginService.getImg();
   token = this.loginService.getToken()
 

@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'Notification', component: NotificationComponent, canActivate : [NotificationGuard]
   },
   {
-    path: 'accountuser', component: AccountUserComponent, canActivate : [AccountuserGuard]
+    path: 'AccountUser', component: AccountUserComponent, canActivate : [AccountuserGuard]
   },
   {
     path: 'profileAdmin', component: ProfileAdminComponent, canActivate : [ProfileAdminGuard]

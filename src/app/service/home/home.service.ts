@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {DetailAccountSart} from "../../FE/model/DTO/DetailAccountSart";
 import {Star} from "../../FE/model/DTO/Star";
 import {Hires} from "../../FE/model/DTO/Hires";
+import {AccountDTO} from "../../FE/model/DTO/AccountDTO";
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -26,6 +27,9 @@ export class HomeService {
     return this.http.get<DetailAccountSart[]>(API_URL + '/gender');
   }
 
+  showAccount(): Observable<AccountDTO[]>{
+    return this.http.get<AccountDTO[]>(API_URL+ '/account')
+  }
   showSart(): Observable<Star[]> {
     return this.http.get<Star[]>(API_URL + '/star');
   }
