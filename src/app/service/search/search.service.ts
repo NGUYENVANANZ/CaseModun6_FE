@@ -13,13 +13,14 @@ export class SearchService {
 
   constructor(private http:HttpClient) { }
 
-  showSearch(name:string): Observable<DetailAccount[]> {
-    console.log(this.http.get<DetailAccount>(`${API_URL}/search/${name}`))
-    return this.http.get<DetailAccount[]>(`${API_URL}/search/${name}`);
+  showSearch(name:string): Observable<DetailAccountSart[]> {
+    console.log(this.http.get<DetailAccountSart>(`${API_URL}/search/${name}`))
+    return this.http.get<DetailAccountSart[]>(`${API_URL}/search/${name}`);
   }
 
-  showAll(): Observable<DetailAccount[]> {
-    console.log(this.http.get<DetailAccount>(`${API_URL}/showAll`))
-    return this.http.get<DetailAccount[]>(`${API_URL}/showAll`);
+  showAll(): Observable<DetailAccountSart[]> {
+    console.log(this.http.get<DetailAccountSart>(`${API_URL}/showAll`))
+    return this.http.get<DetailAccountSart[]>(`${API_URL}/showAll`);
   }
+
 }

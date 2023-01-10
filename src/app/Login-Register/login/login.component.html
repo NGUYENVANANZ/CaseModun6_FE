@@ -1,24 +1,8 @@
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<title>Login Page</title>
-<!--Made with love by Mutiullah Samim -->
-
-<!--Bootsrap 4 CDN-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-<!--Fontawesome CDN-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-<!--Custom styles-->
-
-
 <div class="container1">
   <div class="d-flex justify-content-center h-100">
     <div class="card">
       <div class="card-header">
-        <h3>Sign In</h3>
+        <h3>Đăng nhập</h3>
         <div class="d-flex justify-content-end social_icon">
           <span><i class="fab fa-facebook-square"></i></span>
           <span><i class="fab fa-google-plus-square"></i></span>
@@ -31,7 +15,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="username" formControlName="username">
+            <input type="text" class="form-control" placeholder="tài khoản" formControlName="username">
           </div>
           <p *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched" style="color: red">Không được để trống</p>
 
@@ -39,24 +23,26 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input type="password" class="form-control" placeholder="password" formControlName="password">
+            <input type="password" class="form-control" placeholder="mật khẩu" formControlName="password">
           </div>
           <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Không được để trống</p>
           <p id="status" hidden style="color: red">Tài khoản của bạn đã bị khóa</p>
-          <div class="row align-items-center remember">
-            <input type="checkbox">Remember Me
-          </div>
+
           <div class="form-group">
-            <input type="submit" value="Login" class="btn float-right login_btn">
+            <input type="submit" value="Đăng nhập" class="btn float-right login_btn">
           </div>
         </form>
       </div>
       <div class="card-footer">
         <div class="d-flex justify-content-center links">
+<<<<<<< HEAD:src/app/Login-Register/login/login.component.html
           Don't have an account?<a routerLink="/register">Sign Up</a>
+=======
+          Không có tài khoản?<a href="#">Đăng kí</a>
+>>>>>>> 4e6c383dbb5fd2e643a67faa53a1cb6b2fef3b08:src/app/FE/login/login.component.html
         </div>
         <div class="d-flex justify-content-center">
-          <a href="#">Forgot your password?</a>
+          <a href="#">Quên mật khẩu?</a>
         </div>
       </div>
     </div>

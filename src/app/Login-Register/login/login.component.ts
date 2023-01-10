@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.loginService.setToken(account.token);
     this.loginService.setUserName(account.userName);
     this.loginService.setImg(account.img)
+    localStorage.setItem("search", "")
     for (let i = 0; i < account.roles.length; i++) {
       if (account.roles[i].id == 1) {
         this.router.navigate(["/admin"]);

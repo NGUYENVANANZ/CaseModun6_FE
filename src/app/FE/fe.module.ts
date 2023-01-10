@@ -9,16 +9,22 @@ import { ProfileComponent } from './profile/profile.component';
 import { StreamComponent } from './stream/stream.component';
 import { BrowseComponent } from './browse/browse.component';
 import {AdminComponent} from "./admin/admin.component";
-// import {NgxPaginationModule} from "ngx-pagination";
+import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
+import {NotificationComponent} from "./notification/notification.component";
+import {AccountUserComponent} from "./accountuser/account-user.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
+    ProfileAdminComponent,
     AdminComponent,
+    AccountUserComponent,
     DetailComponent,
     ProfileComponent,
+    NotificationComponent,
     StreamComponent,
     BrowseComponent,
   ],
@@ -27,8 +33,7 @@ import {AdminComponent} from "./admin/admin.component";
         FormsModule,
         FeRoutingModule,
         ReactiveFormsModule,
-        NgOptimizedImage,
-        // NgxPaginationModule
+        NgxPaginationModule,
     ]
 })
 export class FEModule { }

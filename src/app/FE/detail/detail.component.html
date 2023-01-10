@@ -3,204 +3,190 @@
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
-          <!-- ***** Logo Start ***** -->
-          <a href="/" class="logo">
+          <a href="/home" class="logo">
             <img src="assets/images/logo.png" alt="">
           </a>
-          <!-- ***** Logo End ***** -->
-          <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"/>
             </form>
           </div>
-          <!-- ***** Search End ***** -->
-          <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/admin" >Admin</a></li>
-            <li><a routerLink="/home" >Home</a></li>
-            <li><a routerLink="/browse">Browse</a></li>
-            <li><a routerLink="/detail" class="active">Details</a></li>
-            <li><a routerLink="/stream">Streams</a></li>
-            <li><a routerLink="/profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+            <li><a routerLink="/home">Trang chủ</a></li>
+            <li><a routerLink="/browse">Tìm kiếm</a></li>
+            <li><a routerLink="/stream">Thông Báo</a></li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden>Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
-          <!-- ***** Menu End ***** -->
         </nav>
       </div>
     </div>
   </div>
 </header>
 <!-- ***** Header Area End ***** -->
-
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="page-content">
-
-        <!-- ***** Featured Start ***** -->
+        <!-- ***** Banner Start ***** -->
         <div class="row">
           <div class="col-lg-12">
-            <div class="feature-banner header-text">
+            <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="assets/images/feature-left.jpg" alt="" style="border-radius: 23px;">
+                  <img src="{{detail.img}}"
+                       alt="" style="border-radius: 23px; width: 290px; height: 400px">
                 </div>
-                <div class="col-lg-8">
-                  <div class="thumb">
-                    <img src="assets/images/feature-right.jpg" alt="" style="border-radius: 23px;">
-                    <a href="https://www.youtube.com/watch?v=r1b03uKWk_M" target="_blank"><i class="fa fa-play"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- ***** Featured End ***** -->
-
-        <!-- ***** Details Start ***** -->
-        <div class="game-details">
-          <div class="row">
-            <div class="col-lg-12">
-              <h2>Fortnite Details</h2>
-            </div>
-            <div class="col-lg-12">
-              <div class="content">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="left-info">
-                      <div class="left">
-                        <h4>Fortnite</h4>
-                        <span>Sandbox</span>
+                <div class="col-lg-4 align-self-center" style="margin-top: -50px">
+                  <div class="main-info header-text" style="margin-left: 60px">
+                    <div class="modal" tabindex="-1" role="dialog">
+                      <div class="modal-dialog" role="document">
                       </div>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="right-info">
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                        <li><i class="fa fa-server"></i> 36GB</li>
-                        <li><i class="fa fa-gamepad"></i> Action</li>
-                      </ul>
+                    <h2 style="color: darkviolet" [innerText]="'Tên: '+ detail.fullName"></h2>
+                    <br>
+                    <h4 style="color: darkviolet">Đánh giá:</h4>
+                    <div id="rating">
+                      <input type="radio" id="star5" name="rating" value="5" />
+                      <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+
+                      <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                      <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+
+                      <input type="radio" id="star4" name="rating" value="4" />
+                      <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+
+                      <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                      <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+
+                      <input type="radio" id="star3" name="rating" value="3" />
+                      <label class = "full" for="star3" title="Meh - 3 stars"></label>
+
+                      <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                      <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+
+                      <input type="radio" id="star2" name="rating" value="2" />
+                      <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                      <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                      <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+
+                      <input type="radio" id="star1" name="rating" value="1" />
+                      <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+
+                      <input type="radio" id="starhalf" name="rating" value="half" />
+                      <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </div>
+                    <br><br>
+                    <h4 style="color: darkviolet">Lượt thuê: {{hires}}</h4>
                   </div>
-                  <div class="col-lg-4">
-                    <img src="assets/images/details-01.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+
+                  <div class="main-border-button" style="margin-top: 80px;margin-left: 100px">
+                    <a style="color: darkviolet">Thuê</a>
                   </div>
-                  <div class="col-lg-4">
-                    <img src="assets/images/details-02.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
-                  </div>
-                  <div class="col-lg-4">
-                    <img src="assets/images/details-03.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
-                  </div>
-                  <div class="col-lg-12">
-                    <p>Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout. You can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com and thank you for supporting. If you want to get the PSD source files, please contact us. Lorem ipsum dolor sit consectetur es dispic dipiscingei elit, sed doers eiusmod lisum hored tempor.</p>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="main-border-button">
-                      <a href="#">Download Fortnite Now!</a>
+
+                  <!--                    <div class="main-border-button" id="requestAdmin" hidden>-->
+                  <!--                      <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>-->
+                  <!--                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>-->
+                  <!--                    </div>-->
+                  <!--                    <div class="main-border-button" id="status" hidden>-->
+                  <!--                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt đầu CCDV</a>-->
+                  <!--                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm dừng CCDV</a>-->
+                  <!--                    </div>-->
+                </div>
+
+                <div style="margin-top: -30px" class="col-lg-4 fa-align-center">
+                  <ul>
+                    <li>Quốc gia: <span>{{detail.nation}}</span></li>
+                    <li>Thành phố: <span>{{detail.city}}</span></li>
+                    <li>Ngày sinh: <span>{{detail.birthday}}</span></li>
+                    <li>Giới tính: <span>{{detail.gender}}</span></li>
+                    <li>Chiều cao: <span>{{detail.height}}cm</span></li>
+                    <li>Cân nặng: <span>{{detail.weight}}kg</span></li>
+
+                  </ul>
+                </div>
+              </div>
+              <!--              <div class="col-lg-4 fa-align-center">-->
+              <!--                <ul>-->
+              <!--                    <li>Name <span [innerText]="userProfile.fullName"></span></li>-->
+              <!--                    <li>Date <span [innerText]="userProfile.birthday"></span></li>-->
+              <!--                    <li>Gender <span [innerText]="userProfile.gender"></span></li>-->
+              <!--                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>-->
+              <!--                </ul>-->
+              <!--                  <div class="main-border-button">-->
+              <!--                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="clips">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="heading-section">
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Mô tả:</h2>-->
+                          <!--                          </div>-->
+                          <!--                          <br>-->
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Sở thích:</h2>-->
+                          <!--                          </div>-->
+                          <!--                          <br>-->
+                          <!--                          <div>-->
+                          <!--                            <h2 style="color: darkviolet">Yêu cầu:</h2>-->
+                          <!--                          </div>-->
+
+                          <div style="margin-top: -30px" class="col-lg-12 fa-align-center">
+                            <ul>
+                              <li ><h2 style="color: darkviolet" >Dịch vụ : </h2><span *ngFor="let l of detail.provideds" style="float: left"><h6 style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span></li>
+                              <br>
+                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}" style="color: #DEE1E6">{{detail.faceLink}}</a></li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Mô tả: </h2><p style="color: #DEE1E6">{{detail.moTa}}</p></li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Sở thích: </h2><p style="color: #DEE1E6">{{detail.soThich}}</p></li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Yêu cầu: </h2><p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
+                              <br>
+                              <li>
+                                <div class="heading-section">
+                                  <h4>Bình luận :</h4>
+                                </div>
+                            </ul>
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="other-games">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="heading-section">
-                <h4><em>Other Related</em> Games</h4>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item">
-                <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                <h4>Dota 2</h4><span>Sandbox</span>
-                <ul>
-                  <li><i class="fa fa-star"></i> 4.8</li>
-                  <li><i class="fa fa-download"></i> 2.3M</li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- ***** Banner End ***** -->
+      <!-- ***** Gaming Library Start ***** -->
+      <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
 </div>
-
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
-
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
       </div>
     </div>
   </div>
 </footer>
-<--ihihhihi-->
-
-
