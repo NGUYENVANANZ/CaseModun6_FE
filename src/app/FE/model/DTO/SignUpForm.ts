@@ -1,6 +1,6 @@
 import {DetailAccountSart} from "./DetailAccountSart";
 
-export class SignUpForm {
+export class SignUpForm  {
   userName!: any
   email!: any;
   password!: any
