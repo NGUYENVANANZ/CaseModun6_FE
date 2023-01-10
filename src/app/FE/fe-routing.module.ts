@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from "../Login-Register/login/login.component";
-=======
+
 import { RouterModule, Routes, ParamMap } from '@angular/router';
-import {LoginComponent} from "./login/login.component";
->>>>>>> 4e6c383dbb5fd2e643a67faa53a1cb6b2fef3b08
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {StreamComponent} from "./stream/stream.component";
 import {DetailComponent} from "./detail/detail.component";
 import {BrowseComponent} from "./browse/browse.component";
 import {AdminComponent} from "./admin/admin.component";
-<<<<<<< HEAD
-import {NotificationComponent} from "../notification/notification.component";
 import {RegisterComponent} from "../Login-Register/register/register.component";
-=======
 import {NotificationComponent} from "./notification/notification.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
 import {AccountUserComponent} from "./accountuser/account-user.component";
@@ -28,7 +20,7 @@ import {AdminGuard} from "./admin/admin.guard";
 import {NotificationGuard} from "./notification/notification.guard";
 import {ProfileAdminGuard} from "./profile-admin/profile-admin.guard";
 import {DetailGuard} from "./detail/detail.guard";
->>>>>>> 4e6c383dbb5fd2e643a67faa53a1cb6b2fef3b08
+import {LoginComponent} from "../Login-Register/login/login.component";
 
 const routes: Routes = [
   {

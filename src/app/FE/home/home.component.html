@@ -83,7 +83,7 @@
                   <h4><em>Người</em>mới</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie|paginate: { itemsPerPage: 4, currentPage: S}, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
                     <div class="item">
                       <a [routerLink]="'/detail/'+ t.id">
                         <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
@@ -103,7 +103,6 @@
                   </div>
                 </div>
               </div>
-              <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
             </div>
           </div>
 
@@ -117,7 +116,7 @@
                   <h4><em>Phù hợp</em> Giới Tính</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender|paginate: { itemsPerPage: 4, currentPage: S}, index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
                     <div class="item">
                       <a [routerLink]="'/detail/'+ t.id">
                         <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
@@ -138,7 +137,6 @@
                   </div>
                 </div>
               </div>
-              <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
             </div>
           </div>
           <!-- ***** Most Popular End ***** -->
@@ -151,7 +149,7 @@
                   <h4><em>V</em>ip</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Vip|paginate: { itemsPerPage: 4, currentPage: S}, index as i" (mouseenter)="check(t.id + 'vip')" (mouseleave)="check1(t.id + 'vip')">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Vip" (mouseenter)="check(t.id + 'vip')" (mouseleave)="check1(t.id + 'vip')">
                     <div class="item">
                       <a [routerLink]="'/detail/'+ t.id">
                         <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
@@ -171,7 +169,6 @@
                   </div>
                 </div>
               </div>
-              <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
             </div>
           </div>
           <!-- ***** Most Popular End ***** -->
