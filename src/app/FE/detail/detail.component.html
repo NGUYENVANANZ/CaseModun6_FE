@@ -8,7 +8,7 @@
           </a>
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <ul class="nav">

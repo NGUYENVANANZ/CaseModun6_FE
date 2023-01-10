@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login/login.service";
 import {UserToken} from "../../FE/model/DTO/UserToken";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -32,15 +33,21 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe((data) => {
       this.account = data;
       this.checkLogin(this.account)
+      Swal.fire(
+        ' ',
+        '<h2 style="color: green; font-size: 32px">Đăng nhập thành công!!!</h2>',
+        'success'
+      )
+    }, (error) => {
+      Swal.fire(
+        ' ',
+        '<h2 style="color: red; font-size: 32px">Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!</h2>',
+        'error'
+      )
     })
   }
 
   checkLogin(account: UserToken) {
-    if (account.status == 0) {
-      // @ts-ignore
-      document.getElementById("status").hidden = false;
-      return;
-    }
     this.loginService.setToken(account.token);
     this.loginService.setUserName(account.userName);
     this.loginService.setImg(account.img)

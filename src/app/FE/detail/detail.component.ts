@@ -39,9 +39,9 @@ export class DetailComponent implements OnInit, OnChanges {
 
   id: any;
   star: any = 0;
-  hires : any = 0;
+  hires: any = 0;
 
-  constructor(private detailAPI: DetailService, private loginService: LoginService, private router: ActivatedRoute) {
+  constructor(private detailAPI: DetailService, private loginService: LoginService, private router: ActivatedRoute, private router1 : Router) {
   }
 
   img = this.loginService.getImg();
@@ -72,12 +72,17 @@ export class DetailComponent implements OnInit, OnChanges {
 
   }
 
-  showStar(star : any) {
+  showStar(star: any) {
     const f = ~~star
     let id = 'star' + f + (this.star % f ? 'half' : '')
     // @ts-ignore
     id && (document.getElementById(id).checked = !0)
   }
 
+// @ts-ignore
+  onInput(event) {
+    localStorage.setItem("search", event.target.value)
+    this.router1.navigate(["/browse"]);
+  }
 
 }

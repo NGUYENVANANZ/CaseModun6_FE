@@ -36,11 +36,11 @@ export class AccountUserComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    // if (this.token != "") {
-    //   // @ts-ignore
-    //   document.getElementById("logout").hidden = false;
-    // }
-    this.adminService.showallAccounts3().subscribe((data) => {
+    if (this.token != "") {
+      // @ts-ignore
+      document.getElementById("logout").hidden = false;
+    }
+    this.adminService.showallAccount().subscribe((data) => {
       // @ts-ignore
       this.account = data;
     })
@@ -58,6 +58,10 @@ export class AccountUserComponent implements OnInit,OnChanges {
       // @ts-ignore
       this.account = data;
     })
+  }
+
+  logOut() {
+    this.loginService.logOut();
   }
 
 
