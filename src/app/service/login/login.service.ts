@@ -7,6 +7,7 @@ const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
+import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ import {Router} from "@angular/router";
 export class LoginService {
 
 
-  constructor(private http: HttpClient, private router :Router) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
-  logOut(){
+  logOut() {
     this.setToken("");
     this.setUserName("");
     this.setImg("assets/images/profile-header.jpg")
@@ -27,6 +28,9 @@ export class LoginService {
 
   login(account: Account): Observable<UserToken> {
     return this.http.post<UserToken>(API_URL + '/login', account)
+  }
+  register(signForm: any): Observable<any>{
+    return this.http.post<any>(API_URL + '/register',signForm);
   }
 
   setToken(token: string) {
@@ -54,6 +58,5 @@ export class LoginService {
   }
 
 
-  }
-
+}
 
