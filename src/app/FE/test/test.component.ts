@@ -17,8 +17,11 @@ export class TestComponent implements OnInit{
   greetings: string[] = ["hhhh", 'ddddd'];
   disabled = true;
   name: string | undefined;
+  stompClient: any
+
 
   constructor(private login: LoginService, private socket: SocketService) {
+    this.stompClient = socket.stompClient;
   }
 
   userName = this.login.getUserName();
@@ -29,8 +32,12 @@ export class TestComponent implements OnInit{
   }
 
   showGreeting() {
-    console.log(this.socket.getSend(this.userName))
-    this.greetings.push(this.socket.getSend(this.userName));
+    let url = '/topic/' + this.userName;
+    const  _this = this;
+      this.stompClient.subscribe(url,function (hello: any) {
+        console.log(JSON.parse(hello.body).greeting)
+          _this.greetings.push(JSON.parse(hello.body).greeting);
+      });
   }
 
 

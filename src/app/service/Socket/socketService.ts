@@ -8,7 +8,6 @@ export class SocketService {
   title = 'grokonez';
   description = 'Angular-WebSocket Demo';
 
-  mess !: string;
   public stompClient: any;
 
 
@@ -30,17 +29,17 @@ export class SocketService {
       '/gkz/hello',
       {},
       // Dữ liệu được gửi đi
-      JSON.stringify({'name': name, 'message': message})
+      // JSON.stringify({'name': name, 'message': message})
+
     );
   }
 
-  getSend(userName : any) : string{
-    let url = '/topic/' + userName;
-    const _this = this;
-    this.stompClient.subscribe(url,function (hello: any) {
-      _this.mess= JSON.parse(hello.body).greeting;
-    });
-    return this.mess
-  }
+  // getSend(userName : any){
+  //   let url = '/topic/' + userName;
+  //   this.stompClient.subscribe(url,function (hello: any) {
+  //     console.log(JSON.parse(hello.body).greeting)
+  //        return JSON.parse(hello.body).greeting;
+  //   });
+  // }
 
 }
