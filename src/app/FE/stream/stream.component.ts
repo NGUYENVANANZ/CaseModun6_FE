@@ -5,6 +5,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {Router} from "@angular/router";
 import {SocketService} from "../../service/Socket/socketService";
 import {NotificationDTO} from "../model/DTO/NotificationDTO";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-stream',
@@ -54,11 +55,20 @@ export class StreamComponent implements OnInit, OnChanges {
           break;
         }
       }
-      alert(check)
       if (check) {
         _this.notification.push(JSON.parse(notification.body));
       } else {
         _this.notification[index] = _this.notificationCheck;
+        if (_this.notificationCheck.status == 6){
+          Swal.fire({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            icon: "success",
+            timer: 5000,
+            title: '+'+_this.notificationCheck.money+'$'
+          })
+        }
       }
     });
   }
@@ -79,6 +89,14 @@ export class StreamComponent implements OnInit, OnChanges {
       for (let i = 0; i < this.notification.length; i++) {
         if (this.notification[i].id == data.id) {
           this.notification[i] = data
+          Swal.fire({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            icon: "success",
+            timer: 5000,
+            title: '-'+data.money+'$'
+          })
         }
       }
     })

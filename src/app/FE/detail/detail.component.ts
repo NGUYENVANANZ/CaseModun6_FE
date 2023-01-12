@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DetailService} from "../../service/detail/detail.service";
 import {Comment} from "@angular/compiler";
 import {SocketService} from "../../service/Socket/socketService";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-detail',
@@ -98,9 +99,29 @@ export class DetailComponent implements OnInit, OnChanges {
 
   clickHires(id: number) {
     if (this.money != 0){
-      this.socket.sendNotification1(id, localStorage.getItem("id"), 0, this.money)
+      if (this.detail.money >= this.money){
+        this.socket.sendNotification1(id, localStorage.getItem("id"), 0, this.money)
+        this.routerx.navigate(["/home"])
+      }
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: "info",
+        timerProgressBar : true,
+        timer: 5000,
+        title: 'Số dư hiện tại của bạn không đủ'
+      })
     }else {
-
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: "info",
+        timerProgressBar : true,
+        timer: 5000,
+        title: 'Vui lòng chọn thời gian thuê'
+      })
     }
   }
 
