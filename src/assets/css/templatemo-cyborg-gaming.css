@@ -39,6 +39,7 @@ figure, header, nav, section, article, aside, footer, figcaption {
   padding: 0;
   border: 0;
   outline: 0;
+  color: white;
 }
 
 .clearfix:after {
@@ -123,13 +124,13 @@ Global Styles
 */
 html,
 body {
-  background: #1f2122;
+  background-image: linear-gradient(to right, #004085, rgb(255 89 130));
   font-family: 'Poppins', sans-serif;
 }
 
 body .page-content {
   margin-top: 110px;
-  background-color: #27292a;
+  background-color: black;
   padding: 60px;
   border-radius: 23px;
 }
@@ -159,8 +160,7 @@ p {
 .main-button a {
   font-size: 14px;
   color: #fff;
-  background-color: #e75e8d;
-  padding: 12px 30px;
+  background-image: linear-gradient(to right, #004085, rgb(255 89 130));  padding: 12px 30px;
   display: inline-block;
   border-radius: 25px;
   font-weight: 400;
@@ -192,10 +192,10 @@ p {
   overflow: hidden;
 }
 
-.main-border-button a:hover {
-  border-color: #fff;
-  background-color: #fff;
-  color: #e75e8d;
+.main-border-button a:hover,
+.main-border-button a:active {
+  color: #e75e8d !important;
+
 }
 
 .border-no-active a {
@@ -401,7 +401,7 @@ Header Style
 }
 
 .header-area .main-nav .logo {
-  border-right: 1px solid #27292a;
+  /*border-right: 1px solid #27292a;*/
   flex-basis: 25%;
   margin-right: 5%;
   -webkit-transition: all 0.3s ease 0s;
@@ -458,6 +458,7 @@ Header Style
   padding: 13px 10px;
   border-radius: 18px;
   letter-spacing: .3px;
+  background-color: #27292a;
 }
 
 .header-area .main-nav .nav li:last-child a {
@@ -465,6 +466,7 @@ Header Style
   padding: 8px 10px 8px 20px;
   border-radius: 23px;
 }
+
 
 .header-area .main-nav .nav li:last-child a img {
   max-width: 30px;
@@ -484,8 +486,8 @@ Header Style
 
 .header-area .main-nav .nav li:last-child:hover a,
 .header-area .main-nav .nav li:last-child a.active {
-  color: #fff !important;
-  background-color: #e75e8d !important;
+  color: #e75e8d !important;
+  /*background-color: #e75e8d !important;*/
 }
 
 .background-header .main-nav .nav li:hover a,
@@ -875,7 +877,6 @@ Gaming Library Style
 
 .gaming-library {
   margin-top: 60px;
-  padding: 30px;
   background-color: #1f2122;
   border-radius: 23px;
 }

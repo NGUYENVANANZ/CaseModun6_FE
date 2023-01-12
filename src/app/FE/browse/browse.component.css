@@ -54,5 +54,10 @@ div.search-filter{
 /*  font-weight: 700;*/
 /*  font-size: 1rem;*/
 /*}*/
-
+.ngx-pagination a, .ngx-pagination button {
+  color: white;
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0;
+}
 

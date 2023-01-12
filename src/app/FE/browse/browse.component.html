@@ -20,14 +20,15 @@
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home">Trang chủ</a></li>
-            <li><a routerLink="/browse" class="active">Tìm kiếm</a></li>
-
-            <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/home">Trang chủ</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/browse" class="active">Tìm kiếm</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/stream">Thông Báo</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
               xuất</a>
           </div>
           <a class='menu-trigger'>
@@ -132,7 +133,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Danh</em>Sách</h4>
+                  <h4>Danh Sách</h4>
                 </div>
                 <div class="row">
 
