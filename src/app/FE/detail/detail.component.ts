@@ -4,6 +4,7 @@ import {DetailAccount} from "../model/DetailAccount";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DetailService} from "../../service/detail/detail.service";
 import {Comment} from "@angular/compiler";
+import {SocketService} from "../../service/Socket/socketService";
 
 @Component({
   selector: 'app-detail',
@@ -39,12 +40,18 @@ export class DetailComponent implements OnInit, OnChanges {
 
   id: any;
   star: any = 0;
-  hires : any = 0;
+  hires: any = 0;
+  stompClient: any;
+  value: any = 5;
+  money: any
 
-  constructor(private detailAPI: DetailService, private loginService: LoginService, private router: ActivatedRoute) {
+  constructor(private detailAPI: DetailService, private loginService: LoginService, private router: ActivatedRoute, private socket: SocketService, private routerx: Router) {
+    this.stompClient = socket.stompClient;
   }
 
+
   img = this.loginService.getImg();
+  idx = localStorage.getItem("id");
 
   logOut() {
     this.loginService.logOut();
@@ -56,6 +63,10 @@ export class DetailComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.router.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('id');
+      if (this.idx == this.id) {
+        this.routerx.navigate(["/profile"])
+        return;
+      }
       this.detailAPI.detail(this.id).subscribe((data) => {
         this.detail = data
         let x = 0;
@@ -64,20 +75,37 @@ export class DetailComponent implements OnInit, OnChanges {
         }
         this.star = x / this.detail.comments.length
         this.showStar(this.star)
+        this.money = this.value * this.detail.pricePerDay;
       })
       this.detailAPI.hires(this.id).subscribe((data) => {
-        this.hires = data.hires
+        if (data != null) {
+          this.hires = data.hires
+        }
       })
     })
 
   }
 
-  showStar(star : any) {
-    const f = ~~star
-    let id = 'star' + f + (this.star % f ? 'half' : '')
-    // @ts-ignore
-    id && (document.getElementById(id).checked = !0)
+  showStar(star: any) {
+    if (!isNaN(this.star)) {
+      const f = ~~star
+      let id = 'star' + f + (this.star % f ? 'half' : '')
+      // @ts-ignore
+      id && (document.getElementById(id).checked = !0)
+    }
+
   }
 
+  clickHires(id: number) {
+    if (this.money != 0){
+      this.socket.sendNotification1(id, localStorage.getItem("id"), 0, this.money)
+    }else {
+
+    }
+  }
+
+  changevValue(){
+    this.money = this.value * this.detail.pricePerDay;
+  }
 
 }

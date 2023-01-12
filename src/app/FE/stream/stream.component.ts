@@ -3,6 +3,8 @@ import {ProfileService} from "../../service/profileUser/profile.service";
 import {LoginService} from "../../service/login/login.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {Router} from "@angular/router";
+import {SocketService} from "../../service/Socket/socketService";
+import {NotificationDTO} from "../model/DTO/NotificationDTO";
 
 @Component({
   selector: 'app-stream',
@@ -10,11 +12,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./stream.component.css']
 })
 export class StreamComponent implements OnInit, OnChanges {
-  constructor(private loginService: LoginService, private router : Router) {
+  notification: NotificationDTO[] = []
+  notificationCheck !: NotificationDTO;
+
+  stompClient: any
+
+  constructor(private loginService: LoginService, private router: Router, private socket: SocketService) {
+    this.stompClient = socket.stompClient;
   }
 
   token = this.loginService.getToken();
   img = this.loginService.getImg();
+  userName = this.loginService.getUserName();
 
   ngOnChanges(changes: SimpleChanges): void {
   }
@@ -24,6 +33,67 @@ export class StreamComponent implements OnInit, OnChanges {
       // @ts-ignore
       document.getElementById("logout").hidden = false;
     }
+    this.socket.showNotification().subscribe((data) => {
+      this.notification = data;
+    })
+    this.addNotifiCation()
+  }
+
+  addNotifiCation() {
+    let url = '/topic/' + this.userName;
+    const _this = this;
+    this.stompClient.subscribe(url, function (notification: any) {
+      console.log(JSON.parse(notification.body));
+      _this.notificationCheck = JSON.parse(notification.body);
+      let check = true;
+      let index = 0;
+      for (let i = 0; i < _this.notification.length; i++) {
+        if (_this.notification[i].id == _this.notificationCheck.id) {
+          check = false;
+          index = i;
+          break;
+        }
+      }
+      alert(check)
+      if (check) {
+        _this.notification.push(JSON.parse(notification.body));
+      } else {
+        _this.notification[index] = _this.notificationCheck;
+      }
+    });
+  }
+
+  answer(id_CCDV: number, id_notification: number, money: number) {
+    this.socket.setSatus2(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.answerNotification3(id_CCDV, localStorage.getItem("id"), id_notification, money)
+  }
+
+  start(id_CCDV: number, id_notification: number, id_answer: number, money: number) {
+    this.socket.setSatus5(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.setSatus4(id_CCDV, localStorage.getItem("id"), id_answer, money)
+  }
+
+  end(id_CCDV: number, id_notification: number, id_answer: number, money: number) {
+    this.socket.setSatus6(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.setStatus6x(id_CCDV, localStorage.getItem("id"), id_answer, money)
   }
 
   // @ts-ignore
@@ -32,4 +102,7 @@ export class StreamComponent implements OnInit, OnChanges {
     this.router.navigate(["/browse"]);
   }
 
+  logOut() {
+    this.loginService.logOut();
+  }
 }

@@ -54,42 +54,45 @@
                     <br>
                     <h4 style="color: darkviolet">Đánh giá:</h4>
                     <div id="rating">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                      <input type="radio" id="star5" name="rating" value="5"/>
+                      <label class="full" for="star5" title="Awesome - 5 stars"></label>
 
-                      <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                      <input type="radio" id="star4half" name="rating" value="4 and a half"/>
                       <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                      <input type="radio" id="star4" name="rating" value="4"/>
+                      <label class="full" for="star4" title="Pretty good - 4 stars"></label>
 
-                      <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                      <input type="radio" id="star3half" name="rating" value="3 and a half"/>
                       <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star3" name="rating" value="3"/>
+                      <label class="full" for="star3" title="Meh - 3 stars"></label>
 
-                      <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                      <input type="radio" id="star2half" name="rating" value="2 and a half"/>
                       <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                      <input type="radio" id="star2" name="rating" value="2"/>
+                      <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
 
-                      <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                      <input type="radio" id="star1half" name="rating" value="1 and a half"/>
                       <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                      <input type="radio" id="star1" name="rating" value="1"/>
+                      <label class="full" for="star1" title="Sucks big time - 1 star"></label>
 
-                      <input type="radio" id="starhalf" name="rating" value="half" />
+                      <input type="radio" id="starhalf" name="rating" value="half"/>
                       <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </div>
                     <br><br>
                     <h4 style="color: darkviolet">Lượt thuê: {{hires}}</h4>
                   </div>
-
+                  <!--                  <div>-->
+                  <span id="rangeValue" [innerText]="value+'h'"></span>
+                  <Input class="range" type="range" name="value" ngDefaultControl [(ngModel)]="value" min="0" max="12" (change)="changevValue()">
+                  <span id="rangeValue1" [innerText]="money+'$'"></span>
                   <div class="main-border-button" style="margin-top: 80px;margin-left: 100px">
-                    <a style="color: darkviolet">Thuê</a>
+                    <a style="color: darkviolet;margin-top: -90px;" (click)="clickHires(detail.id)">Thuê</a>
                   </div>
 
                   <!--                    <div class="main-border-button" id="requestAdmin" hidden>-->
@@ -146,15 +149,23 @@
 
                           <div style="margin-top: -30px" class="col-lg-12 fa-align-center">
                             <ul>
-                              <li ><h2 style="color: darkviolet" >Dịch vụ : </h2><span *ngFor="let l of detail.provideds" style="float: left"><h6 style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span></li>
+                              <li><h2 style="color: darkviolet">Dịch vụ : </h2><span *ngFor="let l of detail.provideds"
+                                                                                     style="float: left"><h6
+                                style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
+                              </li>
                               <br>
-                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}" style="color: #DEE1E6">{{detail.faceLink}}</a></li>
+                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}"
+                                                                                style="color: #DEE1E6">{{detail.faceLink}}</a>
+                              </li>
                               <br>
-                              <li><h2 style="color: darkviolet">Mô tả: </h2><p style="color: #DEE1E6">{{detail.moTa}}</p></li>
+                              <li><h2 style="color: darkviolet">Mô tả: </h2>
+                                <p style="color: #DEE1E6">{{detail.moTa}}</p></li>
                               <br>
-                              <li><h2 style="color: darkviolet">Sở thích: </h2><p style="color: #DEE1E6">{{detail.soThich}}</p></li>
+                              <li><h2 style="color: darkviolet">Sở thích: </h2>
+                                <p style="color: #DEE1E6">{{detail.soThich}}</p></li>
                               <br>
-                              <li><h2 style="color: darkviolet">Yêu cầu: </h2><p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
+                              <li><h2 style="color: darkviolet">Yêu cầu: </h2>
+                                <p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
                               <br>
                               <li>
                                 <div class="heading-section">
@@ -190,3 +201,4 @@
     </div>
   </div>
 </footer>
+

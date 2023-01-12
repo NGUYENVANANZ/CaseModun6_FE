@@ -11,19 +11,23 @@
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
+                     (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Trang chủ</a></li>
+            <li><a routerLink="/home">Trang chủ</a></li>
             <li><a routerLink="/browse">Tìm kiếm</a></li>
             <li><a routerLink="/stream" class="active">Thông Báo</a></li>
-            <li><a routerLink="/profile" >Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" hidden>Logout</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -39,16 +43,31 @@
     <div class="col-lg-12">
       <div class="page-content">
         <div class="gaming-library profile-library">
-            <div class="item" >
-              <ul >
-                <li><img src="" alt=""
-                         class="templatemo-item"></li>
-                <li><h4>Tên</h4><span></span></li>
-                <li><h4>Ngày </h4><span></span></li>
-                <li style="text-align: center"><h4>Tổng đơn</h4><span ></span></li>
-              </ul>
-            </div>
+          <div class="item" *ngFor="let n of notification">
+            <ul>
+              <li><img src="{{n.img}}" alt=""
+                       class="templatemo-item"></li>
+              <li><h4>Tên</h4><span>{{n.name}}</span></li>
+              <li><h4>Ngày </h4><span>{{n.date}}</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{n.money}}</span></li>
+              <li><span *ngIf="n.status == 1"><div class="main-border-button"><a
+                style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center"
+                (click)="answer(n.id_account, n.id, n.money)">Chấp nhận</a></div></span>
+                <span *ngIf="n.status == 2"><p style="color: lightgreen;margin-left: -80px">Đang chờ xác nhận</p></span>
+                <span *ngIf="n.status == 3"><div class="main-border-button"><a
+                  style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center"
+                  (click)="start(n.id_account, n.id, n.id_answer, n.money)">Bắt đầu dịch vụ</a></div></span>
+                <span *ngIf="n.status == 4"><p
+                  style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center">Đang tiến hành</p></span>
+                <span *ngIf="n.status == 5"><div class="main-border-button"><a
+                  style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center"
+                  (click)="end(n.id_account, n.id, n.id_answer, n.money)">Hoàn thành</a></div></span>
+                <span *ngIf="n.status == 6"><p
+                  style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center">Đã hoàn thành</p></span>
+              </li>
+            </ul>
           </div>
+        </div>
       </div>
 
       <!-- ***** Gaming Library End ***** -->
@@ -62,7 +81,8 @@
       <div class="col-lg-12">
         <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
 
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
       </div>
     </div>
   </div>
