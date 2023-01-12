@@ -20,7 +20,7 @@ export class AccountUserComponent implements OnInit,OnChanges {
   S: number = 1
   account: AccountDTO[] = [];
   fullName!: AccountDTO[];
-  detailAccount!: DetailAccount[];
+  detailAccount!: DetailAccount;
 
   constructor(private adminService: AdminService, private loginService: LoginService) {
   }
@@ -60,5 +60,13 @@ export class AccountUserComponent implements OnInit,OnChanges {
     })
   }
 
+  Vip(vip: number,account_id: number){
+    this.adminService.SetVip(vip,account_id).subscribe((data) => {
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
 
+  }
 }

@@ -9,9 +9,12 @@
           </a>
           <ul class="nav">
             <li><a routerLink="/admin" >Admin</a></li>
-            <li><a routerLink="/Notification" class="active">Notification</a></li>
+            <li><a routerLink="/Notification">Notification</a></li>
             <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>

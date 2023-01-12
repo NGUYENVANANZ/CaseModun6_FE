@@ -33,7 +33,14 @@
               <div class="row">
                 <div class="col-lg-3 col-sm-6" *ngFor="let t of account|paginate: { itemsPerPage: 4, currentPage: S}, index as i">
                   <div class="item">
-                    <button type="button" class="btn btn-outline-danger">Cấp VIP Account</button>
+                    <div>
+                      <div *ngIf = " t.detailAccount.vip == 1">
+                        <a type="button" class="btn btn-danger" id="vip1" (click)="Vip(t.detailAccount.vip,t.id)">UnVIP</a>
+                      </div>
+                      <div  *ngIf = "t.detailAccount.vip == 0">
+                        <a type="button" class="btn btn-danger"  id="vip2 "(click)="Vip(t.detailAccount.vip, t.id)">VIP</a>
+                      </div>
+                    </div>
                     <br>
                     <br>
                     <div>

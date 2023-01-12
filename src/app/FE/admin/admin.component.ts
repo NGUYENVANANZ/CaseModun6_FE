@@ -18,9 +18,10 @@ import {UserToken} from "../model/DTO/UserToken";
 })
 export class AdminComponent implements OnInit,OnChanges {
   S: number = 1
+  idaccount!:number;
   account: AccountDTO[] = [];
   fullName!: AccountDTO[];
-  detailAccount!: DetailAccount[];
+  detailAccount!: DetailAccount;
 
   constructor(private adminService: AdminService, private loginService: LoginService) {
   }
@@ -46,6 +47,10 @@ export class AdminComponent implements OnInit,OnChanges {
     })
   }
 
+  logOut(){
+    this.loginService.logOut();
+  }
+
   lock(id : number){
     this.adminService.lock(id).subscribe((data) => {
       // @ts-ignore
@@ -60,6 +65,29 @@ export class AdminComponent implements OnInit,OnChanges {
     })
   }
 
+  click(n : number){
+    this.idaccount=n;
+  }
+
+  NapTienhihi(id:number, money: any){
+    this.adminService.NapTien(id,money).subscribe((data) =>{
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
+  }
+
+
+  Vip(vip: number,account_id: number){
+    this.adminService.SetVip(vip,account_id).subscribe((data) => {
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
+
+  }
 
   check(n: string) {
     // @ts-ignore
@@ -71,13 +99,5 @@ export class AdminComponent implements OnInit,OnChanges {
     // @ts-ignore
     document.getElementById(n).hidden = true;
   }
-
-  checkVip(vip: number) {
-    if (vip == 0) {
-      // @ts-ignore
-      document.getElementById("manh").hidden = false;
-    }
-  }
-
 
 }

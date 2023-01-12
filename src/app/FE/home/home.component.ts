@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnChanges {
   star: Star[] = []
   hires: Hires[] = []
 
-S: number = 1;
+   S: number = 1;
 
   constructor(private home: HomeService, private loginService : LoginService) {
   }
@@ -51,6 +51,7 @@ S: number = 1;
       // @ts-ignore
       document.getElementById("logout").hidden = false;
     }
+
     this.home.showNewbie().subscribe((data) => {
       this.newBie = data;
     })

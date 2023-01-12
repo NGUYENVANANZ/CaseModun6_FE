@@ -7,7 +7,6 @@
             <img src="assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
-
             <li><a routerLink="/admin" >Admin</a></li>
             <li><a routerLink="/Notification">Notification</a></li>
             <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
@@ -32,14 +31,16 @@
             <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="{{userProfile.img}}"
-                       alt="" style="border-radius: 23px;">
-                  <input type="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122">
+                  <img src="{{img}}"
+                       alt="" style="border-radius: 23px; width: 290px; height: 400px">
+                  <input type="file" id="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+                  <div class="main-border-button">
+                    <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
+                  </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
                     <div class="main-border-button">
-                      <a href="#">logout</a>
                       <div id="status" hidden>
                         <a id="status1">Online</a>
                       </div>
@@ -52,7 +53,7 @@
                     <h4 [innerText]="userName"></h4>
                     <p [innerText]="userProfile.moTa"></p>
                     <div class="main-border-button">
-                      <a href="#" id="requestAdmin" hidden>Request to admin</a>
+                      <a id="requestAdmin" hidden>Request to admin</a>
                     </div>
                   </div>
                 </div>
@@ -61,10 +62,9 @@
                     <li>Name <span [innerText]="userProfile.fullName"></span></li>
                     <li>Date <span [innerText]="userProfile.birthday"></span></li>
                     <li>Gender <span [innerText]="userProfile.gender"></span></li>
-                    <li>price<span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>
+                    <a style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>
                   </div>
                 </div>
               </div>
@@ -87,43 +87,15 @@
       <div class="gaming-library profile-library">
         <div class="col-lg-12">
           <div class="heading-section">
-            <h4>Order history</h4>
           </div>
-          <div class="item">
+          <div class="item" *ngFor="let x of history">
             <ul>
-              <li><img src="https://cdn.diemnhangroup.com/seoulcenter/2022/11/gai-xinh-1.jpg" alt=""
+              <li><img src="{{x.img}}" alt=""
                        class="templatemo-item"></li>
-              <li><h4>2 Day</h4><span>linh nhi</span></li>
-              <li><h4>Date </h4><span>24/08/2036</span></li>
-              <li><h4>Price</h4><span>140$</span></li>
-              <li><h4>NCCDV</h4><span>Cho thuê người yêu</span></li>
+              <li><h4>Tên</h4><span>{{x.userName}}</span></li>
+              <li><h4>Ngày </h4><span>{{x.date}}</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span >{{x.price}}$</span></li>
             </ul>
-          </div>
-          <div class="item">
-            <ul>
-              <li><img src="https://gaixinhsexy.site/wp-content/uploads/2022/09/52322376573_2b9b56de06_o.jpg" alt=""
-                       class="templatemo-item"></li>
-              <li><h4>Fortnite</h4><span>Sandbox</span></li>
-              <li><h4>Date Added</h4><span>22/06/2036</span></li>
-              <li><h4>Hours Played</h4><span>745 H 22 Mins</span></li>
-              <li><h4>Currently</h4><span>Downloaded</span></li>
-            </ul>
-          </div>
-          <div class="item last-item">
-            <ul>
-              <li><img src="https://ttol.vietnamnetjsc.vn/images/2019/05/20/06/55/Nu-sinh-xinh-dep-noi-tieng-MXH-3.jpg"
-                       alt="" class="templatemo-item"></li>
-              <li><h4>CS-GO</h4><span>Sandbox</span></li>
-              <li><h4>Date Added</h4><span>21/04/2022</span></li>
-              <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
-              <li><h4>Currently</h4><span>Downloaded</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <footer>
   <div class="container">
     <div class="row">
@@ -132,3 +104,9 @@
     </div>
   </div>
 </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

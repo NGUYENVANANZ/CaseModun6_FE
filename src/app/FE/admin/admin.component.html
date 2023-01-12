@@ -10,6 +10,9 @@
             <li><a routerLink="/Admin" class="active">Admin</a></li>
             <li><a routerLink="/Notification" class="active">Notification</a></li>
             <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>          </ul>
+          <div class="main-border-button">
+            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
@@ -32,7 +35,18 @@
               <div class="row">
                 <div class="col-lg-3 col-sm-6" *ngFor="let t of account|paginate: { itemsPerPage: 4, currentPage: S}, index as i">
                   <div class="item">
-                    <button type="button" class="btn btn-outline-danger" id="manh" >Cấp VIP Account</button>
+                    <div>
+                      <div *ngIf = " t.detailAccount.vip == 1">
+                        <a type="button" class="btn btn-danger" id="vip1" (click)="Vip(t.detailAccount.vip,t.id)">UnVIP</a>
+                      </div>
+                      <div  *ngIf = "t.detailAccount.vip == 0">
+                        <a type="button" class="btn btn-danger"  id="vip2 "(click)="Vip(t.detailAccount.vip, t.id)">VIP</a>
+                      </div>
+                      <div>
+                        <br>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</button>
+                      </div>
+                    </div>
                     <br>
                     <br>
                     <div>
@@ -49,8 +63,7 @@
                     <br>
                     <h4>{{t.fullName}}</h4>
                     <br>
-                    <span >{{t.MoTa}}</span>
-                    <br>
+                    <h4>Số dư:</h4><h4>{{t.money}}$</h4>
                     <br>
                     </div>
                 </div>
@@ -69,7 +82,24 @@
       </div>
     </div>
   </div>
-
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+<!--        <h4 class="modal-title" >Nhập số tiền muốn nạp</h4>-->
+      </div>
+      <div class="modal-body">
+        <p>Nhập số tiền muốn nạp</p>
+        <input type="text" placeholder="Nhập số tiền cần nạp" id='naptien'
+               name="searchKeyword" #tien/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="text-center">
 </div>
 <footer>

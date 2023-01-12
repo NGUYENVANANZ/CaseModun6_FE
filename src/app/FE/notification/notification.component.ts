@@ -14,4 +14,7 @@ export class NotificationComponent  {
 
   img = this.loginService.getImg();
 
+  logOut() {
+    this.loginService.logOut();
+  }
 }
