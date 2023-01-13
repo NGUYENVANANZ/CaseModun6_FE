@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {RegisterComponent} from "./FE/register/register.component";
+import {LoginComponent} from "./FE/login/login.component";
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./FE/fe.module').then(module => module.FEModule)
   },
-<<<<<<< HEAD
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent}
-=======
->>>>>>> 371aaf5ad2c4c2bbce9800dc6560f2f17762cc0f
+
 ];
 
 

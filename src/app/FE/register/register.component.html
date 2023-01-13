@@ -45,7 +45,6 @@
             Tên tài khoản tối đa 12 kí tự
           </p>
                     <p id="checkusername" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
-                      Nhập password
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -99,7 +98,6 @@
             Email nhập không dúng định dạng
           </p>
                     <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
-                    Nhâp Number
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -128,8 +126,6 @@
                 <label for="javascript">Nữ</label>
               </div>
             </div>
-<<<<<<< HEAD:src/app/Login-Register/register/register.component.html
-
           </div>
           <div class="mb-3 input-group-lg">
             <input type="date" class="form-control" id="datePickerId" formControlName="birthday">
@@ -137,16 +133,17 @@
           <div
             *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
             <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
-              <div>Ngày sinh không được bỏ trống</div>
-=======
-            <div class="form-group" style="max-width: 100px">
-              <a type="submit" routerLink="" class="btn float-right login_btn">Quay lại</a>
->>>>>>> 371aaf5ad2c4c2bbce9800dc6560f2f17762cc0f:src/app/FE/register/register.component.html
+              <div class="form-group" style="max-width: 100px">
+
             </div>
+          </div>
           </div>
           <div class="d-grid">
             <button type="submit" [disabled]="!registerForm.valid" class="btn btn-lg btn-primary">Đăng ký</button>
+            <a type="submit" routerLink="" class="btn float-right login_btn">Quay lại</a>
+
           </div>
+
         </form>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AppComponent} from "../../app.component";
-import {Stomp} from "@stomp/stompjs";
+// import {Stomp} from "@stomp/stompjs";
 import {LoginService} from "../../service/login/login.service";
 import {SocketService} from "../../service/Socket/socketService";
+// import {SocketService} from "../../service/Socket/socketService";
 
 @Component({
   selector: 'app-test',

@@ -3,12 +3,8 @@ import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
-<<<<<<< HEAD:src/app/Login-Register/register/register.component.ts
 import {DetailAccount} from "../../FE/model/DetailAccount";
 import {GenderDTO} from "../../FE/model/DTO/GenderDTO";
-=======
-import {DetailAccount} from "../model/DetailAccount";
->>>>>>> 371aaf5ad2c4c2bbce9800dc6560f2f17762cc0f:src/app/FE/register/register.component.ts
 
 // import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
