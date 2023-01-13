@@ -5,12 +5,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from './auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-<<<<<<< HEAD
-import { RegisterComponent } from './Login-Register/register/register.component';
-
-=======
 import { RegisterComponent } from './FE/register/register.component';
->>>>>>> 371aaf5ad2c4c2bbce9800dc6560f2f17762cc0f
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
@@ -23,10 +18,6 @@ import {SocketService} from "./service/Socket/socketService";
   declarations: [
     AppComponent,
     RegisterComponent,
-<<<<<<< HEAD
-
-=======
->>>>>>> 371aaf5ad2c4c2bbce9800dc6560f2f17762cc0f
   ],
   imports: [
     FormsModule,
