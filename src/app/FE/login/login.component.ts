@@ -1,21 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login/login.service";
-import {UserToken} from "../../FE/model/DTO/UserToken";
 import Swal from "sweetalert2";
+import {SocketService} from "../../service/Socket/socketService";
+import {UserToken} from "../model/DTO/UserToken";
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
 
   account ?: UserToken;
 
-  constructor(private loginService: LoginService, private router: Router) {
+
+  constructor(private loginService: LoginService, private router: Router, private socket: SocketService) {
   }
+
 
   ngOnInit(): void {
     this.loginService.setToken("");
@@ -38,6 +42,7 @@ export class LoginComponent implements OnInit {
         '<h2 style="color: green; font-size: 32px">Đăng nhập thành công!!!</h2>',
         'success'
       )
+      this.socket.connect(this.account.userName)
     }, (error) => {
       Swal.fire(
         ' ',
@@ -51,6 +56,7 @@ export class LoginComponent implements OnInit {
     this.loginService.setToken(account.token);
     this.loginService.setUserName(account.userName);
     this.loginService.setImg(account.img)
+    localStorage.setItem("id", account.id)
     localStorage.setItem("search", "")
     for (let i = 0; i < account.roles.length; i++) {
       if (account.roles[i].id == 1) {

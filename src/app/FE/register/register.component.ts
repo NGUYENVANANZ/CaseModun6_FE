@@ -3,7 +3,7 @@ import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
-import {DetailAccount} from "../../FE/model/DetailAccount";
+import {DetailAccount} from "../model/DetailAccount";
 
 // import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
