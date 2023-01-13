@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
 import {Star} from "../model/DTO/Star";
 import {Hires} from "../model/DTO/Hires";
@@ -9,12 +9,13 @@ import {AdminService} from "../../service/Admin/admin.service";
 import {SearchService} from "../../service/search/search.service";
 import {AccountDTO} from "../model/DTO/AccountDTO";
 import {UserToken} from "../model/DTO/UserToken";
-
+import Swal from "sweetalert2"
+import { TYPE } from "./values.constants";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit,OnChanges {
   S: number = 1
@@ -22,7 +23,6 @@ export class AdminComponent implements OnInit,OnChanges {
   account: AccountDTO[] = [];
   fullName!: AccountDTO[];
   detailAccount!: DetailAccount;
-
   constructor(private adminService: AdminService, private loginService: LoginService) {
   }
 
@@ -37,14 +37,38 @@ export class AdminComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    // if (this.token != "") {
-    //   // @ts-ignore
-    //   document.getElementById("logout").hidden = false;
-    // }
     this.adminService.showallAccounts3().subscribe((data) => {
       // @ts-ignore
       this.account = data;
     })
+
+  }
+
+  show(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Cấp Vip thành công!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
+  }
+
+  show1(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Khóa tài khoản thành công!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
+  }
+
+  show2(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Nạp tiền thành công !',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
   }
 
   logOut(){
@@ -79,8 +103,8 @@ export class AdminComponent implements OnInit,OnChanges {
   }
 
 
-  Vip(vip: number,account_id: number){
-    this.adminService.SetVip(vip,account_id).subscribe((data) => {
+  Vip(vip: number, id: number){
+    this.adminService.SetVip(vip, id).subscribe((data) => {
       this.detailAccount = data;
       this.adminService.showallAccount().subscribe((data) => {
         this.account = data;

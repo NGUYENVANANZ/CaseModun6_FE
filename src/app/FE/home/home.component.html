@@ -8,17 +8,21 @@
           </a>
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
+                     (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <ul class="nav">
             <li><a routerLink="/home" class="active">Trang chủ</a></li>
-            <li><a routerLink="/browse" >Tìm kiếm</a></li>
-            <li><a routerLink="/stream" >Thông Báo</a></li>
-            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/browse">Tìm kiếm</a></li>
+            <li><a routerLink="/stream">Thông Báo</a></li>
+            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -40,12 +44,15 @@
               </div>
               <ul>
                 <li *ngFor="let t of hires, index as i">
-                  <span>{{i+1}}</span>
+                  <span>{{i + 1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
-                       style="width: 46px; border-radius: 50%; right: 15px;height: 46px" (mouseenter)="check(t.detailAccountSart.id + 'hires')" (mouseleave)="check1(t.detailAccountSart.id + 'hires')" >
-                  <h6 ><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6 id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
+                       style="width: 46px; border-radius: 50%; right: 15px;height: 46px"
+                       (mouseenter)="check(t.detailAccountSart.id + 'hires')"
+                       (mouseleave)="check1(t.detailAccountSart.id + 'hires')">
+                  <h6><i class="fa fa-check"></i>{{t.detailAccountSart.fullName}} </h6><h6
+                  id="{{t.detailAccountSart.id + 'hires'}}" hidden>Lượt thuê {{t.hires}}</h6>
                   <div class="main-button">
-                    <a href="#">Theo dõi</a>
+                    <a [routerLink]="'/detail/'+ t.detailAccountSart.id">Thuê</a>
                   </div>
                 </li>
               </ul>
@@ -59,12 +66,12 @@
               </div>
               <ul>
                 <li *ngFor="let t of star, index as i">
-                  <span>{{i+1}}</span>
+                  <span>{{i + 1}}</span>
                   <img src="{{t.detailAccountSart.img}}" alt=""
                        style="width: 46px; border-radius: 50%; margin-right: 15px; height: 46px">
-                  <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6> <i class="fa fa-star"></i>{{t.star}}</h6>
+                  <h6> {{t.detailAccountSart.fullName}}</h6>&nbsp<h6><i class="fa fa-star"></i>{{t.star}}</h6>
                   <div class="main-button">
-                    <a href="#">Theo dõi</a>
+                    <a [routerLink]="'/detail/'+ t.detailAccountSart.id">Thuê</a>
                   </div>
                 </li>
               </ul>
@@ -79,11 +86,15 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of newBie, index as i" (mouseenter)="check(t.id + 'newbie')" (mouseleave)="check1(t.id + 'newbie')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
-                      <h4>{{t.fullName}}<br><p id="{{t.id + 'newbie'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
-                      </ul>
+                      <a [routerLink]="'/detail/'+ t.id">
+                        <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
+                        <h4>{{t.fullName}}<br>
+                          <p id="{{t.id + 'newbie'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span>
+                          </p></h4>
+                        <ul>
+                          <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
+                        </ul>
+                      </a>
                     </div>
                   </div>
                   <div class="col-lg-12">
@@ -107,13 +118,18 @@
                   <h4><em>Phù hợp</em> Giới Tính</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender, index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let t of Gender index as i" (mouseenter)="check(t.id + 'gender')" (mouseleave)="check1(t.id + 'gender')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
-                      <h4>{{t.fullName}}<br><p id="{{t.id + 'gender'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
-                      </ul>
+                      <a [routerLink]="'/detail/'+ t.id">
+                        <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
+                        <h4>{{t.fullName}}<br>
+                          <p id="{{t.id + 'gender'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span>
+                          </p>
+                        </h4>
+                        <ul>
+                          <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
+                        </ul>
+                      </a>
                     </div>
                   </div>
                   <div class="col-lg-12">
@@ -127,9 +143,6 @@
           </div>
           <br>
           <br>
-          <!-- ***** Most Popular End ***** -->
-
-          <!-- ***** Most Popular Start ***** -->
           <div class="most-popular">
             <div class="row">
               <div class="col-lg-12">
@@ -139,11 +152,15 @@
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of Vip, index as i" (mouseenter)="check(t.id + 'vip')" (mouseleave)="check1(t.id + 'vip')">
                     <div class="item">
-                      <img src="{{t.img}}" alt="" style="width: 200px; height: 280px" >
-                      <h4>{{t.fullName}}<br><p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds" >{{x.provided}}</span></p></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
-                      </ul>
+                      <a [routerLink]="'/detail/'+ t.id">
+                        <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
+                        <h4>{{t.fullName}}<br>
+                          <p id="{{t.id + 'vip'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span></p>
+                        </h4>
+                        <ul>
+                          <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
+                        </ul>
+                      </a>
                     </div>
                   </div>
                   <div class="col-lg-12">
@@ -154,10 +171,10 @@
             </div>
             <br>
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <br>
 <br>
@@ -166,9 +183,9 @@
     <div class="row">
       <div class="col-lg-12">
         <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
       </div>
     </div>
   </div>
 </footer>
-

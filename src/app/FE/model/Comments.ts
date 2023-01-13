@@ -1,7 +1,7 @@
 import {Account} from "./Account";
 import {DetailAccount} from "./DetailAccount";
 
-export class Comment {
+export class Comments {
   id!: number
   star!: number
   text!: string

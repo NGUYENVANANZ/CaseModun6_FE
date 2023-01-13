@@ -13,7 +13,7 @@
 
             <form id="search" action="#">
               <input type="text" placeholder="Viết gì đó" [(ngModel)]="nameSearch" id='searchText'
-                     name="searchKeyword" (input)="search()"/>
+                     name="searchKeyword" (input)="search()" />
             </form>
 
           </div>
@@ -91,7 +91,8 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of fullName|paginate: { itemsPerPage: 4, currentPage: S},let i = index" (mouseenter)="check(t.id + 'all')" (mouseleave)="check1(t.id + 'all')">
-                    <div class="item">
+                    <a [routerLink]="'/detail/'+t.id"><div class="item">
+
                       <img src="{{t.img}}" alt="" style="width: 200px; height: 280px">
                       <h4>{{t.fullName}}<br>
                         <p id="{{t.id + 'all'}}" hidden><span *ngFor="let x of t.provideds">{{x.provided}}</span></p>
@@ -100,6 +101,7 @@
                         <li><i class="fa fa-star"></i> {{t.price}}$/Ngày</li>
                       </ul>
                     </div>
+                    </a>
                   </div>
                   <div class="col-lg-12">
                   </div>

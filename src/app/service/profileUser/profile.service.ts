@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {DetailAccount} from "../../FE/model/DetailAccount";
 import {EmployDTO} from "../../FE/model/DTO/EmployDTO";
+import {Employ} from "../../FE/model/Employ";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -40,5 +41,8 @@ export class ProfileService {
 
   save(img : string): Observable<DetailAccount> {
     return this.http.post<DetailAccount>(API_URL + '/saveDetailAccount', img);
+  }
+  ShowEmploy(): Observable<EmployDTO>{
+    return this.http.get<EmployDTO>(API_URL +'/showAll1');
   }
 }

@@ -1,5 +1,3 @@
-import {DetailAccountSart} from "./DetailAccountSart";
-
 export class EmployDTO {
   userName !: string;
   img !: string;

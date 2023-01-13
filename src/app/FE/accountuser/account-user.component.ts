@@ -18,6 +18,7 @@ import {UserToken} from "../model/DTO/UserToken";
 })
 export class AccountUserComponent implements OnInit,OnChanges {
   S: number = 1
+  idaccount!:number;
   account: AccountDTO[] = [];
   fullName!: AccountDTO[];
   detailAccount!: DetailAccount;
@@ -60,13 +61,25 @@ export class AccountUserComponent implements OnInit,OnChanges {
     })
   }
 
-  Vip(vip: number,account_id: number){
-    this.adminService.SetVip(vip,account_id).subscribe((data) => {
+  Vip(vip: number,id: number){
+    this.adminService.SetVip(vip, id).subscribe((data) => {
       this.detailAccount = data;
       this.adminService.showallAccount().subscribe((data) => {
         this.account = data;
       })
     })
+  }
 
+  click(n : number){
+    this.idaccount = n;
+  }
+
+  NapTienhihi(id:number, money: any){
+    this.adminService.NapTien(id,money).subscribe((data) =>{
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
   }
 }

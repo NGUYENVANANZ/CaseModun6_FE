@@ -1,0 +1,142 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<title>Login Page</title>
+<!--Made with love by Mutiullah Samim -->
+
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<!--Custom styles-->
+
+
+<div class="container1">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Register</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+<!--          Nhập username-->
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="username" formControlName="userName">
+          </div>
+          <p
+            *ngIf="!registerForm.get('userName')?.valid && registerForm.get('userName')?.touched">
+          </p>
+<!--          <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['minlength']">-->
+<!--            Tên tài khoản phải ít nhất 6 kí tự-->
+<!--          </p>-->
+          <p style="color: red" *ngIf="registerForm.get('userName')?.errors?.['maxlength']">
+            Tên tài khoản tối đa 12 kí tự
+          </p>
+          <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
+<!--            Nhập password-->
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="password" formControlName="password">
+          </div>
+          <p
+            *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">
+          </p>
+          <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+            Tên tài khoản phải ít nhất 6 kí tự
+          </p>
+          <p style="color: red" *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+            Tên tài khoản tối đa 12 kí tự
+          </p>
+<!--            Nhập lại password-->
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Enter the password" formControlName="confirmPassword" (change)="checkConfirmPassword()">
+            <div style="display: none;color: red" id="abc">
+              <div>Mật khẩu nhập lại không đúng</div>
+            </div>
+          </div>
+          <p *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched" style="color: red">
+            Không được để trống</p>
+          <p
+            *ngIf="!registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"></p>
+          <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
+            Xác nhận mật khẩu phải có ít nhất 6 kí tự
+          </p>
+          <p style="color: red" *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
+            Xác nhận mật khẩu tối đa 32 kí tự
+          </p>
+<!--          Nhập email-->
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
+          </div>
+          <p *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched" style="color: red">
+            Không được để trống</p>
+          <p
+            *ngIf="!registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+          <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['required']">
+          </p>
+          <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
+            Email nhập không dúng định dạng
+          </p>
+          <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
+<!--          Nhâp Number-->
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            </div>
+
+            <input type="text" class="form-control" placeholder="Phone Number" formControlName="phoneNumber">
+          </div>
+          <div
+            *ngIf="!registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+            <div style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">
+              <div>Số điện thoại không được bỏ trống</div>
+            </div>
+          </div>
+          <p style="color: red" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">
+            Số điện thoại không đúng định dạng - 10 so
+          </p>
+          <div>
+            <div>
+              <span>
+               <select formControlName="gender"><option></option></select><i class="fas fa-female"></i><i
+                class="fas fa-male"></i>
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <input type="submit" value="Đăng ký" class="btn float-right login_btn">
+            </div>
+
+
+            <div class="form-group" style="max-width: 100px">
+              <input type="submit" value="Quay lại" class="btn float-right login_btn">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

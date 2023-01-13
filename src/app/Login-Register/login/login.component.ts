@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from "../../service/login/login.service";
-import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
-import {UserToken} from "../model/DTO/UserToken";
+import {UserToken} from "../../FE/model/DTO/UserToken";
 
 @Component({
   selector: 'app-login',
@@ -45,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.loginService.setToken(account.token);
     this.loginService.setUserName(account.userName);
     this.loginService.setImg(account.img)
+    localStorage.setItem("search", "")
     for (let i = 0; i < account.roles.length; i++) {
       if (account.roles[i].id == 1) {
         this.router.navigate(["/admin"]);

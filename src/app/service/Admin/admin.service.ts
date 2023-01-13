@@ -4,8 +4,7 @@ import {Observable} from "rxjs";
 import {AccountDTO} from "../../FE/model/DTO/AccountDTO";
 import {environment} from "../../../environments/environment";
 import {DetailAccount} from "../../FE/model/DetailAccount";
-import {Account} from "../../FE/model/Account";
-import {UserToken} from "../../FE/model/DTO/UserToken";
+import {EmployDTO} from "../../FE/model/DTO/EmployDTO";
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -37,11 +36,13 @@ export class AdminService {
     return this.http.get<AccountDTO[]>(`${API_URL}/unlock/${id}`);
   }
 
-  SetVip(vip: number, account_id: number): Observable<DetailAccount> {
-    return this.http.get<DetailAccount>(`${API_URL}/VipProMax/${vip}/${account_id}`);
+  SetVip(vip: number, id: number): Observable<DetailAccount> {
+    return this.http.get<DetailAccount>(`${API_URL}/VipProMax/${vip}/${id}`);
   }
 
   NapTien(id: number, money: number): Observable<DetailAccount> {
     return this.http.get<DetailAccount>(`${API_URL}/recharge/${id}/${money}`);
   }
+
+
 }
