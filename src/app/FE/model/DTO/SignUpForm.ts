@@ -1,7 +1,7 @@
 import {DetailAccountSart} from "./DetailAccountSart";
 
-export class SignUpForm {
-  userName!: any
+export class SignUpForm  {
+  username!: any
   email!: any;
   password!: any
   confirmPassword!: any
@@ -10,8 +10,8 @@ export class SignUpForm {
   gender!: any
 
 
-  constructor(userName: any, email: any, password: any, confirmPassword: any, phoneNumber: any, birthDay: any, gender: any) {
-    this.userName = userName;
+  constructor(username: any, email: any, password: any, confirmPassword: any, phoneNumber: any, birthDay: any, gender: any) {
+    this.username = username;
     this.email = email;
     this.password = password;
     this.confirmPassword = confirmPassword;

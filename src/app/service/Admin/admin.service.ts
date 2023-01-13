@@ -36,4 +36,14 @@ export class AdminService {
     return this.http.get<AccountDTO[]>(`${API_URL}/unlock/${id}`);
   }
 
+  lock1(id : any): Observable<AccountDTO[]> {
+    // console.log(this.http.get<AccountDTO>(`${API_URL}/GetallAccountByRoles3`))
+    return this.http.get<AccountDTO[]>(`${API_URL}/lock1/${id}`);
+  }
+
+  unlock1(id : any): Observable<AccountDTO[]> {
+    // console.log(this.http.get<AccountDTO>(`${API_URL}/GetallAccountByRoles3`))
+    return this.http.get<AccountDTO[]>(`${API_URL}/unlock1/${id}`);
+  }
+
 }

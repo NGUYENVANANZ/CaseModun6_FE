@@ -8,7 +8,7 @@
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
           <!-- ***** Search End ***** -->
@@ -21,18 +21,16 @@
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li class="main-border-button"><a style="color: white" routerLink="/home">Trang chủ</a></li>
-            <li class="main-border-button"><a style="color: white" routerLink="/browse">Tìm kiếm</a></li>
 
-            <li class="main-border-button"><a style="color: white" routerLink="/stream">Thông Báo</a></li>
-            <li class="main-border-button"><a style="color: white" routerLink="/profile" class="active">Trang cá nhân
-              <img src="{{img}}" alt=""
-                   style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            <li><a routerLink="/home">Trang chủ</a></li>
+            <li><a routerLink="/browse">Tìm kiếm</a></li>
+            <li><a routerLink="/stream">Thông Báo</a></li>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt=""
+                                                                           style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
             </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden
-               (click)="logOut()">Đăng
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
               xuất</a>
           </div>
           <a class='menu-trigger'>
@@ -55,13 +53,14 @@
             <div class="main-profile">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="{{img}}"
+                  <img src="{{img}}" id="uploadPreview"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
-                  <input type="file" id="file"
-                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 65px; color: #1F2122"
-                         #uploadFile1 class="form-control" multiple="multiple">
+
+                  <input type="file" id="file" (change)="showImg()"
+                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122" #uploadFile1
+                         class="form-control" multiple="multiple">
                   <div class="main-border-button">
-                    <a style="margin-left: 85px;margin-top:10px;color: plum" (click)="uploadFileImg()">Lưu</a>
+                    <a style="margin-left: 85px;margin-top:10px;color: plum"  (click)="uploadFileImg()">Lưu</a>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
@@ -70,9 +69,11 @@
                       <div class="modal-dialog" role="document">
                       </div>
                     </div>
+
                     <div style="margin-top: -250px">
                       <h2 style="color: darkviolet;font-size: 30px" [innerText]="'Tên: '+ userName"></h2>
                     </div>
+
                     <div class="main-border-button" id="requestAdmin" hidden>
                       <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
                       <a id="requestAdmin2" hidden style="background-color: hotpink; color: white"
@@ -118,9 +119,9 @@
                     <li style="color: darkblue">Số dư: <span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <!--                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>-->
                     <a href="#" data-toggle="modal" data-target="#rotateModal"
                        style="color: white;position: static;margin-left: 110px;margin-top: -20px;background-color: #27292a;">Sửa</a>
+
                   </div>
                 </div>
               </div>
@@ -144,51 +145,58 @@
 
                               </li>
 
-                              <li><h2 style="color: darkviolet">LinkFB: </h2><a id="face" href="{{userProfile.faceLink}}"
+                              <li><h2 style="color: darkviolet">LinkFB: </h2>
+                                <div class="main-border-button">
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showLinkFace()">Sửa</a>
+                                </div>
+
+                                <a id="face" href="{{userProfile.faceLink}}"
                                                                                 style="color: #DEE1E6">{{userProfile.faceLink}}</a>
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.faceLink" id="face1" hidden (keyup.enter)="hideFaceLink($event)"></textarea>
                                 </div>
 
-                                <div class="main-border-button">
-                                  <a
-                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showLinkFace()">Sửa</a>
-                                </div>
+
                               </li>
                               <br>
                               <li><h2 style="color: darkviolet">Mô tả: </h2>
+                                <div class="main-border-button">
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showMota();">Sửa</a>
+                                </div>
                                 <p id="mota" style="color: #DEE1E6">{{userProfile.moTa}}</p>
 
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.moTa" id="mota1" hidden (keyup.enter)="hideMoTa($event)"></textarea>
                                 </div>
 
-                                <div class="main-border-button">
-                                  <a
-                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showMota()">Sửa</a>
-                                </div>
                               </li>
                               <br>
                               <li><h2 style="color: darkviolet">Sở thích: </h2>
-                                <p id="sothich" style="color: #DEE1E6">{{userProfile.soThich}}</p>
-                                <div class="form-outline w-75 mb-4">
-                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.soThich" id="sothich1" hidden (keyup.enter)="hideSoThich($event)"></textarea>
-                                </div>
                                 <div class="main-border-button">
                                   <a (click)="showSoThich()"
                                      style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;">Sửa</a>
                                 </div>
+                                <p id="sothich" style="color: #DEE1E6">{{userProfile.soThich}}</p>
+                                <div class="form-outline w-75 mb-4">
+                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.soThich" id="sothich1" hidden (keyup.enter)="hideSoThich($event)"></textarea>
+                                </div>
+
                               </li>
                               <br>
                               <li><h2 style="color: darkviolet">Yêu cầu: </h2>
+                                <div class="main-border-button">
+                                  <a (click)="showYeuCau()"
+                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -100px;background-color: white;">Sửa</a>
+                                </div>
+
                                 <p id="yeuCau" style="color: #DEE1E6">{{userProfile.yeuCau}}</p>
+
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.yeuCau" id="yeuCau1" hidden (keyup.enter)="hideYeuCau($event)"></textarea>
                                 </div>
-                                <div class="main-border-button">
-                                  <a (click)="showYeuCau()"
-                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;">Sửa</a>
-                                </div>
+
                               </li>
                               <br>
                               <li>

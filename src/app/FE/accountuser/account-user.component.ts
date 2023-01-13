@@ -1,14 +1,14 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
-import {Star} from "../model/DTO/Star";
-import {Hires} from "../model/DTO/Hires";
+import {DetailAccountSart} from "../../FE/model/DTO/DetailAccountSart";
+import {Star} from "../../FE/model/DTO/Star";
+import {Hires} from "../../FE/model/DTO/Hires";
 import {HomeService} from "../../service/home/home.service";
-import {DetailAccount} from "../model/DetailAccount";
+import {DetailAccount} from "../../FE/model/DetailAccount";
 import {LoginService} from "../../service/login/login.service";
 import {AdminService} from "../../service/Admin/admin.service";
 import {SearchService} from "../../service/search/search.service";
-import {AccountDTO} from "../model/DTO/AccountDTO";
-import {UserToken} from "../model/DTO/UserToken";
+import {AccountDTO} from "../../FE/model/DTO/AccountDTO";
+import {UserToken} from "../../FE/model/DTO/UserToken";
 
 
 @Component({
@@ -36,11 +36,11 @@ export class AccountUserComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    // if (this.token != "") {
-    //   // @ts-ignore
-    //   document.getElementById("logout").hidden = false;
-    // }
-    this.adminService.showallAccounts3().subscribe((data) => {
+    if (this.token != "") {
+      // @ts-ignore
+      document.getElementById("logout").hidden = false;
+    }
+    this.adminService.showallAccount().subscribe((data) => {
       // @ts-ignore
       this.account = data;
     })
@@ -58,6 +58,10 @@ export class AccountUserComponent implements OnInit,OnChanges {
       // @ts-ignore
       this.account = data;
     })
+  }
+
+  logOut() {
+    this.loginService.logOut();
   }
 
 

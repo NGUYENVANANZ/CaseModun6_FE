@@ -4,15 +4,16 @@
 import {Roles} from "../Roles";
 
 export class UserToken {
-
+  id!: any
   userName!: string;
   token!: string;
   img!: string;
   roles!: Roles[];
-  status!:number;
+  status!: number;
 
 
-  constructor(userName: string, token: string, img: string, roles: Roles[], status: number) {
+  constructor(id: number, userName: string, token: string, img: string, roles: Roles[], status: number) {
+    this.id = id;
     this.userName = userName;
     this.token = token;
     this.img = img;

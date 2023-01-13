@@ -5,12 +5,13 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from './auth.interceptor';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RegisterComponent} from './Login-Register/register/register.component';
+import { RegisterComponent } from './FE/register/register.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {NgxPaginationModule} from "ngx-pagination";
+// import {SocketService} from "./service/Socket/socketService";
 
 
 @NgModule({
@@ -37,5 +38,7 @@ import {NgxPaginationModule} from "ngx-pagination";
   }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
+
 }

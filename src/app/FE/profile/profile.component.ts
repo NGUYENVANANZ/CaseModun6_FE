@@ -5,7 +5,7 @@ import {Roles} from "../model/Roles";
 import {LoginService} from "../../service/login/login.service";
 import {EmployDTO} from "../model/DTO/EmployDTO";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {finalize} from "rxjs";
+import {finalize, first, pipe} from "rxjs";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -27,8 +27,8 @@ export class ProfileComponent implements OnInit, OnChanges {
     moTa: "",
     yeuCau: "",
     fullName: "",
-    birthday: new Date(1 - 1 - 1111),
-    joinDate: new Date(1 - 1 - 1111),
+    birthday: new Date(),
+    joinDate: new Date(),
     money: 0,
     img: "",
     imgs: [],
@@ -99,6 +99,21 @@ export class ProfileComponent implements OnInit, OnChanges {
     }
   }
 
+  // submit1() {
+  //   for (let file of this.arrfiles) {
+  //     if (file != null) {
+  //       const filePath = file.name;
+  //       const fileRef = this.storage.ref(filePath);
+  //       this.storage.upload(filePath, file).snapshotChanges().pipe(
+  //         finalize(() => (fileRef.getDownloadURL().subscribe(
+  //           url => {
+  //             this.img = url;
+  //           })))
+  //       ).subscribe();
+  //     }
+  //   }
+  // }
+
   uploadFileImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
       if (this.fileValidation(argument)) {
@@ -117,12 +132,29 @@ export class ProfileComponent implements OnInit, OnChanges {
     // Allowing file type
     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     if (!allowedExtensions.exec(filePath)) {
-      alert('Chọn file ảnh');
+      alert('Chọn file đúng định dạng jpg, jpeg, png, gif');
       // @ts-ignore
       fileInput.value = '';
       return false;
     }
     return true;
+  }
+
+
+  showImg() {
+    for (const argument of this.avatarDom1?.nativeElement.files) {
+        this.arrfiles.push(argument)
+    }
+    var oFReader = new FileReader();
+    // @ts-ignore
+    oFReader.readAsDataURL(this.arrfiles[0]);
+
+    oFReader.onload = function (oFREvent) {
+      // @ts-ignore
+      console.log(oFREvent.target.result)
+      // @ts-ignore
+      document.getElementById("uploadPreview").src = oFREvent.target.result;
+    };
   }
 
   save(img: string) {
