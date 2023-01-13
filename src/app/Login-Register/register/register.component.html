@@ -44,8 +44,8 @@
           <p style="color: red" *ngIf="registerForm.get('username')?.errors?.['maxlength']">
             Tên tài khoản tối đa 12 kí tự
           </p>
-          <!--          <p id="checkusername" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>-->
-          <!--            Nhập password-->
+                    <p id="checkusername" style="color: red " *ngIf="!checkDuplicateUsername">Người dùng đã tồn tại</p>
+                      Nhập password
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -98,8 +98,8 @@
           <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
             Email nhập không dúng định dạng
           </p>
-          <!--          <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>-->
-          <!--          Nhâp Number-->
+                    <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
+                    Nhâp Number
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-phone"></i></span>
