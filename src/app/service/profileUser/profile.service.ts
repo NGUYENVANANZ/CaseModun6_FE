@@ -23,8 +23,8 @@ export class ProfileService {
     return this.http.get<ShowProfileDTO>(API_URL + '/showEdit')
   }
 
-  editProfile(): Observable<ShowProfileDTO> {
-    return this.http.get<ShowProfileDTO>(API_URL + '/editProfile')
+  editProfile(detail : any): Observable<DetailAccount> {
+    return this.http.post<DetailAccount>(API_URL + '/editProfile', detail)
   }
 
   showHistory(): Observable<EmployDTO> {

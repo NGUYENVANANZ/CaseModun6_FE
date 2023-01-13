@@ -7,6 +7,7 @@ import {EmployDTO} from "../model/DTO/EmployDTO";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -40,6 +41,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     roles: []
   }
 
+
   history: EmployDTO[] = []
 
   @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
@@ -47,7 +49,7 @@ export class ProfileComponent implements OnInit, OnChanges {
   arrfiles: any = [];
   arrayPicture: string[] = [];
 
-  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private  router :Router) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router) {
   }
 
   userName = this.loginService.getUserName();
@@ -99,7 +101,7 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   uploadFileImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
-      if (this.fileValidation(argument)){
+      if (this.fileValidation(argument)) {
         this.arrfiles.push(argument)
       }
     }
@@ -108,7 +110,7 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   // @ts-ignore
   function // @ts-ignore
-  fileValidation(argument : any) {
+  fileValidation(argument: any) {
     var fileInput = argument;
     // @ts-ignore
     var filePath = fileInput.name;
@@ -123,7 +125,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     return true;
   }
 
-  save(img : string){
+  save(img: string) {
     this.profile.save(img).subscribe((data) => {
       // @ts-ignore
       this.userProfile = data;
@@ -210,10 +212,91 @@ export class ProfileComponent implements OnInit, OnChanges {
     })
   }
 
+  saveDetail() {
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+
   // @ts-ignore
   onInput(event) {
     localStorage.setItem("search", event.target.value)
     this.router.navigate(["/browse"]);
   }
 
+
+  showLinkFace() {
+    // @ts-ignore
+    document.getElementById("face").hidden = true;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = false;
+  }
+
+  showMota() {
+    // @ts-ignore
+    document.getElementById("mota").hidden = true;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = false;
+  }
+
+  showSoThich() {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = true;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = false;
+  }
+
+  showYeuCau() {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = true;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = false;
+  }
+
+  // @ts-ignore
+  hideFaceLink(event) {
+    // @ts-ignore
+    document.getElementById("face").hidden = false;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideMoTa(event) {
+    // @ts-ignore
+    document.getElementById("mota").hidden = false;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideSoThich(event) {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = false;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideYeuCau(event) {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = false;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
 }
