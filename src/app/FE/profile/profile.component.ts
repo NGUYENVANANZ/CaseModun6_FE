@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {SocketService} from "../../service/Socket/socketService";
 import {NotificationDTO} from "../model/DTO/NotificationDTO";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -29,8 +30,8 @@ export class ProfileComponent implements OnInit, OnChanges {
     moTa: "",
     yeuCau: "",
     fullName: "",
-    birthday: new Date(1 - 1 - 1111),
-    joinDate: new Date(1 - 1 - 1111),
+    birthday: new Date(),
+    joinDate: new Date(),
     money: 0,
     img: "",
     imgs: [],
@@ -165,6 +166,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     return true;
   }
 
+
   showImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
         this.arrfiles.push(argument)
@@ -268,10 +270,91 @@ export class ProfileComponent implements OnInit, OnChanges {
     })
   }
 
+  saveDetail() {
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+
   // @ts-ignore
   onInput(event) {
     localStorage.setItem("search", event.target.value)
     this.router.navigate(["/browse"]);
   }
 
+
+  showLinkFace() {
+    // @ts-ignore
+    document.getElementById("face").hidden = true;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = false;
+  }
+
+  showMota() {
+    // @ts-ignore
+    document.getElementById("mota").hidden = true;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = false;
+  }
+
+  showSoThich() {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = true;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = false;
+  }
+
+  showYeuCau() {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = true;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = false;
+  }
+
+  // @ts-ignore
+  hideFaceLink(event) {
+    // @ts-ignore
+    document.getElementById("face").hidden = false;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideMoTa(event) {
+    // @ts-ignore
+    document.getElementById("mota").hidden = false;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideSoThich(event) {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = false;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideYeuCau(event) {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = false;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
 }
