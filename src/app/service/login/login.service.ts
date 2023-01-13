@@ -7,14 +7,7 @@ const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
-<<<<<<< HEAD
-// import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
-import {Roles} from "../../FE/model/Roles";
-=======
-import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
-import {Roles} from "../../FE/model/Roles";
 
->>>>>>> c693e0e7458f07b60810a5c692232f45d7d5ca52
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +31,10 @@ export class LoginService {
   }
   register(signForm: any): Observable<any>{
     return this.http.post<any>(API_URL + '/register',signForm);
+  }
+
+  getallgender():Observable<any>{
+    return this.http.get<any>(API_URL + '/showallgender');
   }
 
   checkRoles(): Observable<boolean> {

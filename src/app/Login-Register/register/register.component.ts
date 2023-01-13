@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
 import {DetailAccount} from "../../FE/model/DetailAccount";
+import {GenderDTO} from "../../FE/model/DTO/GenderDTO";
 
 // import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
@@ -14,6 +15,7 @@ import {DetailAccount} from "../../FE/model/DetailAccount";
 export class RegisterComponent implements OnInit {
   detailAccount !: DetailAccount
 
+  gender!: GenderDTO[];
 
   checkDuplicateMail: boolean = true
   checkDuplicateUsername: boolean = true
@@ -22,26 +24,38 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginService.getallgender().subscribe((data) => {
+      this.gender = data;
+    });
   }
 
+
   registerForm = new FormGroup({
-    userName: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    username: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
+    confirmPassword: new FormControl("", [Validators.required, Validators.minLength(3)]),
     phoneNumber: new FormControl("", [Validators.required, Validators.pattern("(03|05|07|08|09)+([0-9]{8})")]),
-    gender: new FormControl("", Validators.nullValidator),
+    birthday: new FormControl('', [Validators.required]),
+    gender: new FormControl('Nam', [Validators.required]),
   })
 
 
   register() {
     this.loginService.register(this.registerForm.value).subscribe((data) => {
+
       this.checkDuplicateUsername = data[0];
       this.checkDuplicateMail = data[1];
-      if (data[0] && data[1]) {
-        this.message()
-        this.router.navigate([" "])
-      }
+      if (data[0] && data[1]) {}
+        this.message();
+      this.router.navigate(["/login"])
+
+    }, (error)=>{
+      Swal.fire(
+        ' ',
+        '<h2 style="color: red; font-size: 32px">Tài khoản của bạn đã bị trùng username hoặc email</h2>',
+        'error'
+      )
     });
   }
 
@@ -49,7 +63,7 @@ export class RegisterComponent implements OnInit {
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'Register account success ',
+      title: 'Đăng kí thành công ',
       showConfirmButton: false,
       timer: 1500
     })
@@ -66,6 +80,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  checkUsername() {
+
+  }
 
 
 }
