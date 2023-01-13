@@ -4,6 +4,7 @@ import {DetailAccount} from "../model/DetailAccount";
 import {SearchService} from "../../service/search/search.service";
 import {LoginService} from "../../service/login/login.service";
 import {DetailAccountSart} from "../model/DTO/DetailAccountSart";
+import {SocketService} from "../../service/Socket/socketService";
 
 @Component({
   selector: 'app-browse',
@@ -14,8 +15,10 @@ export class BrowseComponent implements OnInit, OnChanges {
   fullName!: DetailAccountSart[];
   nameSearch !: string;
   S: number = 1
+  stompClient: any
 
-  constructor(private searchService: SearchService, private loginService: LoginService) {
+  constructor(private searchService: SearchService, private loginService: LoginService, private socket: SocketService) {
+    this.stompClient = socket.stompClient;
   }
 
   token = this.loginService.getToken();

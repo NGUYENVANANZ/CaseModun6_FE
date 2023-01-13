@@ -1,0 +1,29 @@
+<div style="color: blue; text-align: center">
+  <h1>{{title}}</h1>
+  <h3>{{description}}</h3>
+</div>
+
+<div class="container" style="width: 400px; margin-top: 20px; color: white">
+  <form class="form-inline" style="margin-top: 20px;">
+    <div class="form-group">
+      <label for="name">User's Name:</label>
+      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />
+      <input type="text" name="name" class="form-control" [(ngModel)]="message" />
+    </div>
+    <button style="color: white;" id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
+  </form>
+
+  <table id="conversation" class="table table-striped" style="margin-top: 20px;">
+    <thead>
+    <tr>
+      <th style="color: white;">Greetings</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let greeting of greetings">
+    <tr>
+      <td style="color: white;">{{greeting}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

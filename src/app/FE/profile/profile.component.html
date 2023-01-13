@@ -5,25 +5,29 @@
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
+                     (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Trang chủ</a></li>
-            <li><a routerLink="/browse" >Tìm kiếm</a></li>
+            <li><a routerLink="/home">Trang chủ</a></li>
+            <li><a routerLink="/browse">Tìm kiếm</a></li>
             <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt=""
+                                                                           style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
+            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -45,27 +49,32 @@
             <div class="main-profile ">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="{{img}}"
+                  <img src="{{img}}" id="uploadPreview"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
-                    <input type="file" id="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+                  <input type="file" id="file" (change)="showImg()"
+                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122" #uploadFile1
+                         class="form-control" multiple="multiple">
                   <div class="main-border-button">
-                    <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
+                    <a style="margin-left: 85px;margin-top:10px;color: plum"  (click)="uploadFileImg()">Lưu</a>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
-                      <div class="modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                        </div>
+                    <div class="modal" tabindex="-1" role="dialog">
+                      <div class="modal-dialog" role="document">
                       </div>
+                    </div>
                     <h4 [innerText]="'Tên: '+ userName"></h4>
                     <div class="main-border-button" id="requestAdmin" hidden>
                       <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
-                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
+                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white"
+                         (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
                     </div>
                     <div class="main-border-button" id="status" hidden>
-                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt đầu CCDV</a>
-                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm dừng CCDV</a>
+                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt
+                        đầu CCDV</a>
+                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm
+                        dừng CCDV</a>
                     </div>
                   </div>
                 </div>
@@ -77,7 +86,8 @@
                     <li>Số dư: <span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>
+                    <a href="#"
+                       style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>
                   </div>
                 </div>
               </div>
@@ -105,12 +115,12 @@
             <h4>Lịch sử thuê</h4>
           </div>
           <div class="item" *ngFor="let x of history">
-            <ul >
+            <ul>
               <li><img src="{{x.img}}" alt=""
                        class="templatemo-item"></li>
               <li><h4>Tên</h4><span>{{x.userName}}</span></li>
               <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-              <li style="text-align: center"><h4>Tổng đơn</h4><span >{{x.price}}$</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
             </ul>
           </div>
         </div>
