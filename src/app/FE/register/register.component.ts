@@ -6,8 +6,6 @@ import Swal from "sweetalert2";
 import {DetailAccount} from "../../FE/model/DetailAccount";
 import {GenderDTO} from "../../FE/model/DTO/GenderDTO";
 
-
-// import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

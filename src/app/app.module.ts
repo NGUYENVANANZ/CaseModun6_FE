@@ -11,7 +11,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {NgxPaginationModule} from "ngx-pagination";
-import {SocketService} from "./service/Socket/socketService";
+// import {SocketService} from "./service/Socket/socketService";
 
 
 @NgModule({
