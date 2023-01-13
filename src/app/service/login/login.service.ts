@@ -7,9 +7,12 @@ const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
+<<<<<<< HEAD
 // import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 import {Roles} from "../../FE/model/Roles";
 
+=======
+>>>>>>> 544991bb1b33cb01f5b7704e0c3d200b71dd0aa9
 
 @Injectable({
   providedIn: 'root'

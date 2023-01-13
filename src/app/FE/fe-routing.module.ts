@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {StreamComponent} from "./stream/stream.component";
