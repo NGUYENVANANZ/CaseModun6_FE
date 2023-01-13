@@ -7,6 +7,9 @@ import {EmployDTO} from "../model/DTO/EmployDTO";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize, first, pipe} from "rxjs";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
+import {SocketService} from "../../service/Socket/socketService";
+import {NotificationDTO} from "../model/DTO/NotificationDTO";
 
 
 @Component({
@@ -39,15 +42,17 @@ export class ProfileComponent implements OnInit, OnChanges {
     vip: 0,
     roles: []
   }
-
+  stompClient: any
   history: EmployDTO[] = []
+  notificationCheck !: NotificationDTO;
 
   @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
 
   arrfiles: any = [];
   arrayPicture: string[] = [];
 
-  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router, private socket : SocketService) {
+    this.stompClient = socket.stompClient
   }
 
   userName = this.loginService.getUserName();
@@ -78,6 +83,7 @@ export class ProfileComponent implements OnInit, OnChanges {
       // @ts-ignore
       this.history = data;
     })
+    this.moneyBack()
   }
 
   submit() {
@@ -91,26 +97,40 @@ export class ProfileComponent implements OnInit, OnChanges {
               this.img = url;
               this.loginService.setImg(url);
               this.save(url);
+              Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                icon: "success",
+                timer: 5000,
+                title: 'upLoad thành công'
+              })
             })))
         ).subscribe();
       }
     }
   }
 
-  // submit1() {
-  //   for (let file of this.arrfiles) {
-  //     if (file != null) {
-  //       const filePath = file.name;
-  //       const fileRef = this.storage.ref(filePath);
-  //       this.storage.upload(filePath, file).snapshotChanges().pipe(
-  //         finalize(() => (fileRef.getDownloadURL().subscribe(
-  //           url => {
-  //             this.img = url;
-  //           })))
-  //       ).subscribe();
-  //     }
-  //   }
-  // }
+  moneyBack() {
+    let url = '/topic/' + this.userName;
+    const _this = this;
+    this.stompClient.subscribe(url, function (notification: any) {
+      console.log(JSON.parse(notification.body));
+      _this.notificationCheck = JSON.parse(notification.body);
+        if (_this.notificationCheck.status == 6){
+          _this.userProfile.money = _this.userProfile.money + _this.notificationCheck.money;
+          Swal.fire({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            icon: "success",
+            timer: 5000,
+            title: '+'+_this.notificationCheck.money+'$'
+          })
+        }
+
+    });
+  }
 
   uploadFileImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
@@ -130,8 +150,15 @@ export class ProfileComponent implements OnInit, OnChanges {
     // Allowing file type
     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     if (!allowedExtensions.exec(filePath)) {
-      alert('Chọn file đúng định dạng jpg, jpeg, png, gif');
-      // @ts-ignore
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: "info",
+        timerProgressBar : true,
+        timer: 5000,
+        title: 'Chọn file đúng định dạng jpg, jpeg, png, gif'
+      })
       fileInput.value = '';
       return false;
     }
