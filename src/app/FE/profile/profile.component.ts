@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import {SocketService} from "../../service/Socket/socketService";
 import {NotificationDTO} from "../model/DTO/NotificationDTO";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Img} from "../model/Img";
 
 
 @Component({
@@ -47,13 +48,19 @@ export class ProfileComponent implements OnInit, OnChanges {
   hihi: Comment[] = []
   history: EmployDTO[] = []
   notificationCheck !: NotificationDTO;
-S : number = 1
+
+  S: number = 1
+  imgX: Img[] = []
+  // @ts-ignore
+  xxx: Img = {
+    img: "https://images.pexels.com/photos/127160/pexels-photo-127160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+  }
   @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
 
   arrfiles: any = [];
   arrayPicture: string[] = [];
 
-  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router, private socket : SocketService) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router, private socket: SocketService) {
     this.stompClient = socket.stompClient
   }
 
@@ -79,6 +86,13 @@ S : number = 1
     }
     this.profile.showProfile().subscribe((data) => {
       this.userProfile = data;
+      if (data.imgs.length != 0) {
+        this.imgX = data.imgs;
+      } else {
+        this.imgX.push(this.xxx);
+        this.imgX.push(this.xxx);
+        this.imgX.push(this.xxx);
+      }
       this.check(this.userProfile);
     })
     this.profile.showHistory().subscribe((data) => {
@@ -99,6 +113,7 @@ S : number = 1
               this.img = url;
               this.loginService.setImg(url);
               this.save(url);
+              this.arrfiles = [];
               Swal.fire({
                 toast: true,
                 position: 'top',
@@ -113,23 +128,52 @@ S : number = 1
     }
   }
 
+  submit2() {
+    let index = 0;
+    for (let file of this.arrfiles) {
+      if (file != null) {
+        const filePath = file.name;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, file).snapshotChanges().pipe(
+          finalize(() => (fileRef.getDownloadURL().subscribe(
+            url => {
+              console.log(url)
+              this.imgX[index].img = url
+              this.saveImg(this.imgX[index])
+              index++;
+            })))
+        ).subscribe();
+      }
+    }
+
+    this.arrfiles = [];
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: "success",
+      timer: 5000,
+      title: 'upLoad thành công1'
+    })
+  }
+
   moneyBack() {
     let url = '/topic/' + this.userName;
     const _this = this;
     this.stompClient.subscribe(url, function (notification: any) {
       console.log(JSON.parse(notification.body));
       _this.notificationCheck = JSON.parse(notification.body);
-        if (_this.notificationCheck.status == 6){
-          _this.userProfile.money = _this.userProfile.money + _this.notificationCheck.money;
-          Swal.fire({
-            toast: true,
-            position: 'top',
-            showConfirmButton: false,
-            icon: "success",
-            timer: 5000,
-            title: '+'+_this.notificationCheck.money+'$'
-          })
-        }
+      if (_this.notificationCheck.status == 6) {
+        _this.userProfile.money = _this.userProfile.money + _this.notificationCheck.money;
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: "success",
+          timer: 5000,
+          title: '+' + _this.notificationCheck.money + '$'
+        })
+      }
 
     });
   }
@@ -140,7 +184,12 @@ S : number = 1
         this.arrfiles.push(argument)
       }
     }
-    this.submit();
+    if (this.arrfiles.length < 2) {
+      this.submit();
+    } else {
+      this.submit2();
+    }
+
   }
 
   // @ts-ignore
@@ -157,7 +206,7 @@ S : number = 1
         position: 'top',
         showConfirmButton: false,
         icon: "info",
-        timerProgressBar : true,
+        timerProgressBar: true,
         timer: 5000,
         title: 'Chọn file đúng định dạng jpg, jpeg, png, gif'
       })
@@ -170,18 +219,48 @@ S : number = 1
 
   showImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
-        this.arrfiles.push(argument)
+      this.arrfiles.push(argument)
     }
-    var oFReader = new FileReader();
-    // @ts-ignore
-    oFReader.readAsDataURL(this.arrfiles[0]);
 
-    oFReader.onload = function (oFREvent) {
-      // @ts-ignore
-      console.log(oFREvent.target.result)
-      // @ts-ignore
-      document.getElementById("uploadPreview").src = oFREvent.target.result;
-    };
+    if (this.arrfiles.length == 1) {
+      var oFReader = new FileReader();
+      oFReader.readAsDataURL(this.arrfiles[0]);
+      oFReader.onload = function (oFREvent) {
+        // @ts-ignore
+        console.log(oFREvent.target.result)
+        // @ts-ignore
+        document.getElementById("uploadPreview").src = oFREvent.target.result;
+      };
+      this.arrfiles = [];
+    } else {
+      if (this.arrfiles.length > 4) {
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: "info",
+          timerProgressBar: true,
+          timer: 5000,
+          title: 'Chọn 1-3 ảnh'
+        })
+        this.arrfiles = [];
+      } else {
+        for (let i = 0; i < 3; i++) {
+          oFReader = new FileReader();
+          oFReader.readAsDataURL(this.arrfiles[i]);
+          oFReader.onload = function (oFREvent) {
+            // @ts-ignore
+            console.log(oFREvent.target.result)
+            let id = "uploadPreview" + i
+            console.log(id)
+            // @ts-ignore
+            document.getElementById(id).src = oFREvent.target.result;
+          }
+        }
+        this.arrfiles = [];
+
+      }
+    }
   }
 
   save(img: string) {
@@ -196,6 +275,10 @@ S : number = 1
       // @ts-ignore
       document.getElementById("status").hidden = false;
       this.checkStatus(detailAccount.status)
+      // @ts-ignore
+      document.getElementById("price").hidden = false;
+      // @ts-ignore
+      document.getElementById("provideds").hidden = false;
     } else {
       // @ts-ignore
       document.getElementById("requestAdmin").hidden = false
@@ -355,6 +438,12 @@ S : number = 1
     // @ts-ignore
     document.getElementById("yeuCau1").hidden = true;
     this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  saveImg(img: Img) {
+    this.profile.saveImage(img).subscribe((data) => {
       this.userProfile = data;
     })
   }
