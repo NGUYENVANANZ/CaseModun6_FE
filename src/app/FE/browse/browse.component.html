@@ -5,7 +5,7 @@
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
           <!-- ***** Search End ***** -->
@@ -20,13 +20,16 @@
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Trang chủ</a></li>
-            <li><a routerLink="/browse" class="active">Tìm kiếm</a></li>
-            <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/home">Trang chủ</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/browse" class="active">Tìm kiếm</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/stream">Thông Báo</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -50,16 +53,15 @@
     </g>
   </svg>
   <div class="shopee-search-filter-status__text" style="color: white">Lọc tìm kiếm</div>
-</div>
 
-<div class="ageField">
-  <div class="age field-wrapper loading">
-    <div class="text-wrapper ages"><a url="/texts/forms/search-form/search-form#ages">Ages</a></div>
-    <span class="field data-wrapper">
-
+  <div style="margin-top: -150px" class="ageField">
+    <div class="age field-wrapper loading">
+      <div class="text-wrapper ages"><a url="/texts/forms/search-form/search-form#ages">Độ tuổi:</a></div>
+      <span class="field data-wrapper"> Từ
 <div class="customized-select">
-  <select name="maxage" class="data higher trackable" tabindex="2">
-<option value="20" selected="selected">20+</option>
+<select name="minage" class="data lower trackable" tabindex="2">
+<option value="15" selected="selected">18</option>
+<option value="20">20</option>
 <option value="25">25</option>
 <option value="30">30</option>
 <option value="35">35</option>
@@ -71,9 +73,53 @@
 <option value="65">65</option>
 <option value="70">70</option>
 <option value="75">75</option>
-<option value="80">80</option> </select>
+</select>
+</div>
+</span> <span class="separator text-wrapper">Đến</span>
+      <span class="field data-wrapper">
+<div class="customized-select">
+<select name="maxage" class="data higher trackable" tabindex="2">
+<option value="20">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="55">55</option>
+<option value="60">60</option>
+<option value="65">65</option>
+<option value="70">70</option>
+<option value="75">75</option>
+<option value="80" selected="selected">80+</option> </select>
 </div>
 </span>
+<br>
+      <div >Giới tính:
+      <div class="radio">
+        <input type="radio" id="radio1" name="group-radio" />
+        <label for="radio1">Nam</label>
+      </div>
+      <div style="margin-top: -37px;margin-left: 66px" class="radio">
+        <input type="radio" id="radio2" name="group-radio" />
+        <label for="radio2">Nữ</label>
+      </div>
+      </div>
+      <br>
+      <div> Thành phố:
+        <form>
+          <input type="checkbox" id="city" value="City">
+          <label for="city">HN</label>
+          <br>
+          <input type="checkbox" id="city1" value="City">
+          <label for="city">HCM</label>
+          <br>
+          <input type="checkbox" id="city2" value="City">
+          <label for="city">ĐN</label>
+        </form>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -87,9 +133,10 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Danh</em>Sách</h4>
+                  <h4>Danh Sách</h4>
                 </div>
                 <div class="row">
+
                   <div class="col-lg-3 col-sm-6" *ngFor="let t of fullName|paginate: { itemsPerPage: 4, currentPage: S},let i = index" (mouseenter)="check(t.id + 'all')" (mouseleave)="check1(t.id + 'all')">
                     <a [routerLink]="'/detail/'+t.id"><div class="item">
 

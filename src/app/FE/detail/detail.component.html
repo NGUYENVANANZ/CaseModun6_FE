@@ -4,23 +4,24 @@
       <div class="col-12">
         <nav class="main-nav">
           <a href="/home" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <ul class="nav">
-            <li><a routerLink="/home">Trang chủ</a></li>
-            <li><a routerLink="/browse">Tìm kiếm</a></li>
-            <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
-                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            <li class="main-border-button"><a style="color: white" routerLink="/home" class="active">Trang chủ</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/browse">Tìm kiếm</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/stream">Thông Báo</a></li>
+            <li class="main-border-button"><a style="color: white" routerLink="/profile">Trang cá nhân <img src="{{img}}" alt=""
+                                                                                                            style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
             </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" (click)="logOut()">Đăng xuất</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -43,7 +44,27 @@
                 <div class="col-lg-4">
                   <img src="{{detail.img}}"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
+
+                  <br><br>
+
+                  <div
+                    style="margin-left: -20px ;height: 130px;width: 330px;border-radius: 23px;background-color: cadetblue">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 100px; height: 100px;margin-left: 10px; margin-top: 15px">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 100px; height: 100px; position: absolute; left: 110px; margin-top: 15px">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 100px; height: 100px; position: absolute;right: 5px; margin-top: 15px">
+
+                  </div>
                 </div>
+
                 <div class="col-lg-4 align-self-center" style="margin-top: -50px">
                   <div class="main-info header-text" style="margin-left: 60px">
                     <div class="modal" tabindex="-1" role="dialog">
@@ -54,43 +75,48 @@
                     <br>
                     <h4 style="color: darkviolet">Đánh giá:</h4>
                     <div id="rating">
-                      <input type="radio" id="star5" name="rating" value="5" />
-                      <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                      <input type="radio" id="star5" name="rating" value="5"/>
+                      <label class="full" for="star5" title="Awesome - 5 stars"></label>
 
-                      <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                      <input type="radio" id="star4half" name="rating" value="4 and a half"/>
                       <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 
-                      <input type="radio" id="star4" name="rating" value="4" />
-                      <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                      <input type="radio" id="star4" name="rating" value="4"/>
+                      <label class="full" for="star4" title="Pretty good - 4 stars"></label>
 
-                      <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                      <input type="radio" id="star3half" name="rating" value="3 and a half"/>
                       <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 
-                      <input type="radio" id="star3" name="rating" value="3" />
-                      <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star3" name="rating" value="3"/>
+                      <label class="full" for="star3" title="Meh - 3 stars"></label>
 
-                      <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                      <input type="radio" id="star2half" name="rating" value="2 and a half"/>
                       <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 
-                      <input type="radio" id="star2" name="rating" value="2" />
-                      <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                      <input type="radio" id="star2" name="rating" value="2"/>
+                      <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
 
-                      <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                      <input type="radio" id="star1half" name="rating" value="1 and a half"/>
                       <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 
-                      <input type="radio" id="star1" name="rating" value="1" />
-                      <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                      <input type="radio" id="star1" name="rating" value="1"/>
+                      <label class="full" for="star1" title="Sucks big time - 1 star"></label>
 
-                      <input type="radio" id="starhalf" name="rating" value="half" />
+                      <input type="radio" id="starhalf" name="rating" value="half"/>
                       <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </div>
                     <br><br>
                     <h4 style="color: darkviolet">Lượt thuê: {{hires}}</h4>
                   </div>
-
+                  <!--                  <div>-->
+                  <span id="rangeValue" [innerText]="value+'h'"></span>
+                  <Input class="range" type="range" name="value" ngDefaultControl [(ngModel)]="value" min="0" max="12" (change)="changevValue()">
+                  <span id="rangeValue1" [innerText]="money+'$'"></span>
                   <div class="main-border-button" style="margin-top: 80px;margin-left: 100px">
-                    <a style="color: darkviolet">Thuê</a>
+                    <a style="color: darkviolet;margin-top: -90px;" (click)="clickHires(detail.id)">Thuê</a>
+
                   </div>
+
 
                   <!--                    <div class="main-border-button" id="requestAdmin" hidden>-->
                   <!--                      <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>-->
@@ -102,7 +128,12 @@
                   <!--                    </div>-->
                 </div>
 
-                <div style="margin-top: -30px" class="col-lg-4 fa-align-center">
+
+
+
+
+                <div style="margin-top: -30px;color: #1f2122" class="col-lg-4 fa-align-center">
+
                   <ul>
                     <li>Quốc gia: <span>{{detail.nation}}</span></li>
                     <li>Thành phố: <span>{{detail.city}}</span></li>
@@ -143,17 +174,25 @@
                           <!--                            <h2 style="color: darkviolet">Yêu cầu:</h2>-->
                           <!--                          </div>-->
 
-                          <div style="margin-top: -30px" class="col-lg-12 fa-align-center">
+                          <div style="margin-top: -30px;color: #1f2122" class="col-lg-12 fa-align-center">
                             <ul>
-                              <li ><h2 style="color: darkviolet" >Dịch vụ : </h2><span *ngFor="let l of detail.provideds" style="float: left"><h6 style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span></li>
+                              <li><h2 style="color: darkviolet">Dịch vụ : </h2><span *ngFor="let l of detail.provideds"
+                                                                                     style="float: left"><h6
+                                style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
+                              </li>
                               <br>
-                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}" style="color: #DEE1E6">{{detail.faceLink}}</a></li>
+                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}"
+                                                                                style="color: #DEE1E6">{{detail.faceLink}}</a>
+                              </li>
                               <br>
-                              <li><h2 style="color: darkviolet">Mô tả: </h2><p style="color: #DEE1E6">{{detail.moTa}}</p></li>
+                              <li><h2 style="color: darkviolet">Mô tả: </h2>
+                                <p style="color: #DEE1E6">{{detail.moTa}}</p></li>
                               <br>
-                              <li><h2 style="color: darkviolet">Sở thích: </h2><p style="color: #DEE1E6">{{detail.soThich}}</p></li>
+                              <li><h2 style="color: darkviolet">Sở thích: </h2>
+                                <p style="color: #DEE1E6">{{detail.soThich}}</p></li>
                               <br>
-                              <li><h2 style="color: darkviolet">Yêu cầu: </h2><p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
+                              <li><h2 style="color: darkviolet">Yêu cầu: </h2>
+                                <p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
                               <br>
                               <li>
                                 <div class="heading-section">
@@ -189,3 +228,4 @@
     </div>
   </div>
 </footer>
+

@@ -9,7 +9,6 @@ import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +31,10 @@ export class LoginService {
   }
   register(signForm: any): Observable<any>{
     return this.http.post<any>(API_URL + '/register',signForm);
+  }
+
+  getallgender():Observable<any>{
+    return this.http.get<any>(API_URL + '/showallgender');
   }
 
   checkRoles(): Observable<boolean> {

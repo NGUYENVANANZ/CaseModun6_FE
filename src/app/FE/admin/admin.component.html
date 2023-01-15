@@ -9,9 +9,9 @@
           <ul class="nav">
             <li><a routerLink="/Admin" class="active">List Account</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
-            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>          </ul>
+            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li></ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -25,15 +25,17 @@
   <div class="col-lg-12">
     <div class="page-content">
       <div class="heading-section">
-        <button type="button" class="btn btn-outline-danger" routerLink="/AccountUser">List Account User</button>
+
+        <button type="button" class="btn btn-outline-danger" routerLink="/AccountUser">Người DDV</button>
         <br>
         <br>
-        <h4>AccountProvider</h4>
+        <h4>Danh sách nhà cung cấp</h4>
         <div class="most-popular">
           <div class="row">
             <div class="col-lg-12">
               <div class="row">
-                <div class="col-lg-3 col-sm-6" *ngFor="let t of account|paginate: { itemsPerPage: 4, currentPage: S}, index as i">
+                <div class="col-lg-3 col-sm-6"
+                     *ngFor="let t of account|paginate: { itemsPerPage: 4, currentPage: S}, index as i">
                   <div class="item">
                     <div>
                       <div *ngIf = " t.detailAccount.vip == 1">
@@ -47,37 +49,40 @@
                         <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</button>
                       </div>
                     </div>
-                    <br>
+                    <div>
                     <br>
                     <div>
-                      <div *ngIf = "t.status == 1">
+                      <div *ngIf="t.status == 1">
                         <a type="button" class="btn btn-dark" id="van13" (click)="show1()" (click)="lock(t.id)">🔓</a>
                       </div>
-                      <div  *ngIf = "t.status == 0">
+                      <div *ngIf="t.status == 0">
                         <a type="button" class="btn btn-dark" id="van12" (click)="unlock(t.id)">🔒</a>
                       </div>
                     </div>
                     <ul>
                     </ul>
-                    <img src="{{t.img}}" alt="" style="width: 150px; height: 150px;border-radius:50%; margin-right: 50px;" >
+                    <img src="{{t.img}}" alt=""
+                         style="width: 150px; height: 150px;border-radius:50%; margin-right: 50px;">
                     <br>
                     <h4>{{t.fullName}}</h4>
                     <br>
                     <h4>Số dư:</h4><h4>{{t.money}}$</h4>
+
+                    <span>{{t.MoTa}}</span>
                     <br>
-                    </div>
-                </div>
-                </div>
-                <div class="text-center">
+                    <br>
+                  </div>
                 </div>
               </div>
+              <div class="text-center">
+              </div>
             </div>
-            <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
           </div>
+          <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
         </div>
-        <div class="col-lg-12">
-          <div class="main-button">
-          </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="main-button">
         </div>
       </div>
     </div>
@@ -99,6 +104,8 @@
     </div>
   </div>
 </div>
+</div>
+
 <div class="text-center">
 </div>
 <footer>
@@ -106,8 +113,10 @@
     <div class="row">
       <div class="col-lg-12">
         <p>Copyright © 2023 <a>Cyborg Gaming</a> Company. All rights reserved.
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
+          Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
       </div>
     </div>
   </div>
 </footer>
+</div>

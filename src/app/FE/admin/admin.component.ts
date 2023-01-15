@@ -37,6 +37,10 @@ export class AdminComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
+    if (this.token != "") {
+      // @ts-ignore
+      document.getElementById("logout").hidden = false;
+    }
     this.adminService.showallAccounts3().subscribe((data) => {
       // @ts-ignore
       this.account = data;
@@ -71,19 +75,15 @@ export class AdminComponent implements OnInit,OnChanges {
     });
   }
 
-  logOut(){
-    this.loginService.logOut();
-  }
-
   lock(id : number){
-    this.adminService.lock(id).subscribe((data) => {
+    this.adminService.lock1(id).subscribe((data) => {
       // @ts-ignore
       this.account = data;
     })
   }
 
   unlock(id : number){
-    this.adminService.unlock(id).subscribe((data) => {
+    this.adminService.unlock1(id).subscribe((data) => {
       // @ts-ignore
       this.account = data;
     })
@@ -122,6 +122,18 @@ export class AdminComponent implements OnInit,OnChanges {
   check1(n: string) {
     // @ts-ignore
     document.getElementById(n).hidden = true;
+  }
+
+
+  checkVip(vip: number) {
+    if (vip == 0) {
+      // @ts-ignore
+      document.getElementById("manh").hidden = false;
+    }
+  }
+
+  logOut() {
+    this.loginService.logOut();
   }
 
 }

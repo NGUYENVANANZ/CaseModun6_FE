@@ -10,56 +10,64 @@ import {StreamComponent} from "./stream/stream.component";
 import {DetailComponent} from "./detail/detail.component";
 import {BrowseComponent} from "./browse/browse.component";
 import {AdminComponent} from "./admin/admin.component";
-import {RegisterComponent} from "../Login-Register/register/register.component";
 import {NotificationComponent} from "./notification/notification.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
-import {AccountUserComponent} from "./accountuser/account-user.component";
-import {HomeGuard} from "./home/home.guard";
+import {TestComponent} from "./test/test.component";
+import {AdminGuard} from "./admin/admin.guard";
 import {AccountuserGuard} from "./accountuser/accountuser.guard";
+import {AccountUserComponent} from "./accountuser/account-user.component";
+import {ProfileAdminGuard} from "./profile-admin/profile-admin.guard";
+import {HomeGuard} from "./home/home.guard";
 import {ProfileGuard} from "./profile/profile.guard";
 import {StreamGuard} from "./stream/stream.guard";
-import {BrowseGuard} from "./browse/browse.guard";
-import {AdminGuard} from "./admin/admin.guard";
-import {NotificationGuard} from "./notification/notification.guard";
-import {ProfileAdminGuard} from "./profile-admin/profile-admin.guard";
 import {DetailGuard} from "./detail/detail.guard";
-import {LoginComponent} from "../Login-Register/login/login.component";
 import {ThongBaoComponent} from "../thong-bao/thong-bao.component";
 // import {RouterModule, Routes} from "@angular/router";
+import {BrowseGuard} from "./browse/browse.guard";
+import {NotificationGuard} from "./notification/notification.guard";
+import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
     path: '', component: LoginComponent
   },
+  {path: 'register', component: RegisterComponent},
   {
-    path: 'admin', component: AdminComponent, canActivate : [AdminGuard]
+    path: 'test', component: TestComponent
   },
   {
-    path: 'Notification', component: NotificationComponent, canActivate : [NotificationGuard]
+    path: 'admin', component: AdminComponent, canActivate: [AdminGuard]
   },
   {
-    path: 'AccountUser', component: AccountUserComponent, canActivate : [AccountuserGuard]
+    path: 'Notification', component: NotificationComponent, canActivate: [NotificationGuard]
   },
   {
-    path: 'profileAdmin', component: ProfileAdminComponent, canActivate : [ProfileAdminGuard]
+    path: 'AccountUser', component: AccountUserComponent, canActivate: [AccountuserGuard]
   },
   {
     path: 'ThongBao', component: ThongBaoComponent
   },
   {
-    path: 'home', component: HomeComponent, canActivate : [HomeGuard]
+    path: 'home', component: HomeComponent, canActivate: [HomeGuard]
   },
   {
-    path: 'profile', component: ProfileComponent, canActivate : [ProfileGuard]
+    path: 'profileAdmin', component: ProfileAdminComponent, canActivate: [ProfileAdminGuard]
   },
   {
-    path: 'stream', component: StreamComponent, canActivate : [StreamGuard]
+    path: 'home', component: HomeComponent, canActivate: [HomeGuard]
   },
   {
-    path: 'detail/:id', component: DetailComponent, canActivate : [DetailGuard]
+    path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard]
   },
   {
-    path: 'browse', component: BrowseComponent, canActivate : [BrowseGuard]
+    path: 'stream', component: StreamComponent, canActivate: [StreamGuard]
+  },
+  {
+    path: 'detail/:id', component: DetailComponent, canActivate: [DetailGuard]
+  },
+  {
+    path: 'browse', component: BrowseComponent, canActivate: [BrowseGuard]
   },
   {
     path: 'register', component: RegisterComponent
@@ -70,4 +78,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FeRoutingModule { }
+export class FeRoutingModule {
+}

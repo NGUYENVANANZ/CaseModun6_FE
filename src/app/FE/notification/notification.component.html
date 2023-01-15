@@ -10,7 +10,7 @@
             <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -29,9 +29,9 @@
       <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
         <ul>
           <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>
-          <li><h4>Tên</h4><span>{{x.userName}}</span></li>
-          <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-          <li style="text-align: center"><h4>Tổng đơn</h4><span >{{x.price}}$</span></li>
+          <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>
+          <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>
+          <li style="text-align: center"><h4>Tổng đơn</h4><span style="color: #b6effb">{{x.price}}$</span></li>
         </ul>
       </div>
       <pagination-controls (pageChange)="S = ($event)"></pagination-controls>

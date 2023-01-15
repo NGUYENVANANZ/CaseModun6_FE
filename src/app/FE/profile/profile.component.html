@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
 <header class="header-area header-sticky">
   <div class="container">
     <div class="row">
@@ -5,25 +8,30 @@
         <nav class="main-nav">
           <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <!-- ***** Logo End ***** -->
           <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
-              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle" (keyup.enter)="onInput($event)"/>
+              <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
+                     (keyup.enter)="onInput($event)"/>
             </form>
           </div>
           <!-- ***** Search End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
-            <li><a routerLink="/home" >Trang chủ</a></li>
-            <li><a routerLink="/browse" >Tìm kiếm</a></li>
+
+            <li><a routerLink="/home">Trang chủ</a></li>
+            <li><a routerLink="/browse">Tìm kiếm</a></li>
             <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt=""
+                                                                           style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink; width: 150px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -42,42 +50,78 @@
         <!-- ***** Banner Start ***** -->
         <div class="row">
           <div class="col-lg-12">
-            <div class="main-profile ">
+            <div class="main-profile">
               <div class="row">
                 <div class="col-lg-4">
-                  <img src="{{img}}"
+                  <img src="{{img}}" id="uploadPreview"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
-                    <input type="file" id="file" style="position: static; margin-top: 20px; margin-left: 100px; color: #1F2122" #uploadFile1  class="form-control" multiple="multiple">
+
+                  <input type="file" id="file" (change)="showImg()"
+                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122" #uploadFile1
+                         class="form-control" multiple="multiple">
                   <div class="main-border-button">
-                    <a style="color: plum" (click)="uploadFileImg()">Lưu</a>
+                    <a style="margin-left: 85px;margin-top:10px;color: plum"  (click)="uploadFileImg()">Lưu</a>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <div class="main-info header-text">
-                      <div class="modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                        </div>
+                    <div class="modal" tabindex="-1" role="dialog">
+                      <div class="modal-dialog" role="document">
                       </div>
-                    <h4 [innerText]="'Tên: '+ userName"></h4>
+                    </div>
+
+                    <div style="margin-top: -250px">
+                      <h2 style="color: darkviolet;font-size: 30px" [innerText]="'Tên: '+ userName"></h2>
+                    </div>
+
                     <div class="main-border-button" id="requestAdmin" hidden>
                       <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
-                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white" (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
+                      <a id="requestAdmin2" hidden style="background-color: hotpink; color: white"
+                         (click)="requsetAdmin2()">Đã gửi yêu cầu đến Admin</a>
                     </div>
                     <div class="main-border-button" id="status" hidden>
-                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt đầu CCDV</a>
-                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm dừng CCDV</a>
+                      <a id="status1" hidden style="background-color: green; color: white" (click)="editProfile1()">Bắt
+                        đầu CCDV</a>
+                      <a id="status2" hidden style="background-color: red; color: white" (click)="editProfile2()">Tạm
+                        dừng CCDV</a>
                     </div>
                   </div>
+
+                  <br><br>
+
+                  <div
+                    style="height: 100px;border-radius: 23px;background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 80px; height: 80px;margin-left: 10px; margin-top: 10px">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 80px; height: 80px; position: absolute; left: 120px; margin-top: 10px">
+
+                    <img src="{{img}}"
+                         alt=""
+                         style="border-radius: 23px; width: 80px; height: 80px; position: absolute;right: 25px; margin-top: 10px">
+
+                  </div>
+
                 </div>
                 <div class="col-lg-4 align-self-center">
-                  <ul>
-                    <li>Tên: <span [innerText]="userProfile.fullName"></span></li>
-                    <li>Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
-                    <li>Giới tính: <span [innerText]="userProfile.gender"></span></li>
-                    <li>Số dư: <span [innerText]="userProfile.money + '$'"></span></li>
+                  <ul style=" background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
+
+                    <li style="color: darkblue">Giới tính: <span [innerText]="userProfile.gender"></span></li>
+                    <li style="color: darkblue">Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
+                    <li style="color: darkblue">Quốc gia: <span>{{userProfile.nation}}</span></li>
+                    <li style="color: darkblue">Thành phố: <span>{{userProfile.city}}</span></li>
+                    <li style="color: darkblue">Chiều cao: <span>{{userProfile.height}}cm</span></li>
+                    <li style="color: darkblue">Cân nặng: <span>{{userProfile.weight}}kg</span></li>
+                    <li style="color: darkblue">Số dư: <span [innerText]="userProfile.money + '$'"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <a href="#" style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Sửa</a>
+                    <a href="#" data-toggle="modal" data-target="#rotateModal"
+                       style="color: white;position: static;margin-left: 110px;margin-top: -20px;background-color: #27292a;">Sửa</a>
+
                   </div>
                 </div>
               </div>
@@ -87,6 +131,83 @@
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="heading-section">
+                          <div style="margin-top: -30px;color: #1f2122" class="col-lg-12 fa-align-center">
+                            <ul>
+                              <li><h2 style="color: darkviolet">Dịch vụ : </h2>
+                                <span
+                                  *ngFor="let l of userProfile.provideds" style="float: left"><h6
+                                  style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
+
+                                <div class="main-border-button">
+                                  <a href="#"
+                                     style="color: darkviolet;position: static;margin-left: 250px;margin-top: -15px;background-color: white;">Sửa</a>
+                                </div>
+
+                              </li>
+
+                              <li><h2 style="color: darkviolet">LinkFB: </h2>
+                                <div class="main-border-button">
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showLinkFace()">Sửa</a>
+                                </div>
+
+                                <a id="face" href="{{userProfile.faceLink}}"
+                                                                                style="color: #DEE1E6">{{userProfile.faceLink}}</a>
+                                <div class="form-outline w-75 mb-4">
+                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.faceLink" id="face1" hidden (keyup.enter)="hideFaceLink($event)"></textarea>
+                                </div>
+
+
+                              </li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Mô tả: </h2>
+                                <div class="main-border-button">
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;" (click)="showMota();">Sửa</a>
+                                </div>
+                                <p id="mota" style="color: #DEE1E6">{{userProfile.moTa}}</p>
+
+                                <div class="form-outline w-75 mb-4">
+                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.moTa" id="mota1" hidden (keyup.enter)="hideMoTa($event)"></textarea>
+                                </div>
+
+                              </li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Sở thích: </h2>
+                                <div class="main-border-button">
+                                  <a (click)="showSoThich()"
+                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;">Sửa</a>
+                                </div>
+                                <p id="sothich" style="color: #DEE1E6">{{userProfile.soThich}}</p>
+                                <div class="form-outline w-75 mb-4">
+                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.soThich" id="sothich1" hidden (keyup.enter)="hideSoThich($event)"></textarea>
+                                </div>
+
+                              </li>
+                              <br>
+                              <li><h2 style="color: darkviolet">Yêu cầu: </h2>
+                                <div class="main-border-button">
+                                  <a (click)="showYeuCau()"
+                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -100px;background-color: white;">Sửa</a>
+                                </div>
+
+                                <p id="yeuCau" style="color: #DEE1E6">{{userProfile.yeuCau}}</p>
+
+                                <div class="form-outline w-75 mb-4">
+                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.yeuCau" id="yeuCau1" hidden (keyup.enter)="hideYeuCau($event)"></textarea>
+                                </div>
+
+                              </li>
+                              <br>
+                              <li>
+                                <div class="heading-section">
+                                  <h4>Bình luận :</h4>
+                                  <h3  style="color: #b6effb">
+                                  sao em này trông ngon thế:))
+                                  </h3>
+                                </div>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -99,18 +220,21 @@
       </div>
       <!-- ***** Banner End ***** -->
       <!-- ***** Gaming Library Start ***** -->
+
       <div class="gaming-library profile-library">
-        <div class="col-lg-12">
+        <div
+          style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
+          class="col-lg-12">
           <div class="heading-section">
             <h4>Lịch sử thuê</h4>
           </div>
           <div class="item" *ngFor="let x of history">
-            <ul >
+            <ul>
               <li><img src="{{x.img}}" alt=""
                        class="templatemo-item"></li>
               <li><h4>Tên</h4><span>{{x.userName}}</span></li>
               <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-              <li style="text-align: center"><h4>Tổng đơn</h4><span >{{x.price}}$</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
             </ul>
           </div>
         </div>
@@ -119,6 +243,64 @@
     </div>
   </div>
 </div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade-rotate" id="rotateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div style="background-image: linear-gradient(to right, #004085, rgb(255 89 130))" class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin-left: 10px" class="modal-title" id="myModalLabel">Sửa thông tin</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form style="width: 450px" Sửa>
+          <div class="form-group">
+            <label>Tên</label>
+            <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
+          </div>
+          <div style="margin-left: 20px" class="form-group">
+            <div>Giới tính:
+              <input type="radio" id="css" name="gender" value="Nam" checked="{{userProfile.gender == 'Nam'}}"
+                     [(ngModel)]="userProfile.gender">
+              <label for="css">Nam</label>
+              <br>
+              <input style="margin-left: 60px" type="radio" id="javascript" name="gender" value="Nu"
+                     checked="{{userProfile.gender == 'Nu'}}" [(ngModel)]="userProfile.gender">
+              <label for="javascript">Nữ</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày sinh</label>
+            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.birthday" name="birthday">
+          </div>
+          <div class="form-group">
+            <label>Quốc gia</label>
+            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.nation" name="nation">
+          </div>
+          <div class="form-group">
+            <label>Thành phố</label>
+            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.city" name="city">
+          </div>
+          <div class="form-group">
+            <label>Chiều cao</label>
+            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.height" name="height">
+          </div>
+          <div class="form-group">
+            <label>Cân nặng</label>
+            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.weight" name="weight">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="saveDetail()" data-dismiss="modal">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container">
     <div class="row">

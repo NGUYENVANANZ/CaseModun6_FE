@@ -5,8 +5,12 @@ import {Roles} from "../model/Roles";
 import {LoginService} from "../../service/login/login.service";
 import {EmployDTO} from "../model/DTO/EmployDTO";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {finalize} from "rxjs";
+import {finalize, first, pipe} from "rxjs";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
+import {SocketService} from "../../service/Socket/socketService";
+import {NotificationDTO} from "../model/DTO/NotificationDTO";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -26,8 +30,8 @@ export class ProfileComponent implements OnInit, OnChanges {
     moTa: "",
     yeuCau: "",
     fullName: "",
-    birthday: new Date(1 - 1 - 1111),
-    joinDate: new Date(1 - 1 - 1111),
+    birthday: new Date(),
+    joinDate: new Date(),
     money: 0,
     img: "",
     imgs: [],
@@ -39,15 +43,17 @@ export class ProfileComponent implements OnInit, OnChanges {
     vip: 0,
     roles: []
   }
-
+  stompClient: any
   history: EmployDTO[] = []
+  notificationCheck !: NotificationDTO;
 
   @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
 
   arrfiles: any = [];
   arrayPicture: string[] = [];
 
-  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private  router :Router) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage, private router: Router, private socket : SocketService) {
+    this.stompClient = socket.stompClient
   }
 
   userName = this.loginService.getUserName();
@@ -78,6 +84,7 @@ export class ProfileComponent implements OnInit, OnChanges {
       // @ts-ignore
       this.history = data;
     })
+    this.moneyBack()
   }
 
   submit() {
@@ -91,15 +98,44 @@ export class ProfileComponent implements OnInit, OnChanges {
               this.img = url;
               this.loginService.setImg(url);
               this.save(url);
+              Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                icon: "success",
+                timer: 5000,
+                title: 'upLoad thành công'
+              })
             })))
         ).subscribe();
       }
     }
   }
 
+  moneyBack() {
+    let url = '/topic/' + this.userName;
+    const _this = this;
+    this.stompClient.subscribe(url, function (notification: any) {
+      console.log(JSON.parse(notification.body));
+      _this.notificationCheck = JSON.parse(notification.body);
+        if (_this.notificationCheck.status == 6){
+          _this.userProfile.money = _this.userProfile.money + _this.notificationCheck.money;
+          Swal.fire({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            icon: "success",
+            timer: 5000,
+            title: '+'+_this.notificationCheck.money+'$'
+          })
+        }
+
+    });
+  }
+
   uploadFileImg() {
     for (const argument of this.avatarDom1?.nativeElement.files) {
-      if (this.fileValidation(argument)){
+      if (this.fileValidation(argument)) {
         this.arrfiles.push(argument)
       }
     }
@@ -108,22 +144,46 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   // @ts-ignore
   function // @ts-ignore
-  fileValidation(argument : any) {
+  fileValidation(argument: any) {
     var fileInput = argument;
     // @ts-ignore
     var filePath = fileInput.name;
     // Allowing file type
     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
     if (!allowedExtensions.exec(filePath)) {
-      alert('Chọn file ảnh');
-      // @ts-ignore
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: "info",
+        timerProgressBar : true,
+        timer: 5000,
+        title: 'Chọn file đúng định dạng jpg, jpeg, png, gif'
+      })
       fileInput.value = '';
       return false;
     }
     return true;
   }
 
-  save(img : string){
+
+  showImg() {
+    for (const argument of this.avatarDom1?.nativeElement.files) {
+        this.arrfiles.push(argument)
+    }
+    var oFReader = new FileReader();
+    // @ts-ignore
+    oFReader.readAsDataURL(this.arrfiles[0]);
+
+    oFReader.onload = function (oFREvent) {
+      // @ts-ignore
+      console.log(oFREvent.target.result)
+      // @ts-ignore
+      document.getElementById("uploadPreview").src = oFREvent.target.result;
+    };
+  }
+
+  save(img: string) {
     this.profile.save(img).subscribe((data) => {
       // @ts-ignore
       this.userProfile = data;
@@ -210,10 +270,91 @@ export class ProfileComponent implements OnInit, OnChanges {
     })
   }
 
+  saveDetail() {
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+
   // @ts-ignore
   onInput(event) {
     localStorage.setItem("search", event.target.value)
     this.router.navigate(["/browse"]);
   }
 
+
+  showLinkFace() {
+    // @ts-ignore
+    document.getElementById("face").hidden = true;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = false;
+  }
+
+  showMota() {
+    // @ts-ignore
+    document.getElementById("mota").hidden = true;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = false;
+  }
+
+  showSoThich() {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = true;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = false;
+  }
+
+  showYeuCau() {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = true;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = false;
+  }
+
+  // @ts-ignore
+  hideFaceLink(event) {
+    // @ts-ignore
+    document.getElementById("face").hidden = false;
+
+    // @ts-ignore
+    document.getElementById("face1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideMoTa(event) {
+    // @ts-ignore
+    document.getElementById("mota").hidden = false;
+    // @ts-ignore
+    document.getElementById("mota1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideSoThich(event) {
+    // @ts-ignore
+    document.getElementById("sothich").hidden = false;
+    // @ts-ignore
+    document.getElementById("sothich1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
+  // @ts-ignore
+  hideYeuCau(event) {
+    // @ts-ignore
+    document.getElementById("yeuCau").hidden = false;
+    // @ts-ignore
+    document.getElementById("yeuCau1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
 }

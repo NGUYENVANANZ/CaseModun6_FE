@@ -4,7 +4,7 @@
       <div class="col-12">
         <nav class="main-nav">
           <a href="/profileAdmin" class="logo">
-            <img src="assets/images/logo.png" alt="">
+            <img src="../../../assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
             <li><a routerLink="/admin" >List Account</a></li>
@@ -12,7 +12,7 @@
             <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -58,13 +58,14 @@
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
-                  <ul>
-                    <li>Name <span [innerText]="userProfile.fullName"></span></li>
-                    <li>Date <span [innerText]="userProfile.birthday"></span></li>
-                    <li>Gender <span [innerText]="userProfile.gender"></span></li>
+                  <ul style=" background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
+                    <li style="color: darkblue">name <span [innerText]="userProfile.fullName"></span></li>
+                    <li style="color: darkblue">Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
+                    <li style="color: darkblue">Giới tính: <span [innerText]="userProfile.gender"></span></li>
                   </ul>
                   <div class="main-border-button">
-                    <a style="position: static;margin-left: 110px;margin-top: -20px;background-color: aliceblue;">Edit</a>
+                    <a href="#" data-toggle="modal" data-target="#rotateModal"
+                       style="color: white;position: static;margin-left: 110px;margin-top: -20px;background-color: #27292a;">Sửa</a>
                   </div>
                 </div>
               </div>

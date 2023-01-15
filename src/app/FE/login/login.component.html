@@ -28,8 +28,6 @@
           </div>
           <p *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" style="color: red">Không
             được để trống</p>
-          <p id="status" hidden style="color: red">Tài khoản của bạn đã bị khóa</p>
-
           <div class="form-group">
             <input type="submit" value="Đăng nhập" class="btn float-right login_btn">
           </div>
@@ -42,16 +40,8 @@
           </div>
           <div class="d-flex justify-content-center">
             <a href="#">Quên mật khẩu?</a>
-<!--      <div class="card-footer">-->
-<!--        <div class="d-flex justify-content-center links">-->
-<!--          Không có tài khoản?<a href="/register">Đăng kí</a>-->
-<!--        </div>-->
-<!--        <div class="d-flex justify-content-center">-->
-<!--          <a href="#">Quên mật khẩu?</a>-->
-<!--        </div>-->
-<!--      </div>-->
         </div>
-      </div>
     </div>
   </div>
+</div>
 </div>
