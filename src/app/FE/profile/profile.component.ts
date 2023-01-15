@@ -44,9 +44,10 @@ export class ProfileComponent implements OnInit, OnChanges {
     roles: []
   }
   stompClient: any
+  hihi: Comment[] = []
   history: EmployDTO[] = []
   notificationCheck !: NotificationDTO;
-
+S : number = 1
   @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
 
   arrfiles: any = [];

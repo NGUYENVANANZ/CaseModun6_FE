@@ -201,13 +201,16 @@
                               <br>
                               <li>
                                 <div class="heading-section">
-                                  <h4>Bình luận :</h4>
-                                  <h3  style="color: #b6effb">
-                                  sao em này trông ngon thế:))
-                                  </h3>
+                                  <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
+                                    <ul>
+                                      <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>
+                                      <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>
+                                      <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>
+                                   </ul>
+                                  </div>
                                 </div>
+                              </li>
                             </ul>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -311,3 +314,4 @@
     </div>
   </div>
 </footer>
+</div>

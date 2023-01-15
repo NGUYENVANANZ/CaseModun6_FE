@@ -6,6 +6,7 @@ import {DetailAccount} from "../../FE/model/DetailAccount";
 import {EmployDTO} from "../../FE/model/DTO/EmployDTO";
 import {Employ} from "../../FE/model/Employ";
 import {ShowProfileDTO} from "../../FE/model/DTO/ShowProfileDTO";
+import {Comments} from "../../FE/model/Comments";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -56,5 +57,8 @@ export class ProfileService {
   }
   detail(id:number): Observable<DetailAccount> {
     return this.http.get<DetailAccount>(`${API_URL}/detail/${id}`);
+  }
+  ShowComment(id: number): Observable<Comments> {
+    return this.http.get<Comments>('/ShowComment')
   }
 }
