@@ -194,13 +194,19 @@
                               <li><h2 style="color: darkviolet">Yêu cầu: </h2>
                                 <p style="color: #DEE1E6">{{detail.yeuCau}}</p></li>
                               <br>
-                              <li>
-                                <div class="heading-section">
-                                  <h4>Bình luận :</h4>
-                                </div>
+                              <h4 style="color: darkviolet">Bình luận :</h4>
                             </ul>
+                            <br>
+                            <div class="heading-section" style="margin-top: -30px;color: #1a1e21" *ngFor="let t of detail.comments">
+                                  <ul style="color: #ec6090">
+                                    <br>
+<!--                                    <p style="color: #DEE1E6" >{{detail.fullName.}}</p>-->
+                                    <p style="color: #DEE1E6" >{{t.star}}</p>
+                                    <p style="color: #DEE1E6" >{{t.text}}</p>
+                                  </ul>
+                                </div>
+                                </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -211,12 +217,8 @@
           </div>
         </div>
       </div>
-      <!-- ***** Banner End ***** -->
-      <!-- ***** Gaming Library Start ***** -->
-      <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
-</div>
 <footer>
   <div class="container">
     <div class="row">
