@@ -61,4 +61,7 @@ export class ProfileService {
   ShowComment(id: number): Observable<Comments> {
     return this.http.get<Comments>('/ShowComment')
   }
+  saveImage(img:any): Observable<DetailAccount> {
+    return this.http.post<DetailAccount>(`${API_URL}/editImg`, img);
+  }
 }

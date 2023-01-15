@@ -91,5 +91,29 @@ export class SocketService {
     return this.http.get<NotificationDTO>(API_URL + '/setSatus6/' + id);
   }
 
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+  }
 
+  setStatus7(id_CCDV: any, id_NDDV: any, id_notification: any, money: any) {
+    this.stompClient.send(
+      '/gkz/setSatus7',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': id_notification, 'money': money})
+    );
+  }
+
+  newStatus7(id_CCDV: any, id_NDDV: any, id_notification: any, money: any) {
+    this.stompClient.send(
+      '/gkz/newSatus7',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': id_notification, 'money': money})
+    );
+  }
+
+  setSatus8(id: number): Observable<NotificationDTO> {
+    return this.http.get<NotificationDTO>(API_URL + '/setSatus8/' + id);
+  }
 }

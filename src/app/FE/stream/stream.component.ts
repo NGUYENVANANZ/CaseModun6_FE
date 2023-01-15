@@ -66,7 +66,7 @@ export class StreamComponent implements OnInit, OnChanges {
             showConfirmButton: false,
             icon: "success",
             timer: 5000,
-            title: '+'+_this.notificationCheck.money+'$'
+            title: '+'+_this.notificationCheck.money*90/100+'$'
           })
         }
       }
@@ -112,6 +112,28 @@ export class StreamComponent implements OnInit, OnChanges {
       }
     })
     this.socket.setStatus6x(id_CCDV, localStorage.getItem("id"), id_answer, money)
+  }
+
+  cancel(id_CCDV: number, id_notification: number, id_answer: number, money: number){
+    this.socket.setSatus8(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.newStatus7(id_CCDV, localStorage.getItem("id"), id_answer, money)
+  }
+
+  cancel1(id_CCDV: number, id_notification: number, id_answer: number, money: number){
+    this.socket.setSatus8(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.setStatus7(id_CCDV, localStorage.getItem("id"), id_answer, money)
   }
 
   // @ts-ignore
