@@ -54,4 +54,8 @@ export class ProfileService {
     console.log(this.http.get<DetailAccount>(`${API_URL}/detail/${id}`))
     return this.http.get<DetailAccount>(`${API_URL}/detail/${id}`);
   }
+
+  saveImage(img:any): Observable<DetailAccount> {
+    return this.http.post<DetailAccount>(`${API_URL}/editImg`, img);
+  }
 }
