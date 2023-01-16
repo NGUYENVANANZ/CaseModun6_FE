@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FeRoutingModule} from "./fe-routing.module";
 import {AccountUserComponent} from "./accountuser/account-user.component";
 import {NgxPaginationModule} from "ngx-pagination";
-import {ThongBaoComponent} from "../thong-bao/thong-bao.component";
+import {ThongBaoComponent} from "./thong-bao/thong-bao.component";
 import {HomeComponent} from "./home/home.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
 import {AdminComponent} from "./admin/admin.component";

@@ -21,7 +21,7 @@ import {HomeGuard} from "./home/home.guard";
 import {ProfileGuard} from "./profile/profile.guard";
 import {StreamGuard} from "./stream/stream.guard";
 import {DetailGuard} from "./detail/detail.guard";
-import {ThongBaoComponent} from "../thong-bao/thong-bao.component";
+import {ThongBaoComponent} from "./thong-bao/thong-bao.component";
 // import {RouterModule, Routes} from "@angular/router";
 import {BrowseGuard} from "./browse/browse.guard";
 import {NotificationGuard} from "./notification/notification.guard";
