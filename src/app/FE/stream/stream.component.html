@@ -44,7 +44,7 @@
       <div class="page-content">
         <div class="gaming-library profile-library">
           <div class="item" *ngFor="let n of notification">
-            <ul>
+            <ul *ngIf="n.status != 11 && n.status != 12">
               <li><img src="{{n.img}}" alt=""
                        class="templatemo-item"></li>
               <li><h4>Tên</h4><span>{{n.name}}</span></li>
@@ -70,7 +70,9 @@
                   style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center">Đang tiến hành</p></span>
                 <span *ngIf="n.status == 5"><div class="main-border-button"><a
                   style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center"
-                  (click)="end(n.id_account, n.id, n.id_answer, n.money)">Hoàn thành</a></div></span>
+                  (click)="end(n.id_account, n.id, n.id_answer, n.money)" data-bs-toggle="modal"
+                  data-bs-target="#myModal">Hoàn thành</a></div></span>
+
                 <span *ngIf="n.status == 6"><p
                   style="color: lightgreen; width: 150px;margin-right: -50px; width: 200px; text-align: center">Đã hoàn thành</p></span>
                 <span *ngIf="n.status == 7"><p
@@ -101,3 +103,43 @@
   </div>
 </footer>
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="color: black">Đánh giá</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div id="rating">
+          <input type="radio" id="star5" name="rating" [(ngModel)]="star" [value]="5"/>
+          <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+          <input type="radio" id="star4" name="rating" [(ngModel)]="star" [value]="4"/>
+          <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+          <input type="radio" id="star3" name="rating" [(ngModel)]="star" [value]="3"/>
+          <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+          <input type="radio" id="star2" name="rating" [(ngModel)]="star" [value]="2"/>
+          <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+          <input type="radio" id="star1" name="rating" [(ngModel)]="star" [value]="1"/>
+          <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+
+        </div>
+        <textarea id="w3review" name="w3review" rows="4" cols="50" [(ngModel)]="comment"></textarea>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="commentX()">OK
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
