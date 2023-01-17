@@ -97,10 +97,6 @@
           <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
             Email nhập không dúng định dạng
           </p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 964e8264c8f9fd7c54a6ebc1a85b8769e1054e04
           <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
           <div class="input-group form-group">
             <div class="input-group-prepend">
@@ -144,30 +140,29 @@
           <div
             *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
             <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
-<<<<<<< HEAD
               <div class="form-group" style="max-width: 100px">
 
               </div>
             </div>
           </div>
           <div class="d-grid">
-            <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn">Đăng ký</button>
-            <a type="submit" routerLink="" class="btn float-right login_btn">Quay lại</a>
+            <tr>
+              <td>
+            <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn" >Đăng ký</button>
+              </td>
+              <td></td>
+              <td>
+            <a type="submit" routerLink="" class="btn float-right login_btn"style="margin-left: 257px ">Quay lại</a>
+              </td>
+            </tr>
+           </div>
 
-=======
-              <div>Ngày sinh không được bỏ trống</div>
-            </div>
-          </div>
-
-          <div class="d-grid">
-            <button type="submit" [disabled]="!registerForm.valid" class="btn float-right login_btn">Đăng ký</button>
-            <a type="submit" routerLink="" class="btn float-right login_btn" style="margin-right: 50px">Quay lại</a>
->>>>>>> 964e8264c8f9fd7c54a6ebc1a85b8769e1054e04
-          </div>
         </form>
       </div>
     </div>
   </div>
+
+
+
+
 </div>
-
-
