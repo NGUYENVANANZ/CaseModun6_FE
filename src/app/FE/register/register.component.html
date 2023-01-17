@@ -97,6 +97,10 @@
           <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
             Email nhập không dúng định dạng
           </p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8
           <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
           <div class="input-group form-group">
             <div class="input-group-prepend">
@@ -141,11 +145,11 @@
             *ngIf="!registerForm.get('birthday')?.invalid && (registerForm.get('birthday')?.dirty || registerForm.get('birthday')?.touched)">
             <div style="color: red" *ngIf="registerForm.get('birthday')?.errors?.['required']">
               <div class="form-group" style="max-width: 100px">
-
               </div>
             </div>
           </div>
           <div class="d-grid">
+<<<<<<< HEAD
             <tr>
               <td>
             <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn" >Đăng ký</button>
@@ -157,6 +161,16 @@
             </tr>
            </div>
 
+=======
+              <tr>
+              <td>
+                <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn">Đăng ký</button>
+              </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              <td><a type="submit" routerLink="" class="btn float-right login_btn">Quay lại</a></td></tr>
+
+          </div>
+>>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8
         </form>
       </div>
     </div>
@@ -166,3 +180,9 @@
 
 
 </div>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8

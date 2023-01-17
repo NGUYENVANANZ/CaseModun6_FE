@@ -44,15 +44,16 @@ export class RegisterComponent implements OnInit {
       this.checkDuplicateMail = data[1];
       if (data[0] && data[1]) {}
       this.message();
-      this.router.navigate(["/login"])
-
-    }, (error)=>{
+      this.router.navigate([""])
+    }
+    , (error)=>{
       Swal.fire(
         ' ',
         '<h2 style="color: red; font-size: 32px">Tài khoản của bạn đã bị trùng username hoặc email</h2>',
         'error'
       )
-    });
+    }
+    );
   }
 
   message() {
