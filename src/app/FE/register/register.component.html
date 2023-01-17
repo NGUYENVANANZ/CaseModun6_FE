@@ -97,10 +97,6 @@
           <p style="color: red" *ngIf="registerForm.get('email')?.errors?.['email']">
             Email nhập không dúng định dạng
           </p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8
           <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã tồn tại</p>
           <div class="input-group form-group">
             <div class="input-group-prepend">
@@ -123,15 +119,14 @@
             <div class="form-group">
               <tr>
                 <td>
-                  <label>Chọn giới tính</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>Chọn giới tính</label>
                 </td>
                 <td>
-                  <input type="radio" id="css" name="gender" value="Nam" checked="checked" formControlName="gender">
+                  <input style="margin-left: 50px" type="radio" id="css" name="gender" value="Nam" checked="checked" formControlName="gender">
                   <label for="css">Nam</label>
                 </td>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <td>
-                  <input type="radio" id="javascript" name="gender" value="Nu" formControlName="gender">
+                  <input style="margin-left: 50px" type="radio" id="javascript" name="gender" value="Nu" formControlName="gender">
                   <label for="javascript">Nữ</label>
                 </td>
               </tr>
@@ -149,40 +144,26 @@
             </div>
           </div>
           <div class="d-grid">
-<<<<<<< HEAD
             <tr>
               <td>
-            <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn" >Đăng ký</button>
+                <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn">Đăng ký
+                </button>
               </td>
-              <td></td>
               <td>
-            <a type="submit" routerLink="" class="btn float-right login_btn"style="margin-left: 257px ">Quay lại</a>
+                <a type="submit" routerLink="" class="btn float-right login_btn" style="margin-left: 257px ">Quay
+                  lại</a>
               </td>
             </tr>
-           </div>
-
-=======
-              <tr>
-              <td>
-                <button type="submit" [disabled]="!registerForm.valid" class="btn float-lg-end login_btn">Đăng ký</button>
-              </td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              <td><a type="submit" routerLink="" class="btn float-right login_btn">Quay lại</a></td></tr>
-
           </div>
->>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8
         </form>
       </div>
     </div>
   </div>
 
 
-
-
 </div>
 <<<<<<< HEAD
 =======
-
 
 
 >>>>>>> 649ae457a085b9067a57b5c8c793b0e348ce0cb8
