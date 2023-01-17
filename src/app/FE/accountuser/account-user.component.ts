@@ -18,9 +18,10 @@ import {UserToken} from "../../FE/model/DTO/UserToken";
 })
 export class AccountUserComponent implements OnInit,OnChanges {
   S: number = 1
+  idaccount!:number;
   account: AccountDTO[] = [];
   fullName!: AccountDTO[];
-  detailAccount!: DetailAccount[];
+  detailAccount!: DetailAccount;
 
   constructor(private adminService: AdminService, private loginService: LoginService) {
   }
@@ -60,9 +61,28 @@ export class AccountUserComponent implements OnInit,OnChanges {
     })
   }
 
+  Vip(vip: number,id: number){
+    this.adminService.SetVip(vip, id).subscribe((data) => {
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
+  }
   logOut() {
     this.loginService.logOut();
   }
 
+  click(n : number){
+    this.idaccount = n;
+  }
 
+  NapTienhihi(id:number, money: any){
+    this.adminService.NapTien(id,money).subscribe((data) =>{
+      this.detailAccount = data;
+      this.adminService.showallAccount().subscribe((data) => {
+        this.account = data;
+      })
+    })
+  }
 }

@@ -1,17 +1,17 @@
-import {RouterModule, Routes} from "@angular/router";
-
-
 import { NgModule } from '@angular/core';
+// import { RouterModule, Routes } from '@angular/router';
+// import { RouterModule, Routes, ParamMap } from '@angular/router';
+// import {LoginComponent} from "./login/login.component";
+
+import { RouterModule, Routes, ParamMap } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {StreamComponent} from "./stream/stream.component";
 import {DetailComponent} from "./detail/detail.component";
 import {BrowseComponent} from "./browse/browse.component";
 import {AdminComponent} from "./admin/admin.component";
-
 import {NotificationComponent} from "./notification/notification.component";
 import {ProfileAdminComponent} from "./profile-admin/profile-admin.component";
-import {LoginComponent} from "./login/login.component";
 import {TestComponent} from "./test/test.component";
 import {AdminGuard} from "./admin/admin.guard";
 import {AccountuserGuard} from "./accountuser/accountuser.guard";
@@ -21,9 +21,12 @@ import {HomeGuard} from "./home/home.guard";
 import {ProfileGuard} from "./profile/profile.guard";
 import {StreamGuard} from "./stream/stream.guard";
 import {DetailGuard} from "./detail/detail.guard";
+import {ThongBaoComponent} from "./thong-bao/thong-bao.component";
+// import {RouterModule, Routes} from "@angular/router";
 import {BrowseGuard} from "./browse/browse.guard";
 import {NotificationGuard} from "./notification/notification.guard";
 import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
@@ -41,6 +44,12 @@ const routes: Routes = [
   },
   {
     path: 'AccountUser', component: AccountUserComponent, canActivate: [AccountuserGuard]
+  },
+  {
+    path: 'ThongBao', component: ThongBaoComponent
+  },
+  {
+    path: 'home', component: HomeComponent, canActivate: [HomeGuard]
   },
   {
     path: 'profileAdmin', component: ProfileAdminComponent, canActivate: [ProfileAdminGuard]

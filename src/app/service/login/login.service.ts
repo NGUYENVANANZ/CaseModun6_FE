@@ -7,6 +7,7 @@ const API_URL = `${environment.apiUrl}`;
 import {Account} from "../../FE/model/Account";
 import {UserToken} from "../../FE/model/DTO/UserToken";
 import {Router} from "@angular/router";
+import {SocketService} from "../Socket/socketService";
 
 
 @Injectable({
@@ -15,14 +16,15 @@ import {Router} from "@angular/router";
 export class LoginService {
 
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private socket :SocketService) {
 
   }
 
   logOut() {
     this.setToken("");
     this.setUserName("");
-    this.setImg("assets/images/profile-header.jpg")
+    this.setImg("assets/images/profile-header.jpg");
+    this.socket.disconnect();
     this.router.navigate([""]);
   }
 

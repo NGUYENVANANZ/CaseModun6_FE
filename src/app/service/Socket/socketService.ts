@@ -91,5 +91,65 @@ export class SocketService {
     return this.http.get<NotificationDTO>(API_URL + '/setSatus6/' + id);
   }
 
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+  }
 
+  setStatus7(id_CCDV: any, id_NDDV: any, id_notification: any, money: any) {
+    this.stompClient.send(
+      '/gkz/setSatus7',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': id_notification, 'money': money})
+    );
+  }
+
+  newStatus7(id_CCDV: any, id_NDDV: any, id_notification: any, money: any) {
+    this.stompClient.send(
+      '/gkz/newSatus7',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': id_notification, 'money': money})
+    );
+  }
+
+  setSatus8(id: number): Observable<NotificationDTO> {
+    return this.http.get<NotificationDTO>(API_URL + '/setSatus8/' + id);
+  }
+
+  sendAdmin(id_NDDV: any) {
+    this.stompClient.send(
+      '/gkz/sendAdmin',
+      {},
+      JSON.stringify({'id_CCDV': 1, 'id_NDDV': id_NDDV, 'id_Notification': 0, 'money': 0})
+    );
+  }
+
+  setSatus13(id: number): Observable<NotificationDTO> {
+    return this.http.get<NotificationDTO>(API_URL + '/setSatus13/' + id);
+  }
+
+  setSatus14(id: number): Observable<NotificationDTO> {
+    return this.http.get<NotificationDTO>(API_URL + '/setSatus14/' + id);
+  }
+
+  answerUser(id_CCDV: any, id_NDDV: any) {
+    this.stompClient.send(
+      '/gkz/answerUser',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': 0, 'money': 0})
+    );
+  }
+
+  answerUser1(id_CCDV: any, id_NDDV: any) {
+    this.stompClient.send(
+      '/gkz/answerUser1',
+      {},
+      JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': 0, 'money': 0})
+    );
+  }
+
+  comment(id: any, star: any, comment: any): Observable<Comment> {
+    return this.http.get<Comment>(API_URL + '/comment/' + id + '&&' + star + '&&' + comment);
+  }
 }
