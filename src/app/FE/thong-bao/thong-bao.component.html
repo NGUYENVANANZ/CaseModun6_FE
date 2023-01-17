@@ -7,15 +7,11 @@
             <img src="../../../assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
-            <li><a routerLink="/admin">List Account</a></li>
+            <li><a routerLink="/admin">Danh Sách Tài Khoản</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
-            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt=""
-                                                                style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
-            </li>
+            <li><a routerLink="/profileAdmin">Trang Cá Nhân<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <div class="main-border-button"><a style="color: white;background: #1a1e21; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a></div>
           </ul>
-          <div class="main-border-button">
-            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
-          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
@@ -38,11 +34,10 @@
         <div class="gaming-library profile-library">
           <div class="item" *ngFor="let n of notification">
             <ul>
-              <li><img src="{{n.img}}" alt=""
-                       class="templatemo-item"></li>
+              <li><img src="{{n.img}}" alt="" class="templatemo-item"></li>
               <li>
                 <span><p>
-                  Người dùng {{n.name}} muốn đăng cý CCDV
+                  Người dùng {{n.name}} muốn đăng ký Cung Cấp Dịch Vụ
                 </p>
               </span>
               </li>
@@ -67,8 +62,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
 </div>

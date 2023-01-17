@@ -7,9 +7,9 @@
             <img src="../../../assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
-            <li><a routerLink="/admin" >List Account</a></li>
+            <li><a routerLink="/admin" >Danh Sách Tài Khoản</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
-            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/profileAdmin">Trang cá nhân<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
             <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a>
@@ -53,13 +53,13 @@
                     <li><h4 [innerText]="userName"></h4></li>
 <!--                    <p [innerText]="userProfile.moTa"></p>-->
                     <div class="main-border-button">
-                      <a id="requestAdmin" routerLink="/Notification" >history</a>
+                      <a id="requestAdmin" routerLink="/Notification" >Tổng Đơn</a>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <ul style=" background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
-                    <li style="color: darkblue">name <span [innerText]="userProfile.fullName"></span></li>
+                    <li style="color: darkblue">Tên: <span [innerText]="userProfile.fullName"></span></li>
                     <li style="color: darkblue">Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
                     <li style="color: darkblue">Giới tính: <span [innerText]="userProfile.gender"></span></li>
                   </ul>

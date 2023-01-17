@@ -9,11 +9,10 @@
           <ul class="nav">
             <li><a routerLink="/Admin" class="active">Admin</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
-            <li><a routerLink="/profileAdmin">Trang cá nhân Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/profileAdmin">Trang Cá nhân Quản Lý<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng
-              xuất</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -28,7 +27,7 @@
     <div class="page-content">
       <div class="heading-section">
 
-        <button type="button" class="btn btn-outline-danger" routerLink="/admin">Người CCDV</button>
+        <button type="button" class="btn btn-outline-danger" routerLink="/admin">Danh sách nhà cung cấp</button>
         <br>
         <br>
         <h4>Danh sách người dùng</h4>
@@ -40,10 +39,10 @@
                   <div class="item">
                     <div>
                       <div *ngIf = " t.detailAccount.vip == 1">
-                        <a type="button" class="btn btn-danger" id="vip1" (click)="Vip(t.detailAccount.vip,t.id)">UnVIP</a>
+                        <a type="button" class="btn btn-danger" id="vip1" (click)="Vip(t.detailAccount.vip,t.id)">Xoá VIP</a>
                       </div>
                       <div  *ngIf = "t.detailAccount.vip == 0">
-                        <a type="button" class="btn btn-danger"  id="vip2 "(click)="Vip(t.detailAccount.vip,t.id)">VIP</a>
+                        <a type="button" class="btn btn-danger"  id="vip2 "(click)="Vip(t.detailAccount.vip,t.id)">Cấp VIP</a>
                       </div>
                       <div>
                         <br>
@@ -66,7 +65,7 @@
                     <br>
                     <h4>{{t.fullName}}<br><p id="{{t.status + 'account'}}" ><span >{{t.MoTa}}</span></p></h4>
                     <br>
-                    <h4>Số dư:</h4><h4>{{t.money}}$</h4>
+                    <h4>Số dư:</h4><h4>{{t.money}}/$</h4>
                     <br>
                   </div>
                 </div>
@@ -97,7 +96,7 @@
                name="searchKeyword" #tien/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
       </div>
     </div>

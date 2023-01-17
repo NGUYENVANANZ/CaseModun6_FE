@@ -7,10 +7,12 @@
             <img src="../../../assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
-            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+            <li><a routerLink="/Admin" class="active">Danh Sách Tài Khoản</a></li>
+            <li><a routerLink="/ThongBao">Thông Báo</a></li>
+            <li><a routerLink="/profileAdmin">Trang Cá Nhân<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
           </ul>
           <div class="main-border-button">
-            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a>
+            <a style="color: white;background: #1a1e21; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -24,16 +26,19 @@
   <div class="gaming-library profile-library">
     <div class="col-lg-12">
       <div class="heading-section">
+        <br>
         <h4>Lịch sử thuê</h4>
       </div>
-      <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
+      <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 3, currentPage: S}">
         <ul>
           <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>
-          <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>
-          <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>
-          <li style="text-align: center"><h4>Tổng đơn</h4><span style="color: #b6effb">{{x.price}}$</span></li>
+          <li><h4>Tên: </h4><span style="color: #b6effb">{{x.userName}}</span></li>
+          <li><h4>Ngày: </h4><span style="color: #b6effb">{{x.date}}</span></li>
+          <li style="text-align: center"><h4>Tổng đơn: </h4><span style="color: #b6effb">{{x.price}}/$</span></li>
         </ul>
       </div>
       <pagination-controls (pageChange)="S = ($event)"></pagination-controls>
+      <br>
+      <br>
     </div>
   </div>

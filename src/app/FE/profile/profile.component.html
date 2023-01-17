@@ -6,49 +6,38 @@
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
-          <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
             <img src="../../../assets/images/logo.png" alt="">
           </a>
-          <!-- ***** Logo End ***** -->
-          <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
               <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
                      (keyup.enter)="onInput($event)"/>
             </form>
           </div>
-          <!-- ***** Search End ***** -->
-          <!-- ***** Menu Start ***** -->
           <ul class="nav">
-
             <li><a routerLink="/home">Trang chủ</a></li>
             <li><a routerLink="/browse">Tìm kiếm</a></li>
             <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt=""
-                                                                           style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
             </li>
           </ul>
           <div class="main-border-button">
             <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden
-               (click)="logOut()">Đăng
-              xuất</a>
+               (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
-          <!-- ***** Menu End ***** -->
         </nav>
       </div>
     </div>
   </div>
 </header>
-<!-- ***** Header Area End ***** -->
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="page-content">
-        <!-- ***** Banner Start ***** -->
         <div class="row">
           <div class="col-lg-12">
             <div class="main-profile">
@@ -56,10 +45,8 @@
                 <div class="col-lg-4">
                   <img src="{{img}}" id="uploadPreview"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
-
                   <input type="file" id="file" (change)="showImg()"
-                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122"
-                         #uploadFile1
+                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122" #uploadFile1
                          class="form-control" multiple="multiple">
                   <div class="main-border-button">
                     <a style="margin-left: 85px;margin-top:10px;color: plum" (click)="uploadFileImg()">Lưu</a>
@@ -75,7 +62,6 @@
                       <div style="margin-top: -250px">
                         <h2 style="color: darkviolet;font-size: 30px" [innerText]="'Tên: '+ userName"></h2>
                       </div>
-
                       <div class="main-border-button" id="requestAdmin" hidden>
                         <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
                         <a id="requestAdmin2" hidden style="background-color: hotpink; color: white"
@@ -102,7 +88,6 @@
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <ul style=" background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
-
                     <li style="color: darkblue">Giới tính: <span [innerText]="userProfile.gender"></span></li>
                     <li style="color: darkblue">Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
                     <li style="color: darkblue">Quốc gia: <span>{{userProfile.nation}}</span></li>
@@ -114,7 +99,6 @@
                   <div class="main-border-button">
                     <a href="#" data-toggle="modal" data-target="#rotateModal"
                        style="color: white;position: static;margin-left: 110px;margin-top: -20px;background-color: #27292a;">Sửa</a>
-
                   </div>
                 </div>
               </div>
@@ -222,7 +206,8 @@
       </div>
       <!-- ***** Banner End ***** -->
       <!-- ***** Gaming Library Start ***** -->
-
+        <div class="row">
+          <div class="col-lg-12">
       <div class="gaming-library profile-library">
         <div
           style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
@@ -241,6 +226,8 @@
           </div>
         </div>
       </div>
+          </div>
+        </div>
       <!-- ***** Gaming Library End ***** -->
     </div>
   </div>
@@ -257,7 +244,7 @@
           aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form style="width: 450px" Sửa>
+        <form style="width: 450px">
           <div class="form-group">
             <label>Tên</label>
             <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
@@ -307,8 +294,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <!--        <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.-->
-        <!--          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>-->
+                <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
+                  <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
       </div>
     </div>
   </div>
