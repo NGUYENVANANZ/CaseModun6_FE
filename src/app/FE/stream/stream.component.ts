@@ -25,6 +25,8 @@ export class StreamComponent implements OnInit, OnChanges {
   token = this.loginService.getToken();
   img = this.loginService.getImg();
   userName = this.loginService.getUserName();
+  star: any = 5;
+  comment: any = ""
 
   ngOnChanges(changes: SimpleChanges): void {
   }
@@ -38,6 +40,7 @@ export class StreamComponent implements OnInit, OnChanges {
       this.notification = data;
     })
     this.addNotifiCation()
+    this.showStar(this.star)
   }
 
   addNotifiCation() {
@@ -59,14 +62,14 @@ export class StreamComponent implements OnInit, OnChanges {
         _this.notification.push(JSON.parse(notification.body));
       } else {
         _this.notification[index] = _this.notificationCheck;
-        if (_this.notificationCheck.status == 6){
+        if (_this.notificationCheck.status == 6) {
           Swal.fire({
             toast: true,
             position: 'top',
             showConfirmButton: false,
             icon: "success",
             timer: 5000,
-            title: '+'+_this.notificationCheck.money+'$'
+            title: '+' + _this.notificationCheck.money * 90 / 100 + '$'
           })
         }
       }
@@ -95,7 +98,7 @@ export class StreamComponent implements OnInit, OnChanges {
             showConfirmButton: false,
             icon: "success",
             timer: 5000,
-            title: '-'+data.money+'$'
+            title: '-' + data.money + '$'
           })
         }
       }
@@ -103,7 +106,23 @@ export class StreamComponent implements OnInit, OnChanges {
     this.socket.setSatus4(id_CCDV, localStorage.getItem("id"), id_answer, money)
   }
 
+  commentX() {
+    this.socket.comment(localStorage.getItem("id_CCDV"), this.star, this.comment).subscribe((data) => {
+    })
+    localStorage.setItem("id_CCDV", "")
+  }
+
+  showStar(star: any) {
+    if (!isNaN(this.star)) {
+      const f = ~~star
+      let id = 'star' + f + (this.star % f ? 'half' : '')
+      // @ts-ignore
+      id && (document.getElementById(id).checked = !0)
+    }
+  }
+
   end(id_CCDV: number, id_notification: number, id_answer: number, money: number) {
+    localStorage.setItem("id_CCDV", String(id_CCDV));
     this.socket.setSatus6(id_notification).subscribe((data) => {
       for (let i = 0; i < this.notification.length; i++) {
         if (this.notification[i].id == data.id) {
@@ -112,6 +131,28 @@ export class StreamComponent implements OnInit, OnChanges {
       }
     })
     this.socket.setStatus6x(id_CCDV, localStorage.getItem("id"), id_answer, money)
+  }
+
+  cancel(id_CCDV: number, id_notification: number, id_answer: number, money: number) {
+    this.socket.setSatus8(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.newStatus7(id_CCDV, localStorage.getItem("id"), id_answer, money)
+  }
+
+  cancel1(id_CCDV: number, id_notification: number, id_answer: number, money: number) {
+    this.socket.setSatus8(id_notification).subscribe((data) => {
+      for (let i = 0; i < this.notification.length; i++) {
+        if (this.notification[i].id == data.id) {
+          this.notification[i] = data
+        }
+      }
+    })
+    this.socket.setStatus7(id_CCDV, localStorage.getItem("id"), id_answer, money)
   }
 
   // @ts-ignore

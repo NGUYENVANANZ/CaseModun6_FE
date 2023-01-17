@@ -1,8 +1,12 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {DetailAccount} from "../model/DetailAccount";
 import {ProfileService} from "../../service/profileUser/profile.service";
 import {LoginService} from "../../service/login/login.service";
 import {Roles} from "../model/Roles";
+import {EmployDTO} from "../model/DTO/EmployDTO";
+import {finalize} from "rxjs";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AdminService} from "../../service/Admin/admin.service";
 
 
 @Component({
@@ -35,9 +39,11 @@ export class ProfileAdminComponent implements OnInit, OnChanges{
     vip: 0,
     roles: []
   }
+  history: EmployDTO[] = []
+  @ViewChild('uploadFile1', {static: true}) public avatarDom1: ElementRef | undefined;
+  arrfiles: any = [];
 
-
-  constructor(private profile: ProfileService, private loginService: LoginService) {
+  constructor(private profile: ProfileService, private loginService: LoginService, private storage: AngularFireStorage,private adminService: AdminService) {
   }
 
   userName = this.loginService.getUserName();
@@ -56,6 +62,28 @@ export class ProfileAdminComponent implements OnInit, OnChanges{
       this.userProfile = data;
       this.check(this.userProfile);
     })
+    this.profile.showHistory().subscribe((data) => {
+      // @ts-ignore
+      this.history = data;
+    })
+  }
+
+
+  submit() {
+    for (let file of this.arrfiles) {
+      if (file != null) {
+        const filePath = file.name;
+        const fileRef = this.storage.ref(filePath);
+        this.storage.upload(filePath, file).snapshotChanges().pipe(
+          finalize(() => (fileRef.getDownloadURL().subscribe(
+            url => {
+              this.img = url;
+              this.loginService.setImg(url);
+              this.save(url);
+            })))
+        ).subscribe();
+      }
+    }
   }
 
   check(detailAccount: DetailAccount) {
@@ -88,8 +116,69 @@ export class ProfileAdminComponent implements OnInit, OnChanges{
     }
   }
 
+// @ts-ignore
+  function // @ts-ignore
+  fileValidation(argument : any) {
+    var fileInput = argument;
+    // @ts-ignore
+    var filePath = fileInput.name;
+    // Allowing file type
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(filePath)) {
+      alert('Chọn file ảnh');
+      // @ts-ignore
+      fileInput.value = '';
+      return false;
+    }
+    return true;
+  }
+
+  uploadFileImg() {
+    for (const argument of this.avatarDom1?.nativeElement.files) {
+      if (this.fileValidation(argument)){
+        this.arrfiles.push(argument)
+      }
+    }
+    this.submit();
+  }
+
+  save(img : string){
+    this.profile.save(img).subscribe((data) => {
+      // @ts-ignore
+      this.userProfile = data;
+    })
+  }
+
   logOut(){
     this.loginService.logOut();
+  }
+
+  editProfile1() {
+    this.profile.editProfile1().subscribe((data) => {
+      this.userProfile = data;
+      this.check(this.userProfile);
+    })
+  }
+
+  editProfile2() {
+    this.profile.editProfile2().subscribe((data) => {
+      this.userProfile = data;
+      this.check(this.userProfile);
+    })
+  }
+
+  requsetAdmin1() {
+    this.profile.requsetAdmin1().subscribe((data) => {
+      this.userProfile = data;
+      this.check(this.userProfile);
+    })
+  }
+
+  requsetAdmin2() {
+    this.profile.requsetAdmin2().subscribe((data) => {
+      this.userProfile = data;
+      this.check(this.userProfile);
+    })
   }
 
 }

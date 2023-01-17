@@ -1,4 +1,3 @@
-import {DetailAccountSart} from "./DetailAccountSart";
 
 export class SignUpForm  {
   username!: any

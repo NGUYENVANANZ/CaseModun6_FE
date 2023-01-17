@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import {DetailAccount} from "../../FE/model/DetailAccount";
 import {GenderDTO} from "../../FE/model/DTO/GenderDTO";
 
-// import {SignUpForm} from "../../FE/model/DTO/SignUpForm";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,9 +23,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginService.getallgender().subscribe((data) => {
-      this.gender = data;
-    });
   }
 
 
@@ -47,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.checkDuplicateUsername = data[0];
       this.checkDuplicateMail = data[1];
       if (data[0] && data[1]) {}
-        this.message();
+      this.message();
       this.router.navigate(["/login"])
 
     }, (error)=>{
@@ -86,5 +82,3 @@ export class RegisterComponent implements OnInit {
 
 
 }
-
-
