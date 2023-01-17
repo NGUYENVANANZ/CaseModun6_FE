@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       this.checkDuplicateMail = data[1];
       if (data[0] && data[1]) {}
       this.message();
-      this.router.navigate(["/login"])
+      this.router.navigate([""])
     }
     , (error)=>{
       Swal.fire(
