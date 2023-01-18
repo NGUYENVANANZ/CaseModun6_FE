@@ -199,19 +199,6 @@
                                 </div>
 
                               </li>
-                              <br>
-                              <li>
-                                <div class="heading-section">
-                                  <div class="item"
-                                       *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
-                                    <ul>
-                                      <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>
-                                      <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>
-                                      <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </li>
                             </ul>
                           </div>
                         </div>
@@ -226,26 +213,28 @@
         <!-- ***** Banner End ***** -->
         <!-- ***** Gaming Library Start ***** -->
 
-        <div class="gaming-library profile-library">
-          <div
-            style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
-            class="col-lg-12">
-            <div class="heading-section">
-              <h4>Lịch sử thuê</h4>
-            </div>
-            <div class="item" *ngFor="let x of history">
-              <ul>
-                <li><img src="{{x.img}}" alt=""
-                         class="templatemo-item"></li>
-                <li><h4>Tên</h4><span>{{x.userName}}</span></li>
-                <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-                <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
         <!-- ***** Gaming Library End ***** -->
       </div>
+      <div class="gaming-library profile-library">
+        <div
+          style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
+          class="col-lg-12">
+          <div class="heading-section">
+            <h4>Lịch sử thuê</h4>
+          </div>
+          <div class="item" *ngFor="let x of history">
+            <ul>
+              <li><img src="{{x.img}}" alt=""
+                       class="templatemo-item"></li>
+              <li><h4>Tên</h4><span>{{x.userName}}</span></li>
+              <li><h4>Ngày </h4><span>{{x.date}}</span></li>
+              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
