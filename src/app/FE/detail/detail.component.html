@@ -76,7 +76,7 @@
                       <input type="radio" id="star4" name="rating" value="4"/>
                       <label class="full" for="star4" title="Pretty good - 4 stars"></label>
 
-                      <input type="radio" id="star3half" name="rating" value="3 and a half"/>
+                      <input type="radio" id="star3half" name="rating" value="3 and a half" />
                       <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 
                       <input type="radio" id="star3" name="rating" value="3"/>
@@ -166,13 +166,11 @@
 
                           <div style="margin-top: -30px;color: #1f2122" class="col-lg-12 fa-align-center">
                             <ul>
-                              <li><h2 style="color: darkviolet">Dịch vụ : </h2><span *ngFor="let l of detail.provideds"
-                                                                                     style="float: left"><h6
+                              <li><h2 style="color: darkviolet">Dịch vụ : </h2><span *ngFor="let l of detail.provideds" style="float: left"><h6
                                 style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
                               </li>
                               <br>
-                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}"
-                                                                                style="color: #DEE1E6">{{detail.faceLink}}</a>
+                              <li><h2 style="color: darkviolet">LinkFB: </h2><a href="{{detail.faceLink}}" style="color: #DEE1E6">{{detail.faceLink}}</a>
                               </li>
                               <br>
                               <li><h2 style="color: darkviolet">Mô tả: </h2>
@@ -188,14 +186,15 @@
                             </ul>
                             <br>
                             <br>
-                            <div class="heading-section"  style="margin-top: 30px;color: #1a1e21" *ngFor="let t of detail.comments">
+                            <div class="heading-section"  *ngFor="let t of detail.comments">
+                              <tr>
                                   <ul style="color: #ec6090">
+                                    <h3 style="color: darkviolet" >{{t.name}}</h3>
+                                    <p style="color: #b6effb" >{{t.star}}</p>
                                     <br>
-                                    <p style="color: #DEE1E6" >{{t.name}}</p>
-                                    <p style="color: #DEE1E6" >{{t.star}}</p>
-                                    <br>
-                                    <p style="color: #DEE1E6" >{{t.text}}</p>
+                                    <p style="color: #b6effb" >{{t.text}}</p>
                                   </ul>
+                              </tr>
                                 </div>
                                 </div>
                           </div>

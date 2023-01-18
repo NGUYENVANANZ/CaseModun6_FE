@@ -7,11 +7,13 @@
             <img src="../../../assets/images/logo.png" alt="">
           </a>
           <ul class="nav">
-            <li><a routerLink="/Admin" class="active">List Account</a></li>
+            <li><a routerLink="/Admin">Danh Sách Tài Khoản</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
-            <li><a routerLink="/profileAdmin">Profile Admin<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li></ul>
+            <li><a routerLink="/Notification">Tổng Đơn</a></li>
+            <li><a routerLink="/profileAdmin">Trang Cá Nhân<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
+          </ul>
           <div class="main-border-button">
-            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
+            <a style="color: white;background: #1a1e21; width: 133px;margin-right: -50px" id="logout" hidden (click)="logOut()">Đăng xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -28,6 +30,7 @@
       <div class="heading-section">
 
         <button style="background-color: lavender" type="button" class="btn btn-outline-danger" routerLink="/AccountUser">Người DDV</button>
+
         <br>
         <br>
         <h4>Danh sách nhà cung cấp</h4>
@@ -40,14 +43,15 @@
                   <div class="item">
                     <div>
                       <div *ngIf = " t.detailAccount.vip == 1">
-                        <a type="button" class="btn btn-danger" id="vip1" (click)="Vip(t.detailAccount.vip,t.id)">UnVIP</a>
+                        <a type="button" class="btn btn-danger" id="vip1" (click)="showUnvip()" (click)="Vip(t.detailAccount.vip,t.id)">Xoá VIP</a>
                       </div>
                       <div  *ngIf = "t.detailAccount.vip == 0">
-                        <a type="button" class="btn btn-danger"  id="vip2 " (click)="show()" (click)="Vip(t.detailAccount.vip,t.id)">VIP</a>
+                        <a type="button" class="btn btn-danger"  id="vip2 " (click)="show()" (click)="Vip(t.detailAccount.vip,t.id)">Cấp VIP</a>
                       </div>
                       <div>
                         <br>
-                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</button>
+<!--                        <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</a>-->
+                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</a>
                       </div>
                     </div>
                     <div>
@@ -57,17 +61,15 @@
                         <a type="button" class="btn btn-dark" id="van13" (click)="show1()" (click)="lock(t.id)">🔓</a>
                       </div>
                       <div *ngIf="t.status == 0">
-                        <a type="button" class="btn btn-dark" id="van12" (click)="unlock(t.id)">🔒</a>
+                        <a type="button" class="btn btn-dark" id="van12" (click)="show12()" (click)="unlock(t.id)">🔒</a>
                       </div>
                     </div>
-                    <ul>
-                    </ul>
                     <img src="{{t.img}}" alt=""
                          style="width: 150px; height: 150px;border-radius:50%; margin-right: 50px;">
                     <br>
                     <h4>{{t.fullName}}</h4>
                     <br>
-                    <h4>Số dư:</h4><h4>{{t.money}}$</h4>
+                    <h4>Số dư:</h4><h4>{{t.money}}/$</h4>
 
                     <span>{{t.MoTa}}</span>
                     <br>
@@ -88,23 +90,27 @@
       </div>
     </div>
   </div>
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-        <p>Nhập số tiền muốn nạp</p>
-        <input style="background-color: black" type="text" placeholder="Nhập số tiền cần nạp" id='naptien'
-               name="searchKeyword" #tien/>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="show2()" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
+
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+          </div>
+         <div class="modal-body"  style="color: #1a1e21">
+           <p>Nhập số tiền muốn nạp</p>
+            <input type="text" placeholder="Nhập số tiền cần nạp" id='naptien' name="searchKeyword" #tien/>
+         </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+            <button type="button" class="btn btn-primary" (click)="show2()" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</div>
 </div>
 
 <div class="text-center">

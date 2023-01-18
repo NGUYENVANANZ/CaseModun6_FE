@@ -51,7 +51,13 @@ export class AdminComponent implements OnInit,OnChanges {
   show(typeIcon = TYPE.SUCCESS) {
     Swal.fire({
       title: 'Cấp Vip thành công!',
-      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
+  }
+  showUnvip(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Xoá Vip thành công!',
       icon: typeIcon,
       confirmButtonText: 'ok'
     });
@@ -60,7 +66,14 @@ export class AdminComponent implements OnInit,OnChanges {
   show1(typeIcon = TYPE.SUCCESS) {
     Swal.fire({
       title: 'Khóa tài khoản thành công!',
-      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
+  }
+
+  show12(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Mở Khoá tài khoản thành công!',
       icon: typeIcon,
       confirmButtonText: 'ok'
     });
@@ -69,7 +82,6 @@ export class AdminComponent implements OnInit,OnChanges {
   show2(typeIcon = TYPE.SUCCESS) {
     Swal.fire({
       title: 'Nạp tiền thành công !',
-      text: 'Do you want to continue',
       icon: typeIcon,
       confirmButtonText: 'ok'
     });
