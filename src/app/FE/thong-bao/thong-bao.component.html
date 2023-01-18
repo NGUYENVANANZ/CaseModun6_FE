@@ -14,7 +14,9 @@
             </li>
           </ul>
           <div class="main-border-button">
-            <a style="color: hotpink" id="logout" (click)="logOut()">Logout</a>
+            <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden
+               (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
@@ -54,11 +56,11 @@
                 style="color: crimson;margin-right: -200px; text-align: center"
                 (click)="cancel(n.id_account, n.id, n.id_answer, n.money)">Từ chối</a></div>
               </span>
-                <span *ngIf="n.status == 13"><p>
+                <span *ngIf="n.status == 13"><p style="color: green">
                   Đã chấp nhận
                 </p>
               </span>
-                <span *ngIf="n.status == 14"><p>
+                <span *ngIf="n.status == 14"><p style="color: red">
                   Đã từ chối
                 </p>
               </span>
