@@ -36,6 +36,7 @@ const routes: Routes = [
   {
     path: 'test', component: TestComponent
   },
+
   {
     path: 'admin', component: AdminComponent, canActivate: [AdminGuard]
   },

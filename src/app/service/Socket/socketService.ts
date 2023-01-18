@@ -148,4 +148,8 @@ export class SocketService {
       JSON.stringify({'id_CCDV': id_CCDV, 'id_NDDV': id_NDDV, 'id_Notification': 0, 'money': 0})
     );
   }
+
+  comment(id: any, star: any, comment: any): Observable<Comment> {
+    return this.http.get<Comment>(API_URL + '/comment/' + id + '&&' + star + '&&' + comment);
+  }
 }

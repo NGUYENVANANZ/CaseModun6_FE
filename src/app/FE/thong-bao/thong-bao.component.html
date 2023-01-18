@@ -9,18 +9,22 @@
           <ul class="nav">
             <li><a routerLink="/admin">Danh Sách Tài Khoản</a></li>
             <li><a routerLink="/ThongBao">Thông Báo</a></li>
+            <li><a routerLink="/Notification">Tổng Đơn</a></li>
             <li><a routerLink="/profileAdmin">Trang Cá Nhân<img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a></li>
-            <div class="main-border-button"><a style="color: white;background: #1a1e21; width: 133px;margin-right: -50px" id="logout" (click)="logOut()">Đăng Xuất</a></div>
           </ul>
+          <div class="main-border-button">
+            <a style="color: white;background: #1a1e21; width: 133px;margin-right: -50px" id="logout"  (click)="logOut()">Đăng xuất</a>
+          </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
         </nav>
+        <br>
+        <div class="heading-section" style="margin-left: 60px; margin-top: 30px">
+          <h4>Thông báo</h4>
+        </div>
         <div class="gaming-library profile-library">
           <div class="col-lg-12">
-            <div class="heading-section">
-              <h4>Thông báo</h4>
-            </div>
           </div>
         </div>
       </div>

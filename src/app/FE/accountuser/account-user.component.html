@@ -46,10 +46,9 @@
                       </div>
                       <div>
                         <br>
-                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="click(t.id)">Nạp tiền</button>
                       </div>
                     </div>
-                    <br>
                     <br>
                     <div>
                       <div *ngIf = "t.status == 1">
@@ -59,8 +58,6 @@
                         <a type="button" class="btn btn-dark" id="van12" (click)="unlock(t.id)">🔒</a>
                       </div>
                     </div>
-                    <ul>
-                    </ul>
                     <img src="{{t.img}}" alt="" style="width: 150px; height: 150px;border-radius:50%; margin-right: 50px;" >
                     <br>
                     <h4>{{t.fullName}}<br><p id="{{t.status + 'account'}}" ><span >{{t.MoTa}}</span></p></h4>
@@ -82,7 +79,6 @@
                 </div>
               </div>
             </div>
-
         <div class="text-center">
         </div>
 <div class="modal fade" id="myModal" role="dialog">
@@ -92,12 +88,11 @@
       </div>
       <div class="modal-body">
         <p>Nhập số tiền muốn nạp</p>
-        <input type="text" placeholder="Nhập số tiền cần nạp" id='naptien'
-               name="searchKeyword" #tien/>
+        <input style="background-color: #1a1e21" type="text" placeholder="Nhập số tiền cần nạp" id='naptien' name="searchKeyword" #tien/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="NapTienhihi(idaccount,tien.value)">Nạp</button>
       </div>
     </div>
   </div>
