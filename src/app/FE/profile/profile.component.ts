@@ -399,6 +399,25 @@ export class ProfileComponent implements OnInit, OnChanges {
     document.getElementById("yeuCau1").hidden = false;
   }
 
+  showDichVu() {
+    // @ts-ignore
+    document.getElementById("dichvu").hidden = true;
+    // @ts-ignore
+    document.getElementById("dichvu1").hidden = false;
+  }
+
+  // @ts-ignore
+  hideDichVu(event) {
+    // @ts-ignore
+    document.getElementById("dichvu").hidden = false;
+
+    // @ts-ignore
+    document.getElementById("dichvu1").hidden = true;
+    this.profile.editProfile(this.userProfile).subscribe((data) => {
+      this.userProfile = data;
+    })
+  }
+
   // @ts-ignore
   hideFaceLink(event) {
     // @ts-ignore

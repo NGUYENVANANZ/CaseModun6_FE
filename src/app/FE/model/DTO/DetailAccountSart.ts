@@ -7,13 +7,21 @@ export class DetailAccountSart {
   moTa!: string
   provideds!: Provided[]
   price!: number
+  gender!:string
+  birthday!:Date
+  city!:string
 
-  constructor(id: number, moTa: string, fullName: string, img: string, provideds: Provided[], price: number) {
+
+  constructor(id: number, fullName: string, img: string, moTa: string, provideds: Provided[], price: number, gender: string, birthday: Date, city: string) {
     this.id = id;
-    this.moTa = moTa;
     this.fullName = fullName;
     this.img = img;
+    this.moTa = moTa;
     this.provideds = provideds;
     this.price = price;
+    this.gender = gender;
+    this.birthday = birthday;
+    this.city = city;
   }
 }
+

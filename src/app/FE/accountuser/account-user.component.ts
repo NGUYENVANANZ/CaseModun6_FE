@@ -9,6 +9,8 @@ import {AdminService} from "../../service/Admin/admin.service";
 import {SearchService} from "../../service/search/search.service";
 import {AccountDTO} from "../../FE/model/DTO/AccountDTO";
 import {UserToken} from "../../FE/model/DTO/UserToken";
+import {TYPE} from "../admin/values.constants";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -84,5 +86,12 @@ export class AccountUserComponent implements OnInit,OnChanges {
         this.account = data;
       })
     })
+  }
+  show2(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Nạp tiền thành công !',
+      icon: typeIcon,
+      confirmButtonText: 'ok'
+    });
   }
 }

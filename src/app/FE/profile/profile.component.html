@@ -6,38 +6,49 @@
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
           <a href="/home" class="logo">
             <img src="../../../assets/images/logo.png" alt="">
           </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Search End ***** -->
           <div class="search-input">
             <form id="search" action="#">
               <input type="text" placeholder="Viết gì đó" id='searchText' name="searchKeyword" onkeypress="handle"
                      (keyup.enter)="onInput($event)"/>
             </form>
           </div>
+          <!-- ***** Search End ***** -->
+          <!-- ***** Menu Start ***** -->
           <ul class="nav">
+
             <li><a routerLink="/home">Trang chủ</a></li>
             <li><a routerLink="/browse">Tìm kiếm</a></li>
             <li><a routerLink="/stream">Thông Báo</a></li>
-            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt="" style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
+            <li><a routerLink="/profile" class="active">Trang cá nhân <img src="{{img}}" alt=""
+                                                                           style="width: 30px; border-radius: 50%; right: 15px;height: 30px"></a>
             </li>
           </ul>
           <div class="main-border-button">
             <a style="color: white;background: #27292a; width: 133px;margin-right: -50px" id="logout" hidden
-               (click)="logOut()">Đăng xuất</a>
+               (click)="logOut()">Đăng
+              xuất</a>
           </div>
           <a class='menu-trigger'>
             <span>Menu</span>
           </a>
+          <!-- ***** Menu End ***** -->
         </nav>
       </div>
     </div>
   </div>
 </header>
+<!-- ***** Header Area End ***** -->
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <div class="page-content">
+        <!-- ***** Banner Start ***** -->
         <div class="row">
           <div class="col-lg-12">
             <div class="main-profile">
@@ -45,8 +56,10 @@
                 <div class="col-lg-4">
                   <img src="{{img}}" id="uploadPreview"
                        alt="" style="border-radius: 23px; width: 290px; height: 400px">
+
                   <input type="file" id="file" (change)="showImg()"
-                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122" #uploadFile1
+                         style="position: static; margin-top: 20px;background-color: #1F2122FF;border-color: #1F2122FF; margin-left: 75px; color: #1F2122"
+                         #uploadFile1
                          class="form-control" multiple="multiple">
                   <div class="main-border-button">
                     <a style="margin-left: 85px;margin-top:10px;color: plum" (click)="uploadFileImg()">Lưu</a>
@@ -62,6 +75,7 @@
                       <div style="margin-top: -250px">
                         <h2 style="color: darkviolet;font-size: 30px" [innerText]="'Tên: '+ userName"></h2>
                       </div>
+
                       <div class="main-border-button" id="requestAdmin" hidden>
                         <a id="requestAdmin1" hidden style="color: plum" (click)="requsetAdmin1()">Đăng ký CCDV</a>
                         <a id="requestAdmin2" hidden style="background-color: hotpink; color: white"
@@ -82,12 +96,13 @@
                     <div *ngFor="let x of imgX, let i = index">
                       <img id="uploadPreview{{i}}" src="{{x.img}}"
                            alt=""
-                           style="border-radius: 23px; width: 80px; height: 80px;margin-left: 10px; margin-top: 10px">
+                           style="border-radius: 23px; width: 100px; height: 100px;">
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                   <ul style=" background-image: linear-gradient(to left, #004085, rgb(255 89 130));">
+
                     <li style="color: darkblue">Giới tính: <span [innerText]="userProfile.gender"></span></li>
                     <li style="color: darkblue">Ngày sinh: <span [innerText]="userProfile.birthday"></span></li>
                     <li style="color: darkblue">Quốc gia: <span>{{userProfile.nation}}</span></li>
@@ -99,6 +114,7 @@
                   <div class="main-border-button">
                     <a href="#" data-toggle="modal" data-target="#rotateModal"
                        style="color: white;position: static;margin-left: 110px;margin-top: -20px;background-color: #27292a;">Sửa</a>
+
                   </div>
                 </div>
               </div>
@@ -113,11 +129,12 @@
                               <li id="provideds" hidden><h2 style="color: darkviolet">Dịch vụ : </h2>
                                 <span
                                   *ngFor="let l of userProfile.provideds" style="float: left"><h6
-                                  style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
+                                  style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px; font-size: 18px">{{l.provided}}</h6></span>
 
                                 <div class="main-border-button">
-                                  <a href="#"
-                                     style="color: darkviolet;position: static;margin-left: 250px;margin-top: -15px;background-color: white;">Sửa</a>
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -15px;background-color: white;"
+                                    (click)="showDichVu()">Sửa</a>
                                 </div>
 
                               </li>
@@ -129,8 +146,9 @@
                                     (click)="showLinkFace()">Sửa</a>
                                 </div>
 
+
                                 <a id="face" href="{{userProfile.faceLink}}"
-                                   style="color: #DEE1E6">{{userProfile.faceLink}}</a>
+                                   style="font-size: 18px; color: #DEE1E6">{{userProfile.faceLink}}</a>
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.faceLink" id="face1"
                                             hidden (keyup.enter)="hideFaceLink($event)"></textarea>
@@ -145,11 +163,11 @@
                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;"
                                     (click)="showMota();">Sửa</a>
                                 </div>
-                                <p id="mota" style="color: #DEE1E6">{{userProfile.moTa}}</p>
+                                <p id="mota" style="color: #DEE1E6;font-size: 18px">{{userProfile.moTa}}</p>
 
                                 <div class="form-outline w-75 mb-4">
-                                  <textarea class="form-control" rows="3" [(ngModel)]="userProfile.moTa" id="mota1"
-                                            hidden (keyup.enter)="hideMoTa($event)"></textarea>
+<textarea class="form-control" rows="3" [(ngModel)]="userProfile.moTa" id="mota1"
+          hidden (keyup.enter)="hideMoTa($event)"></textarea>
                                 </div>
 
                               </li>
@@ -159,7 +177,7 @@
                                   <a (click)="showSoThich()"
                                      style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;">Sửa</a>
                                 </div>
-                                <p id="sothich" style="color: #DEE1E6">{{userProfile.soThich}}</p>
+                                <p id="sothich" style="color: #DEE1E6;font-size: 18px">{{userProfile.soThich}}</p>
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.soThich"
                                             id="sothich1" hidden (keyup.enter)="hideSoThich($event)"></textarea>
@@ -173,7 +191,7 @@
                                      style="color: darkviolet;position: static;margin-left: 695px;margin-top: -100px;background-color: white;">Sửa</a>
                                 </div>
 
-                                <p id="yeuCau" style="color: #DEE1E6">{{userProfile.yeuCau}}</p>
+                                <p id="yeuCau" style="color: #DEE1E6;font-size: 18px">{{userProfile.yeuCau}}</p>
 
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.yeuCau" id="yeuCau1"
@@ -184,16 +202,18 @@
                               <br>
                               <li>
 <!--                                <div class="heading-section">-->
-<!--                                  <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">-->
+<!--                                  <div class="item"-->
+<!--                                       *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">-->
 <!--                                    <ul>-->
 <!--                                      <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>-->
 <!--                                      <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>-->
 <!--                                      <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>-->
-<!--                                   </ul>-->
+<!--                                    </ul>-->
 <!--                                  </div>-->
 <!--                                </div>-->
                               </li>
                             </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -203,101 +223,98 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- ***** Banner End ***** -->
-      <!-- ***** Gaming Library Start ***** -->
-        <div class="row">
-          <div class="col-lg-12">
-      <div class="gaming-library profile-library">
-        <div
-          style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
-          class="col-lg-12">
-          <div class="heading-section">
-            <h4>Lịch sử thuê</h4>
-          </div>
-          <div class="item" *ngFor="let x of history">
-            <ul>
-              <li><img src="{{x.img}}" alt=""
-                       class="templatemo-item"></li>
-              <li><h4>Tên</h4><span>{{x.userName}}</span></li>
-              <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-          </div>
-        </div>
-      <!-- ***** Gaming Library End ***** -->
-    </div>
-  </div>
-</div>
+        <!-- ***** Banner End ***** -->
+        <!-- ***** Gaming Library Start ***** -->
 
-
-<!-- Edit Modal -->
-<div class="modal fade-rotate" id="rotateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div style="background-image: linear-gradient(to right, #004085, rgb(255 89 130))" class="modal-content">
-      <div class="modal-header">
-        <h4 style="margin-left: 10px" class="modal-title" id="myModalLabel">Sửa thông tin</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <form style="width: 450px">
-          <div class="form-group">
-            <label>Tên</label>
-            <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
-          </div>
-          <div style="margin-left: 20px" class="form-group">
-            <div>Giới tính:
-              <input type="radio" id="css" name="gender" value="Nam" checked="{{userProfile.gender == 'Nam'}}"
-                     [(ngModel)]="userProfile.gender">
-              <label for="css">Nam</label>
-              <br>
-              <input style="margin-left: 60px" type="radio" id="javascript" name="gender" value="Nu"
-                     checked="{{userProfile.gender == 'Nu'}}" [(ngModel)]="userProfile.gender">
-              <label for="javascript">Nữ</label>
+        <div class="gaming-library profile-library">
+          <div
+            style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
+            class="col-lg-12">
+            <div class="heading-section">
+              <h4>Lịch sử thuê</h4>
+            </div>
+            <div class="item" *ngFor="let x of history">
+              <ul>
+                <li><img src="{{x.img}}" alt=""
+                         class="templatemo-item"></li>
+                <li><h4>Tên</h4><span>{{x.userName}}</span></li>
+                <li><h4>Ngày </h4><span>{{x.date}}</span></li>
+                <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
+              </ul>
             </div>
           </div>
-          <div class="form-group">
-            <label>Ngày sinh</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.birthday" name="birthday">
-          </div>
-          <div class="form-group">
-            <label>Quốc gia</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.nation" name="nation">
-          </div>
-          <div class="form-group">
-            <label>Thành phố</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.city" name="city">
-          </div>
-          <div class="form-group">
-            <label>Chiều cao</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.height" name="height">
-          </div>
-          <div class="form-group">
-            <label>Cân nặng</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.weight" name="weight">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" (click)="saveDetail()" data-dismiss="modal">Lưu</button>
+        </div>
+        <!-- ***** Gaming Library End ***** -->
       </div>
     </div>
   </div>
-</div>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-                <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
-                  <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+
+  <!-- Edit Modal -->
+  <div class="modal fade-rotate" id="rotateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div style="background-image: linear-gradient(to right, #004085, rgb(255 89 130))" class="modal-content">
+        <div class="modal-header">
+          <h4 style="margin-left: 10px" class="modal-title" id="myModalLabel">Sửa thông tin</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <form style="width: 450px" Sửa>
+            <div class="form-group">
+              <label>Tên</label>
+              <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
+            </div>
+            <div style="margin-left: 20px" class="form-group">
+              <div>Giới tính:
+                <input type="radio" id="css" name="gender" value="Nam" checked="{{userProfile.gender == 'Nam'}}"
+                       [(ngModel)]="userProfile.gender">
+                <label for="css">Nam</label>
+                <br>
+                <input style="margin-left: 60px" type="radio" id="javascript" name="gender" value="Nu"
+                       checked="{{userProfile.gender == 'Nu'}}" [(ngModel)]="userProfile.gender">
+                <label for="javascript">Nữ</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Ngày sinh</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.birthday"
+                     name="birthday">
+            </div>
+            <div class="form-group">
+              <label>Quốc gia</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.nation" name="nation">
+            </div>
+            <div class="form-group">
+              <label>Thành phố</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.city" name="city">
+            </div>
+            <div class="form-group">
+              <label>Chiều cao</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.height" name="height">
+            </div>
+            <div class="form-group">
+              <label>Cân nặng</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.weight" name="weight">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" (click)="saveDetail()" data-dismiss="modal">Lưu</button>
+        </div>
       </div>
     </div>
   </div>
-</footer>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
+            <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
