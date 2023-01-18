@@ -9,10 +9,10 @@
 }
 
 .card{
-  height: 600px;
+  height: 550px;
   margin-top: auto;
   margin-bottom: auto;
-  width: 400px;
+  width: 500px;
   background-color: rgba(0,0,0,0.5) !important;
 }
 

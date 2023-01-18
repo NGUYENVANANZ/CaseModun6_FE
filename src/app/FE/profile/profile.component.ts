@@ -100,6 +100,7 @@ export class ProfileComponent implements OnInit, OnChanges {
       this.history = data;
     })
     this.moneyBack()
+    this.addNotifiCation()
   }
 
   submit() {
@@ -341,6 +342,7 @@ export class ProfileComponent implements OnInit, OnChanges {
   }
 
   requsetAdmin1() {
+    this.socket.sendAdmin(localStorage.getItem("id"))
     this.profile.requsetAdmin1().subscribe((data) => {
       this.userProfile = data;
       this.check(this.userProfile);
@@ -465,5 +467,40 @@ export class ProfileComponent implements OnInit, OnChanges {
     this.profile.saveImage(img).subscribe((data) => {
       this.userProfile = data;
     })
+  }
+
+  addNotifiCation() {
+    let url = '/topic/' + this.userName;
+    const _this = this;
+    this.stompClient.subscribe(url, function (notification: any) {
+      _this.notificationCheck = JSON.parse(notification.body);
+      if (_this.notificationCheck.status == 11) {
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: "success",
+          timer: 5000,
+          title: 'Admin đã đồng ý'
+        })
+        // @ts-ignore
+        _this.userProfile.roles.push(new Roles(3))
+        _this.check(_this.userProfile);
+// @ts-ignore
+        document.getElementById("requestAdmin").hidden = true;
+      }
+      if (_this.notificationCheck.status == 12) {
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: "error",
+          timer: 5000,
+          title: 'Admin đã từ chối'
+        })
+        _this.userProfile.status = 0;
+        _this.check(_this.userProfile);
+      }
+    });
   }
 }
