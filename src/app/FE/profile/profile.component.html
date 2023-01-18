@@ -129,11 +129,12 @@
                               <li id="provideds" hidden><h2 style="color: darkviolet">Dịch vụ : </h2>
                                 <span
                                   *ngFor="let l of userProfile.provideds" style="float: left"><h6
-                                  style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px">{{l.provided}}</h6></span>
+                                  style="background: #1F2122;color: #DEE1E6; margin-left: 10px; border-radius: 5px; font-size: 18px">{{l.provided}}</h6></span>
 
                                 <div class="main-border-button">
-                                  <a href="#"
-                                     style="color: darkviolet;position: static;margin-left: 250px;margin-top: -15px;background-color: white;">Sửa</a>
+                                  <a
+                                    style="color: darkviolet;position: static;margin-left: 695px;margin-top: -15px;background-color: white;"
+                                    (click)="showDichVu()">Sửa</a>
                                 </div>
 
                               </li>
@@ -145,8 +146,9 @@
                                     (click)="showLinkFace()">Sửa</a>
                                 </div>
 
+
                                 <a id="face" href="{{userProfile.faceLink}}"
-                                   style="color: #DEE1E6">{{userProfile.faceLink}}</a>
+                                   style="font-size: 18px; color: #DEE1E6">{{userProfile.faceLink}}</a>
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.faceLink" id="face1"
                                             hidden (keyup.enter)="hideFaceLink($event)"></textarea>
@@ -161,7 +163,7 @@
                                     style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;"
                                     (click)="showMota();">Sửa</a>
                                 </div>
-                                <p id="mota" style="color: #DEE1E6">{{userProfile.moTa}}</p>
+                                <p id="mota" style="color: #DEE1E6;font-size: 18px">{{userProfile.moTa}}</p>
 
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.moTa" id="mota1"
@@ -175,7 +177,7 @@
                                   <a (click)="showSoThich()"
                                      style="color: darkviolet;position: static;margin-left: 695px;margin-top: -80px;background-color: white;">Sửa</a>
                                 </div>
-                                <p id="sothich" style="color: #DEE1E6">{{userProfile.soThich}}</p>
+                                <p id="sothich" style="color: #DEE1E6;font-size: 18px">{{userProfile.soThich}}</p>
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.soThich"
                                             id="sothich1" hidden (keyup.enter)="hideSoThich($event)"></textarea>
@@ -189,7 +191,7 @@
                                      style="color: darkviolet;position: static;margin-left: 695px;margin-top: -100px;background-color: white;">Sửa</a>
                                 </div>
 
-                                <p id="yeuCau" style="color: #DEE1E6">{{userProfile.yeuCau}}</p>
+                                <p id="yeuCau" style="color: #DEE1E6;font-size: 18px">{{userProfile.yeuCau}}</p>
 
                                 <div class="form-outline w-75 mb-4">
                                   <textarea class="form-control" rows="3" [(ngModel)]="userProfile.yeuCau" id="yeuCau1"
@@ -200,16 +202,18 @@
                               <br>
                               <li>
                                 <div class="heading-section">
-                                  <div class="item" *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
+                                  <div class="item"
+                                       *ngFor="let x of history|paginate: { itemsPerPage: 4, currentPage: S}">
                                     <ul>
                                       <li><img src="{{x.img}}" alt="" class="templatemo-item"></li>
                                       <li><h4>Tên</h4><span style="color: #b6effb">{{x.userName}}</span></li>
                                       <li><h4>Ngày </h4><span style="color: #b6effb">{{x.date}}</span></li>
-                                   </ul>
+                                    </ul>
                                   </div>
                                 </div>
                               </li>
                             </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -219,98 +223,98 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- ***** Banner End ***** -->
-      <!-- ***** Gaming Library Start ***** -->
+        <!-- ***** Banner End ***** -->
+        <!-- ***** Gaming Library Start ***** -->
 
-      <div class="gaming-library profile-library">
-        <div
-          style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
-          class="col-lg-12">
-          <div class="heading-section">
-            <h4>Lịch sử thuê</h4>
-          </div>
-          <div class="item" *ngFor="let x of history">
-            <ul>
-              <li><img src="{{x.img}}" alt=""
-                       class="templatemo-item"></li>
-              <li><h4>Tên</h4><span>{{x.userName}}</span></li>
-              <li><h4>Ngày </h4><span>{{x.date}}</span></li>
-              <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- ***** Gaming Library End ***** -->
-    </div>
-  </div>
-</div>
-
-
-<!-- Edit Modal -->
-<div class="modal fade-rotate" id="rotateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div style="background-image: linear-gradient(to right, #004085, rgb(255 89 130))" class="modal-content">
-      <div class="modal-header">
-        <h4 style="margin-left: 10px" class="modal-title" id="myModalLabel">Sửa thông tin</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <form style="width: 450px" Sửa>
-          <div class="form-group">
-            <label>Tên</label>
-            <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
-          </div>
-          <div style="margin-left: 20px" class="form-group">
-            <div>Giới tính:
-              <input type="radio" id="css" name="gender" value="Nam" checked="{{userProfile.gender == 'Nam'}}"
-                     [(ngModel)]="userProfile.gender">
-              <label for="css">Nam</label>
-              <br>
-              <input style="margin-left: 60px" type="radio" id="javascript" name="gender" value="Nu"
-                     checked="{{userProfile.gender == 'Nu'}}" [(ngModel)]="userProfile.gender">
-              <label for="javascript">Nữ</label>
+        <div class="gaming-library profile-library">
+          <div
+            style="background-color: black; border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border-top-left-radius: 30px;border-top-right-radius: 30px"
+            class="col-lg-12">
+            <div class="heading-section">
+              <h4>Lịch sử thuê</h4>
+            </div>
+            <div class="item" *ngFor="let x of history">
+              <ul>
+                <li><img src="{{x.img}}" alt=""
+                         class="templatemo-item"></li>
+                <li><h4>Tên</h4><span>{{x.userName}}</span></li>
+                <li><h4>Ngày </h4><span>{{x.date}}</span></li>
+                <li style="text-align: center"><h4>Tổng đơn</h4><span>{{x.price}}$</span></li>
+              </ul>
             </div>
           </div>
-          <div class="form-group">
-            <label>Ngày sinh</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.birthday" name="birthday">
-          </div>
-          <div class="form-group">
-            <label>Quốc gia</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.nation" name="nation">
-          </div>
-          <div class="form-group">
-            <label>Thành phố</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.city" name="city">
-          </div>
-          <div class="form-group">
-            <label>Chiều cao</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.height" name="height">
-          </div>
-          <div class="form-group">
-            <label>Cân nặng</label>
-            <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.weight" name="weight">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" (click)="saveDetail()" data-dismiss="modal">Lưu</button>
+        </div>
+        <!-- ***** Gaming Library End ***** -->
       </div>
     </div>
   </div>
-</div>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <!--        <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.-->
-        <!--          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>-->
+
+  <!-- Edit Modal -->
+  <div class="modal fade-rotate" id="rotateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div style="background-image: linear-gradient(to right, #004085, rgb(255 89 130))" class="modal-content">
+        <div class="modal-header">
+          <h4 style="margin-left: 10px" class="modal-title" id="myModalLabel">Sửa thông tin</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <form style="width: 450px" Sửa>
+            <div class="form-group">
+              <label>Tên</label>
+              <input class="form-control" placeholder="Enter Title" [(ngModel)]="userProfile.fullName" name="fullName">
+            </div>
+            <div style="margin-left: 20px" class="form-group">
+              <div>Giới tính:
+                <input type="radio" id="css" name="gender" value="Nam" checked="{{userProfile.gender == 'Nam'}}"
+                       [(ngModel)]="userProfile.gender">
+                <label for="css">Nam</label>
+                <br>
+                <input style="margin-left: 60px" type="radio" id="javascript" name="gender" value="Nu"
+                       checked="{{userProfile.gender == 'Nu'}}" [(ngModel)]="userProfile.gender">
+                <label for="javascript">Nữ</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Ngày sinh</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.birthday"
+                     name="birthday">
+            </div>
+            <div class="form-group">
+              <label>Quốc gia</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.nation" name="nation">
+            </div>
+            <div class="form-group">
+              <label>Thành phố</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.city" name="city">
+            </div>
+            <div class="form-group">
+              <label>Chiều cao</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.height" name="height">
+            </div>
+            <div class="form-group">
+              <label>Cân nặng</label>
+              <input class="form-control" placeholder="Enter Describe" [(ngModel)]="userProfile.weight" name="weight">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" (click)="saveDetail()" data-dismiss="modal">Lưu</button>
+        </div>
       </div>
     </div>
   </div>
-</footer>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+                  <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
+                    <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
